@@ -1,0 +1,22 @@
+---
+:ems:
+  :ems_google:
+    :event_handling:
+      :event_groups:
+:http_proxy:
+  :google:
+    :host:
+    :password:
+    :port:
+    :user:
+:workers:
+  :worker_base:
+    :event_catcher:
+      :event_catcher_google:
+        :poll: 15.seconds
+    :queue_worker_base:
+      :ems_metrics_collector_worker:
+        :ems_metrics_collector_worker_google: {}
+      :ems_refresh_worker:
+        :ems_refresh_worker_google: {}
+        :ems_refresh_worker_google_network: {}
