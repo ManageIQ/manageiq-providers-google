@@ -1,0 +1,11 @@
+---
+:ems:
+  :ems_google:
+    :event_handling:
+      :event_groups:
+:http_proxy:
+  :google:
+    :host:
+    :password:
+    :port:
+    :user:
