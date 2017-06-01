@@ -1,5 +1,4 @@
 require 'digest'
-require 'fog/google'
 
 module ManageIQ::Providers
   module Google

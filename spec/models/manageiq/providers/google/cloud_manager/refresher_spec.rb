@@ -1,5 +1,3 @@
-require 'fog/google'
-
 describe ManageIQ::Providers::Google::CloudManager::Refresher do
   before(:each) do
     _guid, _server, zone = EvmSpecHelper.create_guid_miq_server_zone

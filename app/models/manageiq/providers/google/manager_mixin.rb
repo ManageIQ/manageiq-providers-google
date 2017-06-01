@@ -21,8 +21,6 @@ module ManageIQ::Providers::Google::ManagerMixin
   end
 
   def connect(options = {})
-    require 'fog/google'
-
     raise MiqException::MiqHostError, "No credentials defined" if missing_credentials?(options[:auth_type])
 
     auth_token = authentication_token(options[:auth_type])
