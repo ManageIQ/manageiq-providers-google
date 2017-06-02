@@ -1,5 +1,3 @@
-require 'fog/google'
-
 describe ManageIQ::Providers::Google::CloudManager::MetricsCapture do
   let(:ems) { FactoryGirl.create(:ems_google) }
   let(:vm) { FactoryGirl.build(:vm_google, :ext_management_system => ems, :ems_ref => "my_ems_ref") }
@@ -198,6 +196,7 @@ describe ManageIQ::Providers::Google::CloudManager::MetricsCapture do
     end
 
     # Create a monitoring double and ensure it gets used instead of the real client
+    require 'fog/google'
     monitoring = double("::Fog::Google::Monitoring")
     allow(monitoring).to receive(:timeseries_collection) { timeseries_collection }
     allow(::Fog::Google::Monitoring).to receive(:new) { monitoring }

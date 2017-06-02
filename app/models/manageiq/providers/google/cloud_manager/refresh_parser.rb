@@ -1,5 +1,3 @@
-require 'fog/google'
-
 module ManageIQ::Providers
   module Google
     class CloudManager::RefreshParser < ManageIQ::Providers::CloudManager::RefreshParser
