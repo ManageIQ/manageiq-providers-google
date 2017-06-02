@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,lib}/**/*"]
 
-  s.add_dependency "fog-google",        ">=0.5.2"
+  s.add_dependency "fog-google",        "=0.5.2"
   s.add_dependency "google-api-client", "~>0.8.6"
 
   s.add_development_dependency "codeclimate-test-reporter", "~> 1.0.0"
