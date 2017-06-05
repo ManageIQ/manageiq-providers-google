@@ -1,7 +1,7 @@
 describe ManageIQ::Providers::Google::CloudManager::Refresher do
   before(:each) do
     _guid, _server, zone = EvmSpecHelper.create_guid_miq_server_zone
-    @google_json_key = "{\r\n  \"type\": \"service_account\",\r\n  \"project_id\": \"civil-tube-113314\",\r\n  \"private_key_id\": \"b30f7f40eb725006e658bc5bd2f58200df81280a\",\r\n  \"private_key\": \"-----BEGIN PRIVATE KEY-----\\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC0yjlFvsDexy22\\nAdXET0ptuS1r091fQn3RREbmZsbLvlxiRfdySJpnkOv8fmzoz7/1q1vxGhnftA9S\\nPyxCz1WSc/JDac8iybh5/zg96oFk9rq6VVc7lGy/i9igrxQzyzkPIuS0g0Y1OzRz\\nRro+AKBLgKcejd6EZ16jJWYRgAtD4c2CWizYCFNfHJzn/e8mBWGWYdmqr6VxaXNf\\nBesL+aF/FimAvCEwW1zbXZEkq6vMzlNdUO3EvpDr+yfHdjre+KcflrxVdr6Ju9QD\\nHlAENgP78cZNL1Gk4Os1wSMf8GQV4yKRO/wAGJI4KS4Id8iijwjWhDHCJgdfPNmt\\na/qpX+YdAgMBAAECggEAASXHd0ner4tUHvOkB7r5Hfku8KBHp3MkmU91o8DDQkfT\\nDkyjZXZQhJfG57NlvZSUA1szGjSwNVtPPZZpEYN/Z46U2xiw1+ev5BZapQn4CEwI\\no2YnR5mJly2sElkKJ8oCcrYl/X9X0r6tdo3cYMhgPBp09RyxbOW7FA4It9O4PpYN\\nmogdIbC0cQPyC9xPMZPUGUTSOcXud13KoGlUW9S+SH/Sg7pB0H8HEg+GM/OhMzNI\\na0UJK0HeeacMYm7v9v2IKT1Chw2qrrNToCXCLvZpBdwNbBMHr0KBWG9N+0RayqOt\\nn3PYi8k60vF1k1m3EDLTqAsGNKBTXcCxNwzztu1JgQKBgQDo09qjiYy8T2/ZBjlj\\nMX7MxeOuNMnNQiL+g8FrmtyWs0L7CI7qAYjxh3gtdGRSzCBZuRxQKGF/ViPPtk3n\\nqj2g8049ycwiRvRjoAD6jnz68HvxrFskHMsv84U9yd4zwkNHhbydW6GtMygMqkdq\\nDIkyHeNFw/P2rJHq3UbsMO/CrwKBgQDGyISqqG34dtJEAFFvt5bH1NmOyX5QAFjs\\nHcGP9Vu9uUxnXJ/1fRKvlMLEAtfepU41m+z2C7mKfr/vxURjQB4CAZAFvMcUpnc9\\nBLlwF9Go4PPPoIzxC6kNJEujwPDsBcwAgL9e3nLTrq0eaHi68mXtkg5Oq2g5Q9zM\\ngoDksuYG8wKBgQDGmDaNef1WfrebuYhnyMcsqbscVCCx+TDaQc5RF6YC0WNXtyQY\\nDDkgM/pZY0dTrJQHlDLHWLpZIEOpoAnxii/JQt/BKoj5z+YTuF49Wh7W+Rvvt6GC\\nOyFBhIlpe/AR3CkBL90DqC5PCyylKPWDSrAX1JCQaKWHCgno+NfPDarlNwKBgQC8\\nTcLu7vKNxfFVHYAHdkBNOGKHEnSnUEzsDxwHRQQM63VnDKUypbKHxUHi8FaRwMIf\\non+MbHrsqTkk5xfrdRd4CwbliHiGJVMa6FjJyKaBdedALfSVetg/bLyCeQlAbBVd\\n/JhMRCk+QWAZSBnl7i2EKTGIcHMgnBqTWKTFAHtK5QKBgDGuz6/riH2hqG7V9FOg\\nwOVVCQnaQhmanHcB7V+Q8CTGL2k4WUck5emWal0X9jCYhEWLvPTuCovKsSQQH4ek\\n+Bd3eg1Uj70+BIX+56sW8SRNzdPdFgIymTR1fXdvsabkkzxKFX/ke/CJov++Kt8k\\ncoj35VMt9TXvmp7zH3Sief0D\\n-----END PRIVATE KEY-----\\n\",\r\n  \"client_email\": \"service-account-1@civil-tube-113314.iam.gserviceaccount.com\",\r\n  \"client_id\": \"105732955724324875174\",\r\n  \"auth_uri\": \"https://accounts.google.com/o/oauth2/auth\",\r\n  \"token_uri\": \"https://accounts.google.com/o/oauth2/token\",\r\n  \"auth_provider_x509_cert_url\": \"https://www.googleapis.com/oauth2/v1/certs\",\r\n  \"client_x509_cert_url\": \"https://www.googleapis.com/robot/v1/metadata/x509/service-account-1%40civil-tube-113314.iam.gserviceaccount.com\"\r\n}"
+    @google_json_key = "{\n  \"type\": \"service_account\",\n  \"project_id\": \"civil-tube-113314\",\n  \"private_key_id\": \"bd99fda9d4a1e62f8371b7cd92ffcc6bb21ee453\",\n  \"private_key\": \"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCR2KaVdHB3sMkm\\n8v8KZCPuKMvbUZ4oswT2ORRgm8hwJkMgvGpGAVnCRTwujXwm7ar7Acbopxzg4Qcm\\nb+DL6liyojrV3flbNiFcQniyMdjJxERyGKCEeLa+fGW9dNG2/v+2WAiQamywKgMA\\nlgR9bgaKZBPoDYIGpcwMqbXfCz/edUrWgf/sPw/EVePn56ARwEGE8azPyflP+tsM\\n2SskpW0SNJnHgwj3dKlH8iRXFTqGBaodM/864yb5IPTFkmR/3TPs9z+vbiyD/5zw\\nRbsSY9CRkP1ZU6qYn4KEbyv2eZ3J76oYJFUFWOPiKqNQBSdMX4+D2x7GlePEYnoV\\n5Zq9deTTAgMBAAECggEACaadGgADKTMTkcuRQNjGNTjnNHNpfyaeyhmWKvEOtGJz\\nyAjFEi4oswhDJo7KNlvnwoWoPzY/sknHCq4V4VMih2o2G8zSdqIAVyCMPWO7BVmY\\nGzdconzHwEHEYbhciuVuJQdyREwmi7Rb+n/y0Bylu3v1LUJ85iphHugOrDG3CjtT\\nH478PQePaJ+Gn4pByoyBV4NDQo1V5suFWmWRD3WKIr9kX2SE6UGZ5v+UCSDRwh+K\\nEttKqEdj2AYxxxohF9Do/a6jaJ8eXIa2HoeL2JoDyZwdUNVQzBiq+kLsrM911HOB\\nqoQ/uzzFs9gkEIv8PD9c1GGYcEaoS8ltofAJJZF7sQKBgQDIXebMKsin0Mg5ZasU\\nTsN/AkryG5alzh7D+qGaQ6ra/EsqSif1A7bLoFnUT3s4khCezseRnQNQrw96SYTv\\nD10qrp+74i0/8A/AoKw0bqR3+6XFewgN1LtQPtR4gwgvTJCzfZdExG06O1zYWaWt\\nIZAI77gcqIUr9ugH89bOgXXJPQKBgQC6V2yUSoGYnzOCqJgpuMbt9Nx7KFbgMPs1\\n7gkUxfxTfseadSgirxPTd0JXTtJjsV8r1Dn3G1VNcxK/3lNrVCAfDNshTVw3pcek\\nRpt4sxCC1cHhgiErvCF8hJ3LRqZdYDWOPBD28JGQgdHuLuwVXfSm51iZj3+fxTDZ\\nHxYh5I6nTwKBgC5hHgVwedXujApNMFaZDMOfgj2ciTiEB7cRksqkky3xbGyzkaAz\\nZeKokWKFq14i4VoBP0zDbXsFqq2ByxWTFtvEZBEXf6XnKZ5LEtFoMwXa6DpYCjs5\\nXMpsYL4shn58WJpTneo7FZV/HDSwO5thw3duFc38bCcLFhaRKM3QRbV5AoGBAIco\\nwmkNYdMCJqqu/y/EBwayhPoP2HPlE1Gaxpt6v/sQClfOgr4ln4vTBRuu4IvPK+ju\\nltzVxpnWzdK9wGQpMONUv9z379utM5HEZSC3QVKlGWwop0bBvshCqPG43RL9pdr1\\nVpjHBc57W3oYLsWQ0NP/GhTIMRoCPdw+4B7VWWOhAoGAYEdx3cnDpPOTH1179GTv\\ny/q1LXvp8nP50HZ1Yc+wAOnifXBKhSTpjDqgru5OiGT7rggzyK0ui3nyfbwM5AH7\\nyQXmt8q0Nnzo8GdL+YKTfGbnmSwDH0SotEeofwruPuxOr7ows6joo283NOugudsx\\nUAa/tB/piHG/VYQ6dxb8zsg=\\n-----END PRIVATE KEY-----\\n\",\n  \"client_email\": \"199203428544-compute@developer.gserviceaccount.com\",\n  \"client_id\": \"102455136987689387132\",\n  \"auth_uri\": \"https://accounts.google.com/o/oauth2/auth\",\n  \"token_uri\": \"https://accounts.google.com/o/oauth2/token\",\n  \"auth_provider_x509_cert_url\": \"https://www.googleapis.com/oauth2/v1/certs\",\n  \"client_x509_cert_url\": \"https://www.googleapis.com/robot/v1/metadata/x509/199203428544-compute%40developer.gserviceaccount.com\"\n}\n"
     @ems = FactoryGirl.create(:ems_google, :zone => zone, :provider_region => "us-central1")
     @ems.authentications << FactoryGirl.create(:authentication, :userid => "_", :auth_key => @google_json_key)
     @ems.update_attributes(:project => "civil-tube-113314")
@@ -49,11 +49,11 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
   def expected_table_counts
     {
       :ext_management_system              => 2,
-      :flavor                             => 19,
-      :availability_zone                  => 15,
-      :vm_or_template                     => 616,
+      :flavor                             => 22,
+      :availability_zone                  => 24,
+      :vm_or_template                     => 779,
       :vm                                 => 6,
-      :miq_template                       => 610,
+      :miq_template                       => 773,
       :disk                               => 6,
       :guest_device                       => 0,
       :hardware                           => 6,
@@ -64,9 +64,9 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       :load_balancer_health_checks        => 1,
       :load_balancer_health_check_members => 1,
       :network                            => 0,
-      :operating_system                   => 616,
+      :operating_system                   => 779,
       :relationship                       => 11,
-      :miq_queue                          => 617,
+      :miq_queue                          => 780,
       :orchestration_template             => 0,
       :orchestration_stack                => 0,
       :orchestration_stack_parameter      => 0,
@@ -77,7 +77,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       :cloud_network                      => 3,
       :floating_ip                        => 3,
       :network_router                     => 0,
-      :cloud_subnet                       => 6,
+      :cloud_subnet                       => 9,
       :key_pair                           => 4,
     }
   end
