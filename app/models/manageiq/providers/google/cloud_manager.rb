@@ -42,10 +42,7 @@ class ManageIQ::Providers::Google::CloudManager < ManageIQ::Providers::CloudMana
   end
 
   def supported_auth_types
-    %w(
-      oauth
-      auth_key
-    )
+    %w(auth_key)
   end
 
   # TODO(lwander) determine if user wants to use OAUTH or a service account
