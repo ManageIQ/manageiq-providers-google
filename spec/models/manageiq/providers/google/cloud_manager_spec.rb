@@ -1,4 +1,35 @@
 describe ManageIQ::Providers::Google::CloudManager do
+  context ".raw_connect" do
+    let(:config) do
+      {
+        :provider               => "Google",
+        :google_project         => "project",
+        :google_json_key_string => "encrypted",
+        :app_name               => I18n.t("product.name"),
+        :app_version            => Vmdb::Appliance.VERSION,
+        :google_client_options  => {
+          :proxy => "proxy_uri"
+        }
+      }
+    end
+
+    before do
+      require 'fog/google'
+    end
+
+    it "decrypts json keys" do
+      expect(::Fog::Compute).to receive(:new).with(config)
+
+      described_class.raw_connect("project", MiqPassword.encrypt("encrypted"), {:service => "compute"}, "proxy_uri")
+    end
+
+    it "works with unencrypted keys" do
+      expect(::Fog::Compute).to receive(:new).with(config)
+
+      described_class.raw_connect("project", "encrypted", {:service => "compute"}, "proxy_uri")
+    end
+  end
+
   it ".ems_type" do
     expect(described_class.ems_type).to eq('gce')
   end
