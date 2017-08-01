@@ -53,7 +53,13 @@ module ManageIQ::Providers
       end
 
       def get_snapshots
-        snapshots = @connection.snapshots.all
+        snapshots =
+          begin
+            @connection.snapshots.all
+          rescue TypeError # Workaround for https://github.com/fog/fog-google/issues/239
+            []
+          end
+
         process_collection(snapshots, :cloud_volume_snapshots) { |snapshot| parse_snapshot(snapshot) }
         # Also pass the snapshots as templates
         process_collection(snapshots, :vms) { |snapshot| parse_storage_as_template(snapshot) }
