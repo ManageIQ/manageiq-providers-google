@@ -7,7 +7,7 @@ module ManageIQ::Providers::Google
     end
 
     def save_inventory(ems, _targets, hashes)
-      EmsRefresh.save_ems_inventory(ems, hashes)
+      super
       EmsRefresh.queue_refresh(ems.network_manager)
     end
 
