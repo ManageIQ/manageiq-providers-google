@@ -24,6 +24,11 @@ module ManageIQ::Providers::Google::CloudManager::Provision::Cloning
     # issue: https://github.com/fog/fog-google/issues/136
     clone_options[:on_host_maintenance] = "TERMINATE" if clone_options[:preemptible]
 
+    if clone_options[:user_data]
+      clone_options[:metadata] = {"user-data"          => Base64.encode64(clone_options[:user_data]),
+                                  "user-data-encoding" => "base64"}
+    end
+
     clone_options
   end
 
