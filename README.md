@@ -1,11 +1,11 @@
 # manageiq-providers-google
 
 [![Gem Version](https://badge.fury.io/rb/manageiq-providers-google.svg)](http://badge.fury.io/rb/manageiq-providers-google)
-[![Build Status](https://travis-ci.org/ManageIQ/manageiq-providers-google.svg)](https://travis-ci.org/ManageIQ/manageiq-providers-google)
+[![Build Status](https://travis-ci.org/ManageIQ/manageiq-providers-google.svg?branch=gaprindashvili)](https://travis-ci.org/ManageIQ/manageiq-providers-google)
 [![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-providers-google.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-google)
 [![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-providers-google/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-google/coverage)
 [![Dependency Status](https://gemnasium.com/ManageIQ/manageiq-providers-google.svg)](https://gemnasium.com/ManageIQ/manageiq-providers-google)
-[![Security](https://hakiri.io/github/ManageIQ/manageiq-providers-google/master.svg)](https://hakiri.io/github/ManageIQ/manageiq-providers-google/master)
+[![Security](https://hakiri.io/github/ManageIQ/manageiq-providers-google/gaprindashvili.svg)](https://hakiri.io/github/ManageIQ/manageiq-providers-google/gaprindashvili)
 
 [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/manageiq-providers-google?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Translate](https://img.shields.io/badge/translate-zanata-blue.svg)](https://translate.zanata.org/zanata/project/view/manageiq-providers-google)
