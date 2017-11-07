@@ -2,29 +2,17 @@ module ManageIQ::Providers::Google::ManagerMixin
   extend ActiveSupport::Concern
 
   def verify_credentials(auth_type = nil, options = {})
-    begin
-      options[:auth_type] = auth_type
-
-      connection = connect(options)
-
-      # Not all errors will cause Fog to raise an exception,
-      # for example an error in the google_project id will
-      # succeed to connect but the first API call will raise
-      # an exception, so make a simple call to the API to
-      # confirm everything is working
-      connection.regions.all
-    rescue => err
-      raise MiqException::MiqInvalidCredentialsError, err.message
-    end
+    options[:auth_type] = auth_type
+    connect(options, true)
 
     true
   end
 
-  def connect(options = {})
+  def connect(options = {}, validate = false)
     raise MiqException::MiqHostError, "No credentials defined" if missing_credentials?(options[:auth_type])
 
     auth_token = authentication_token(options[:auth_type])
-    self.class.raw_connect(project, auth_token, options, options[:proxy_uri] || http_proxy_uri)
+    self.class.raw_connect(project, auth_token, options, options[:proxy_uri] || http_proxy_uri, validate)
   end
 
   def gce
@@ -32,7 +20,7 @@ module ManageIQ::Providers::Google::ManagerMixin
   end
 
   module ClassMethods
-    def raw_connect(google_project, google_json_key, options, proxy_uri = nil)
+    def raw_connect(google_project, google_json_key, options, proxy_uri = nil, validate = false)
       require 'fog/google'
 
       config = {
@@ -46,17 +34,30 @@ module ManageIQ::Providers::Google::ManagerMixin
         }
       }
 
-      case options[:service]
-      # specify Compute as the default
-      when 'compute', nil
-        ::Fog::Compute.new(config)
-      when 'pubsub'
-        ::Fog::Google::Pubsub.new(config.except(:provider))
-      when 'monitoring'
-        ::Fog::Google::Monitoring.new(config.except(:provider))
-      else
-        raise ArgumentError, "Unknown service: #{options[:service]}"
+      begin
+        case options[:service]
+          # specify Compute as the default
+        when 'compute', nil
+          connection = ::Fog::Compute.new(config)
+        when 'pubsub'
+          connection = ::Fog::Google::Pubsub.new(config.except(:provider))
+        when 'monitoring'
+          connection = ::Fog::Google::Monitoring.new(config.except(:provider))
+        else
+          raise ArgumentError, "Unknown service: #{options[:service]}"
+        end
+
+        # Not all errors will cause Fog to raise an exception,
+        # for example an error in the google_project id will
+        # succeed to connect but the first API call will raise
+        # an exception, so make a simple call to the API to
+        # confirm everything is working
+        connection.regions.all if validate
+      rescue => err
+        raise MiqException::MiqInvalidCredentialsError, err.message
       end
+
+      connection
     end
   end
 end
