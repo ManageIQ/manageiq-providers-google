@@ -1,42 +1,54 @@
-# Japanese translations for ManageIQ_Providers_Google package.
-# Copyright (C) 2017 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the ManageIQ_Providers_Google package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# asasaki <asasaki@redhat.com>, 2017. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ManageIQ_Providers_Google 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2017-10-31 17:45+0100\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2017-10-31 17:45+0100\n"
+"PO-Revision-Date: 2017-11-13 05:17-0500\n"
+"Last-Translator: asasaki <asasaki@redhat.com>\n"
 "Language-Team: Japanese\n"
-"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Zanata 3.9.6\n"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/refresh_parser.rb:250
 msgid "Is VM Preemptible"
-msgstr ""
+msgstr "プリエンプティブル(preemptible) 仮想マシンです"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:8
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:16
 msgid "Pause Operation"
-msgstr ""
+msgstr "一時停止操作"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:24
 msgid "Shelve Offload Operation"
-msgstr ""
+msgstr "退避およびオフロード (Shelve Offload) 操作"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:20
 msgid "Shelve Operation"
-msgstr ""
+msgstr "退避操作"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:12
 msgid "Suspend Operation"
-msgstr ""
+msgstr "一時停止操作"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/guest.rb:7
 msgid "The VM is not powered on"
-msgstr ""
+msgstr "仮想マシンの電源がオンになっていません"
 
-msgid "Whether or not the VM is 'preemptible'. See https://cloud.google.com/compute/docs/instances/preemptible for more details."
+#: ../app/models/manageiq/providers/google/cloud_manager/refresh_parser.rb:251
+msgid ""
+"Whether or not the VM is 'preemptible'. See "
+"https://cloud.google.com/compute/docs/instances/preemptible for more "
+"details."
 msgstr ""
+"仮想マシンが「プリエンプティブル "
+"(preemptible)」かどうかについてです。詳細は、https://cloud.google.com/compute/docs/instances/preemptible"
+" を参照してください。"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/template.rb:6
 msgid "not connected to ems"
-msgstr ""
+msgstr "EMS に接続されていません"

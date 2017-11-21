@@ -1,42 +1,53 @@
-# Chinese translations for ManageIQ_Providers_Google package.
-# Copyright (C) 2017 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the ManageIQ_Providers_Google package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# Joy Cai <joy.sh@linguitronics.com>, 2017. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ManageIQ_Providers_Google 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2017-10-31 17:45+0100\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Chinese\n"
-"Language: zh_CN\n"
+"POT-Creation-Date: 2017-10-31 17:45+0100\n"
+"PO-Revision-Date: 2017-11-10 03:35-0500\n"
+"Last-Translator: Joy Cai <joy.sh@linguitronics.com>\n"
+"Language-Team: Chinese (Simplified, China)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"\n"
+"Language: zh-Hans-CN\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Zanata 3.9.6\n"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/refresh_parser.rb:250
 msgid "Is VM Preemptible"
-msgstr ""
+msgstr "是否可抢占虚拟机"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:8
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:16
 msgid "Pause Operation"
-msgstr ""
+msgstr "暂停操作"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:24
 msgid "Shelve Offload Operation"
-msgstr ""
+msgstr "强制搁置操作"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:20
 msgid "Shelve Operation"
-msgstr ""
+msgstr "搁置操作"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:12
 msgid "Suspend Operation"
-msgstr ""
+msgstr "暂停操作"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/guest.rb:7
 msgid "The VM is not powered on"
-msgstr ""
+msgstr "虚拟机未开启"
 
-msgid "Whether or not the VM is 'preemptible'. See https://cloud.google.com/compute/docs/instances/preemptible for more details."
+#: ../app/models/manageiq/providers/google/cloud_manager/refresh_parser.rb:251
+msgid ""
+"Whether or not the VM is 'preemptible'. See "
+"https://cloud.google.com/compute/docs/instances/preemptible for more "
+"details."
 msgstr ""
+"虚拟机是否为‘抢占式’的。更多详情请参考 "
+"https://cloud.google.com/compute/docs/instances/preemptible。"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/template.rb:6
 msgid "not connected to ems"
-msgstr ""
+msgstr "未连接至 EMS"

@@ -1,42 +1,53 @@
-# French translations for ManageIQ_Providers_Google package.
-# Copyright (C) 2017 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the ManageIQ_Providers_Google package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
+# Laurence Ganseman <laurence.ganseman@stoquart.com>, 2017. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ManageIQ_Providers_Google 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2017-10-31 17:45+0100\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2017-10-31 17:45+0100\n"
+"PO-Revision-Date: 2017-11-09 05:38-0500\n"
+"Last-Translator: Laurence Ganseman <laurence.ganseman@stoquart.com>\n"
 "Language-Team: French\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n>1;\n"
-"\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Zanata 3.9.6\n"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/refresh_parser.rb:250
 msgid "Is VM Preemptible"
-msgstr ""
+msgstr "Est une machine virtuelle préemptive"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:8
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:16
 msgid "Pause Operation"
-msgstr ""
+msgstr "Suspendre l'opération"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:24
 msgid "Shelve Offload Operation"
-msgstr ""
+msgstr "Classer une opération hors charge"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:20
 msgid "Shelve Operation"
-msgstr ""
+msgstr "Classer une opération"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:12
 msgid "Suspend Operation"
-msgstr ""
+msgstr "Suspendre l'opération"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/guest.rb:7
 msgid "The VM is not powered on"
-msgstr ""
+msgstr "La VM n'est pas activée"
 
-msgid "Whether or not the VM is 'preemptible'. See https://cloud.google.com/compute/docs/instances/preemptible for more details."
+#: ../app/models/manageiq/providers/google/cloud_manager/refresh_parser.rb:251
+msgid ""
+"Whether or not the VM is 'preemptible'. See "
+"https://cloud.google.com/compute/docs/instances/preemptible for more "
+"details."
 msgstr ""
+"La VM est-elle 'préemptive' ? Pour en savoir plus, voir "
+"https://cloud.google.com/compute/docs/instances/preemptible."
 
+#: ../app/models/manageiq/providers/google/cloud_manager/template.rb:6
 msgid "not connected to ems"
-msgstr ""
+msgstr "non connecté à EMS"
