@@ -5,7 +5,7 @@ describe ManageIQ::Providers::Google::CloudManager do
         :provider               => "Google",
         :google_project         => "project",
         :google_json_key_string => "encrypted",
-        :app_name               => I18n.t("product.name"),
+        :app_name               => Vmdb::Appliance.PRODUCT_NAME,
         :app_version            => Vmdb::Appliance.VERSION,
         :google_client_options  => {
           :proxy => "proxy_uri"
