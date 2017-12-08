@@ -110,4 +110,12 @@ describe ManageIQ::Providers::Google::CloudManager do
       end
     end
   end
+
+  context 'catalog types' do
+    let(:ems) { FactoryGirl.create(:ems_google) }
+
+    it "#supported_google_types" do
+      expect(ems.supported_catalog_types).to eq(%w(google))
+    end
+  end
 end
