@@ -5,6 +5,12 @@ class ManageIQ::Providers::Google::CloudManager::ProvisionWorkflow < ::MiqProvis
     ems.each_with_object({}) { |f, h| h[f.id] = display_name_for_name_description(f) }
   end
 
+  def availability_zone_to_cloud_network(src)
+    load_ar_obj(src[:ems]).all_cloud_networks.each_with_object({}) do |cn, hash|
+      hash[cn.id] = cn.name
+    end
+  end
+
   private
 
   def dialog_name_from_automate(message = 'get_dialog_name')
