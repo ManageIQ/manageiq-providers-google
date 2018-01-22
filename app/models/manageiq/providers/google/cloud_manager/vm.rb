@@ -53,4 +53,8 @@ class ManageIQ::Providers::Google::CloudManager::Vm < ManageIQ::Providers::Cloud
       "unknown"
     end
   end
+
+  def self.display_name(number = 1)
+    n_('Instance (Google)', 'Instances (Google)', number)
+  end
 end
