@@ -5,25 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
-## Unreleased as of Sprint 75 ending 2017-12-11
+## Gaprindashvili-1 - Released 2018-01-31
+
+### Added
+- Add translations [(#32)](https://github.com/ManageIQ/manageiq-providers-google/pull/32)
 
 ### Fixed
 - Added supported_catalog_types [(#35)](https://github.com/ManageIQ/manageiq-providers-google/pull/35)
+- Fix exception handing for credential validation on raw_connect [(#28)](https://github.com/ManageIQ/manageiq-providers-google/pull/28)
 
-## Unreleased as of Sprint 73 ending 2017-11-13
+## Unreleased as of Sprint 78 ending 2018-01-29
+
+### Added
+- Migrate model display names from locale/en.yml to plugin [(#42)](https://github.com/ManageIQ/manageiq-providers-google/pull/42)
 
 ### Fixed
-- Fix exception handing for credential validation on raw_connect [(#28)](https://github.com/ManageIQ/manageiq-providers-google/pull/28)
+- Add back missing IP address range in Virtual Private Cloud name. [(#46)](https://github.com/ManageIQ/manageiq-providers-google/pull/46)
+- Override az_zone_to_cloud_network method in google prov [(#43)](https://github.com/ManageIQ/manageiq-providers-google/pull/43)
 
 ## Unreleased as of Sprint 72 ending 2017-10-30
 
 ### Added
 - Add user data injection for cloud-init scripts for GCE [(#20)](https://github.com/ManageIQ/manageiq-providers-google/pull/20)
-
-## Gaprindashvili Beta1
-
-### Fixed
-- Fix exception handing for credential validation on raw_connect [(#28)](https://github.com/ManageIQ/manageiq-providers-google/pull/28)
 
 ## Initial changelog added
 
