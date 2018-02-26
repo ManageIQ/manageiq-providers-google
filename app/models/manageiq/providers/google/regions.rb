@@ -30,6 +30,13 @@ module ManageIQ
         },
       }
 
+      def self.regions
+        additional_regions = Hash(Settings.ems.ems_google.try!(:additional_regions)).stringify_keys
+        disabled_regions   = Array(Settings.ems.ems_google.try!(:disabled_regions))
+
+        REGIONS.merge(additional_regions).except(*disabled_regions)
+      end
+
       # TODO(lwander): hack to make GCE more compatible with other providers
       REGIONS_BY_HOSTNAME =
         REGIONS.values.each_with_object({}) do |v, h|
