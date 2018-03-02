@@ -47,10 +47,6 @@ class ManageIQ::Providers::Google::NetworkManager < ManageIQ::Providers::Network
     false
   end
 
-  def description
-    ManageIQ::Providers::Google::Regions.find_by_name(provider_region)[:description]
-  end
-
   def self.display_name(number = 1)
     n_('Network Provider (Google)', 'Network Providers (Google)', number)
   end

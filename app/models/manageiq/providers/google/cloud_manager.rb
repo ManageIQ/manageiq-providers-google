@@ -16,13 +16,22 @@ class ManageIQ::Providers::Google::CloudManager < ManageIQ::Providers::CloudMana
   include ManageIQ::Providers::Google::ManagerMixin
 
   supports :provisioning
-  supports :regions
 
   before_create :ensure_managers
-  before_update :ensure_managers_zone_and_provider_region
+  before_update :ensure_managers_zone
 
   def ensure_network_manager
     build_network_manager(:type => 'ManageIQ::Providers::Google::NetworkManager') unless network_manager
+  end
+
+  def ensure_managers
+    ensure_network_manager
+    network_manager.name = "#{name} Network Manager" if network_manager
+    ensure_managers_zone
+  end
+
+  def ensure_managers_zone
+    network_manager.zone_id = zone_id if network_manager
   end
 
   def self.ems_type
@@ -56,12 +65,6 @@ class ManageIQ::Providers::Google::CloudManager < ManageIQ::Providers::CloudMana
 
   def supports_authentication?(authtype)
     supported_auth_types.include?(authtype.to_s)
-  end
-
-  validates :provider_region, :inclusion => {:in => ManageIQ::Providers::Google::Regions.names}
-
-  def description
-    ManageIQ::Providers::Google::Regions.find_by_name(provider_region)[:description]
   end
 
   # Operations

@@ -49,23 +49,20 @@ describe ManageIQ::Providers::Google::CloudManager do
     expect(ExtManagementSystem.count).to eq(0)
   end
 
-  it "moves the network_manager to the same zone and provider region as the cloud_manager" do
+  it "moves the network_manager to the same zone as the cloud_manager" do
     zone1 = FactoryGirl.create(:zone)
     zone2 = FactoryGirl.create(:zone)
 
-    ems = FactoryGirl.create(:ems_google, :zone => zone1, :provider_region => "us-east1")
+    ems = FactoryGirl.create(:ems_google, :zone => zone1)
     expect(ems.network_manager.zone).to eq zone1
     expect(ems.network_manager.zone_id).to eq zone1.id
-    expect(ems.network_manager.provider_region).to eq "us-east1"
 
     ems.zone = zone2
-    ems.provider_region = "us-central1"
     ems.save!
     ems.reload
 
     expect(ems.network_manager.zone).to eq zone2
     expect(ems.network_manager.zone_id).to eq zone2.id
-    expect(ems.network_manager.provider_region).to eq "us-central1"
   end
 
   context "#connectivity" do
