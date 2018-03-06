@@ -46,8 +46,4 @@ class ManageIQ::Providers::Google::NetworkManager < ManageIQ::Providers::Network
   def self.hostname_required?
     false
   end
-
-  def description
-    ManageIQ::Providers::Google::Regions.find_by_name(provider_region)[:description]
-  end
 end
