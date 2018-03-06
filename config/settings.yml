@@ -4,6 +4,16 @@
     :blacklisted_event_names: []
     :event_handling:
       :event_groups:
+    :disabled_regions: []
+    # disable regions by their keys found in app/models/manageiq/providers/google/regions.rb e.g.
+    # - example-region
+    #
+    # add additional regions as found in app/models/manageiq/providers/google/regions.rb
+    :additional_regions: {}
+    # :spec-region-1:
+    #   :name: Special Region
+    #   :hostname: spec-region-1
+    #   :description: Super Special Region
 :http_proxy:
   :google:
     :host:
