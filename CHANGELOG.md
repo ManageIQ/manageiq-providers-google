@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Gaprindashvili-2 released 2018-03-06
+
+### Fixed
+- Add back missing IP address range in Virtual Private Cloud name. [(#46)](https://github.com/ManageIQ/manageiq-providers-google/pull/46)
+
 ## Unreleased as of Sprint 80 ending 2018-02-26
 
 ### Added
@@ -25,7 +30,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 - Migrate model display names from locale/en.yml to plugin [(#42)](https://github.com/ManageIQ/manageiq-providers-google/pull/42)
 
 ### Fixed
-- Add back missing IP address range in Virtual Private Cloud name. [(#46)](https://github.com/ManageIQ/manageiq-providers-google/pull/46)
 - Override az_zone_to_cloud_network method in google prov [(#43)](https://github.com/ManageIQ/manageiq-providers-google/pull/43)
 
 ## Unreleased as of Sprint 72 ending 2017-10-30
