@@ -1,18 +1,6 @@
 describe ManageIQ::Providers::Google::CloudManager::Refresher do
   before(:each) do
-    _guid, _server, zone = EvmSpecHelper.create_guid_miq_server_zone
-    @google_json_key = "{\n  \"type\": \"service_account\",\n  \"project_id\": \"civil-tube-113314\",\n  \"private_key_id\": \"bd99fda9d4a1e62f8371b7cd92ffcc6bb21ee453\",\n  \"private_key\": \"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCR2KaVdHB3sMkm\\n8v8KZCPuKMvbUZ4oswT2ORRgm8hwJkMgvGpGAVnCRTwujXwm7ar7Acbopxzg4Qcm\\nb+DL6liyojrV3flbNiFcQniyMdjJxERyGKCEeLa+fGW9dNG2/v+2WAiQamywKgMA\\nlgR9bgaKZBPoDYIGpcwMqbXfCz/edUrWgf/sPw/EVePn56ARwEGE8azPyflP+tsM\\n2SskpW0SNJnHgwj3dKlH8iRXFTqGBaodM/864yb5IPTFkmR/3TPs9z+vbiyD/5zw\\nRbsSY9CRkP1ZU6qYn4KEbyv2eZ3J76oYJFUFWOPiKqNQBSdMX4+D2x7GlePEYnoV\\n5Zq9deTTAgMBAAECggEACaadGgADKTMTkcuRQNjGNTjnNHNpfyaeyhmWKvEOtGJz\\nyAjFEi4oswhDJo7KNlvnwoWoPzY/sknHCq4V4VMih2o2G8zSdqIAVyCMPWO7BVmY\\nGzdconzHwEHEYbhciuVuJQdyREwmi7Rb+n/y0Bylu3v1LUJ85iphHugOrDG3CjtT\\nH478PQePaJ+Gn4pByoyBV4NDQo1V5suFWmWRD3WKIr9kX2SE6UGZ5v+UCSDRwh+K\\nEttKqEdj2AYxxxohF9Do/a6jaJ8eXIa2HoeL2JoDyZwdUNVQzBiq+kLsrM911HOB\\nqoQ/uzzFs9gkEIv8PD9c1GGYcEaoS8ltofAJJZF7sQKBgQDIXebMKsin0Mg5ZasU\\nTsN/AkryG5alzh7D+qGaQ6ra/EsqSif1A7bLoFnUT3s4khCezseRnQNQrw96SYTv\\nD10qrp+74i0/8A/AoKw0bqR3+6XFewgN1LtQPtR4gwgvTJCzfZdExG06O1zYWaWt\\nIZAI77gcqIUr9ugH89bOgXXJPQKBgQC6V2yUSoGYnzOCqJgpuMbt9Nx7KFbgMPs1\\n7gkUxfxTfseadSgirxPTd0JXTtJjsV8r1Dn3G1VNcxK/3lNrVCAfDNshTVw3pcek\\nRpt4sxCC1cHhgiErvCF8hJ3LRqZdYDWOPBD28JGQgdHuLuwVXfSm51iZj3+fxTDZ\\nHxYh5I6nTwKBgC5hHgVwedXujApNMFaZDMOfgj2ciTiEB7cRksqkky3xbGyzkaAz\\nZeKokWKFq14i4VoBP0zDbXsFqq2ByxWTFtvEZBEXf6XnKZ5LEtFoMwXa6DpYCjs5\\nXMpsYL4shn58WJpTneo7FZV/HDSwO5thw3duFc38bCcLFhaRKM3QRbV5AoGBAIco\\nwmkNYdMCJqqu/y/EBwayhPoP2HPlE1Gaxpt6v/sQClfOgr4ln4vTBRuu4IvPK+ju\\nltzVxpnWzdK9wGQpMONUv9z379utM5HEZSC3QVKlGWwop0bBvshCqPG43RL9pdr1\\nVpjHBc57W3oYLsWQ0NP/GhTIMRoCPdw+4B7VWWOhAoGAYEdx3cnDpPOTH1179GTv\\ny/q1LXvp8nP50HZ1Yc+wAOnifXBKhSTpjDqgru5OiGT7rggzyK0ui3nyfbwM5AH7\\nyQXmt8q0Nnzo8GdL+YKTfGbnmSwDH0SotEeofwruPuxOr7ows6joo283NOugudsx\\nUAa/tB/piHG/VYQ6dxb8zsg=\\n-----END PRIVATE KEY-----\\n\",\n  \"client_email\": \"199203428544-compute@developer.gserviceaccount.com\",\n  \"client_id\": \"102455136987689387132\",\n  \"auth_uri\": \"https://accounts.google.com/o/oauth2/auth\",\n  \"token_uri\": \"https://accounts.google.com/o/oauth2/token\",\n  \"auth_provider_x509_cert_url\": \"https://www.googleapis.com/oauth2/v1/certs\",\n  \"client_x509_cert_url\": \"https://www.googleapis.com/robot/v1/metadata/x509/199203428544-compute%40developer.gserviceaccount.com\"\n}\n"
-    @ems = FactoryGirl.create(:ems_google, :zone => zone)
-    @ems.authentications << FactoryGirl.create(:authentication, :userid => "_", :auth_key => @google_json_key)
-    @ems.update_attributes(:project => "civil-tube-113314")
-
-    # A true thread may fail the test with VCR
-    allow(Thread).to receive(:new) do |*args, &block|
-      block.call(*args)
-      Class.new do
-        def join; end
-      end.new
-    end
+    @ems = FactoryGirl.create(:ems_google_with_vcr_authentication)
   end
 
   it "will perform a full refresh" do
