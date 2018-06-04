@@ -5,15 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Gaprindashvili-3 - Released 2018-05-15
+
+### Added
+- Added South America region [(#48)](https://github.com/ManageIQ/manageiq-providers-google/pull/48)
+
 ## Gaprindashvili-2 released 2018-03-06
 
 ### Fixed
 - Add back missing IP address range in Virtual Private Cloud name. [(#46)](https://github.com/ManageIQ/manageiq-providers-google/pull/46)
-
-## Unreleased as of Sprint 80 ending 2018-02-26
-
-### Added
-- Added South America region [(#48)](https://github.com/ManageIQ/manageiq-providers-google/pull/48)
 
 ## Gaprindashvili-1 - Released 2018-01-31
 
