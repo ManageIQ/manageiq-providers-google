@@ -62,6 +62,25 @@ module ManageIQ::Providers
       end
 
       def get_images
+        # FIXME: Fix for Gaprindashvili, remove once https://github.com/fog/fog-google/pull/356
+        # becomes available in fog-google gem
+        Fog::Compute::Google::Images.const_set(
+          "GLOBAL_PROJECTS",
+          %w(
+            centos-cloud
+            cos-cloud
+            coreos-cloud
+            debian-cloud
+            rhel-cloud
+            suse-cloud
+            suse-sap-cloud
+            ubuntu-os-cloud
+            windows-cloud
+            windows-sql-cloud
+            opensuse-cloud
+          ).freeze
+        )
+
         images = @connection.images.all
         process_collection(images, :vms) { |image| parse_storage_as_template(image) }
       end
