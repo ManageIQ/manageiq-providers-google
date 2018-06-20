@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ### Added
 - Add display name for flavor [(#61)](https://github.com/ManageIQ/manageiq-providers-google/pull/61)
+- Upgrade to fog-google 1.5.0 [(#64)](https://github.com/ManageIQ/manageiq-providers-google/pull/64)
 
 ## Gaprindashvili-3 - Released 2018-05-15
 
