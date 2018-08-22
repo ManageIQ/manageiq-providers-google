@@ -33,8 +33,9 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
 
   def availability_zones
     collector.availability_zones.each do |az|
-      persister.availability_zones.find_or_build(az.name).assign_attributes(
-        :name => az.name
+      persister.availability_zones.build(
+        :ems_ref => az.name,
+        :name    => az.name
       )
     end
   end
@@ -51,12 +52,13 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
   end
 
   def instance_flavor(flavor)
-    persister.flavors.find_or_build(flavor.name).assign_attributes(
-      :name        => flavor.name,
-      :description => flavor.description,
-      :enabled     => !flavor.deprecated,
+    persister.flavors.build(
       :cpus        => flavor.guest_cpus,
-      :memory      => flavor.memory_mb * 1.megabyte
+      :description => flavor.description,
+      :ems_ref     => flavor.name,
+      :enabled     => !flavor.deprecated,
+      :memory      => flavor.memory_mb * 1.megabyte,
+      :name        => flavor.name
     )
   end
 
@@ -65,11 +67,12 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     collector.cloud_volumes.each do |cloud_volume|
       zone_id = parse_uid_from_url(cloud_volume.zone)
 
-      persister.cloud_volumes.find_or_build(cloud_volume.id.to_s).assign_attributes(
+      persister.cloud_volumes.build(
         :availability_zone => persister.availability_zones.lazy_find(zone_id),
         :base_snapshot     => persister.cloud_volume_snapshots.lazy_find(cloud_volume.source_snapshot),
         :creation_time     => cloud_volume.creation_timestamp,
         :description       => cloud_volume.description,
+        :ems_ref           => cloud_volume.id.to_s,
         :name              => cloud_volume.name,
         :size              => cloud_volume.size_gb.to_i.gigabyte,
         :status            => cloud_volume.status,
@@ -84,9 +87,10 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
 
   def cloud_volume_snapshots
     collector.cloud_volume_snapshots.each do |snapshot|
-      persister.cloud_volume_snapshots.find_or_build(snapshot.id.to_s).assign_attributes(
+      persister.cloud_volume_snapshots.build(
         :creation_time => snapshot.creation_timestamp,
         :description   => snapshot.description,
+        :ems_ref       => snapshot.id.to_s,
         :name          => snapshot.name,
         :size          => snapshot.disk_size_gb.to_i.gigabytes,
         :status        => snapshot.status,
@@ -97,8 +101,9 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
       uid = image.id.to_s
 
       # TODO: duplicite code
-      persister_miq_template = persister.miq_templates.find_or_build(uid).assign_attributes(
+      persister_miq_template = persister.miq_templates.build(
         :deprecated         => image.kind == "compute#image" ? !image.deprecated.nil? : false,
+        :ems_ref            => uid,
         :location           => image.self_link,
         :name               => image.name || uid,
         :publicly_available => true,
@@ -115,8 +120,9 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     collector.images.each do |image|
       uid = image.id.to_s
 
-      persister_image = persister.miq_templates.find_or_build(uid).assign_attributes(
+      persister_image = persister.miq_templates.build(
         :deprecated         => image.kind == "compute#image" ? !image.deprecated.nil? : false,
+        :ems_ref            => uid,
         :location           => image.self_link,
         :name               => image.name || uid,
         :publicly_available => true,
@@ -149,9 +155,10 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
       availability_zone = persister.availability_zones.lazy_find(zone_uid)
       parent_image_uid = parse_instance_parent_image(instance)
 
-      persister_instance = persister.vms.find_or_build(uid).assign_attributes(
+      persister_instance = persister.vms.build(
         :availability_zone => availability_zone,
         :description       => instance.description,
+        :ems_ref           => uid,
         :flavor            => flavor,
         :location          => "unknown", # TODO: ??? || "unknown"
         :name              => instance.name || uid,

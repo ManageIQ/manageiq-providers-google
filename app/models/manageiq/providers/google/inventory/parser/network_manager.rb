@@ -251,7 +251,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
           :vm      => (persister.vms.lazy_find(vm_id) if vm_id)
         )
       end
-      persister.load_balancer_pool_member_pools.find_or_build_by(
+      persister.load_balancer_pool_member_pools.build(
         :load_balancer_pool        => persister_load_balancer_pool,
         :load_balancer_pool_member => persister_lb_pool_member
       )
