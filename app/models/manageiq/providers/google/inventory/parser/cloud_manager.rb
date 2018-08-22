@@ -15,7 +15,6 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     log_header = "MIQ(#{self.class.name}.#{__method__}) Collecting data for EMS name: [#{collector.manager.name}] id: [#{collector.manager.id}]"
     _log.info("#{log_header}...")
 
-    # binding.pry
     availability_zones
     flavors
     cloud_volumes
@@ -62,7 +61,6 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     )
   end
 
-  # TODO: where is cloud_tenant assoc?
   def cloud_volumes
     collector.cloud_volumes.each do |cloud_volume|
       zone_id = parse_uid_from_url(cloud_volume.zone)

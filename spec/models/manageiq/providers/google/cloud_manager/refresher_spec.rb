@@ -41,7 +41,6 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
     @ems = FactoryGirl.create(:ems_google_with_vcr_authentication)
   end
 
-  # firewall_rule?
   MODELS = %i(
     availability_zone cloud_network cloud_subnet disk ext_management_system firewall_rule flavor floating_ip
     guest_device hardware load_balancer load_balancer_health_check load_balancer_health_check_member
@@ -59,7 +58,6 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
         EmsRefresh.refresh(@ems.network_manager)
       end
       @ems.reload
-
       assert_table_counts
       assert_ems
       assert_specific_availability_zone
@@ -93,7 +91,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       :cloud_subnet                      => 18,
       :disk                              => 15, # same as :vm and :hardware
       :ext_management_system             => 2,
-      :firewall_rule                     => 19, # TODO: (old refresh doesn't meet it (first time == 20 ,second time == 19)), new refresh different
+      :firewall_rule                     => 20, # TODO: (old refresh doesn't meet it (first time == 20 ,second time == 19))
       :flavor                            => 29,
       :floating_ip                       => 13,
       :guest_device                      => 0,

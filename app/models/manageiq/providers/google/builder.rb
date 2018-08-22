@@ -15,7 +15,6 @@ class ManageIQ::Providers::Google::Builder
     private
 
     def inventory(manager, raw_target, collector_class, persister_class, parsers_classes)
-      # binding.pry
       collector = collector_class.new(manager, raw_target)
       persister = persister_class.new(manager, raw_target)
 

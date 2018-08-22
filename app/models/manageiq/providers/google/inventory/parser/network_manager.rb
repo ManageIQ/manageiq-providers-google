@@ -22,14 +22,11 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
     log_header = "MIQ(#{self.class.name}.#{__method__}) Collecting data for EMS name: [#{collector.manager.name}] id: [#{collector.manager.id}]"
     _log.info("#{log_header}...")
 
-    # binding.pry
     cloud_networks
-    security_groups
+    # security_groups
     network_ports
     floating_ips
     load_balancers
-    # load_balancer_listeners
-    # load_balancer_health_checks
 
     _log.info("#{log_header}...Complete")
   end
@@ -37,6 +34,8 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
   private
 
   def cloud_networks
+    firewalls = collector.firewalls
+
     collector.cloud_networks.each do |network|
       persister_cloud_network = persister.cloud_networks.build(
         :cidr    => network.ipv4_range,
@@ -47,6 +46,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
       )
 
       cloud_subnets(persister_cloud_network, network)
+      security_group(persister_cloud_network, firewalls)
     end
   end
 
@@ -123,24 +123,20 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
     end
   end
 
-  def security_groups
-    firewalls = collector.firewalls
+  def security_group(persister_cloud_network, firewalls)
+    uid = persister_cloud_network.name
+    persister_security_group = persister.security_groups.build(
+      :cloud_network => persister_cloud_network,
+      :ems_ref       => uid,
+      :name          => uid
+    )
 
-    persister.cloud_networks.data.each do |cloud_network|
-      uid = cloud_network.name
-      persister_security_group = persister.security_groups.build(
-        :cloud_network => cloud_network,
-        :ems_ref       => uid,
-        :name          => uid
-      )
-
-      network_firewalls = firewalls.select do |firewall|
-        parse_uid_from_url(firewall.network) == cloud_network.name
-      end
-
-      # Build firewall rules
-      firewall_rules(persister_security_group, network_firewalls)
+    network_firewalls = firewalls.select do |firewall|
+      parse_uid_from_url(firewall.network) == persister_cloud_network.name
     end
+
+    # Build firewall rules
+    firewall_rules(persister_security_group, network_firewalls)
   end
 
   def firewall_rules(persister_security_group, firewalls)
