@@ -21,14 +21,32 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
   let(:snapshot_location)     { "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/snapshots/test-snapshot-1" }
 
   before(:each) do
+    stub_settings_merge(
+      :ems_refresh => {
+        :gce         => {
+          :inventory_object_refresh => true,
+          :inventory_collections    => {
+            :saver_strategy => "default"
+          }
+        },
+        :gce_network => {
+          :inventory_object_refresh => true,
+          :inventory_collections    => {
+            :saver_strategy => "default"
+          }
+        }
+      }
+    )
+
     @ems = FactoryGirl.create(:ems_google_with_vcr_authentication)
   end
 
+  # firewall_rule?
   MODELS = %i(
-    availability_zone cloud_network cloud_subnet disk ext_management_system flavor floating_ip
+    availability_zone cloud_network cloud_subnet disk ext_management_system firewall_rule flavor floating_ip
     guest_device hardware load_balancer load_balancer_health_check load_balancer_health_check_member
     load_balancer_listener load_balancer_listener_pool load_balancer_pool load_balancer_pool_member
-    load_balancer_pool_member_pool miq_template network network_port network_router operating_system
+    load_balancer_pool_member_pool miq_template network network_port network_port_security_group network_router operating_system
     orchestration_stack orchestration_stack_output orchestration_stack_parameter orchestration_stack_resource
     orchestration_template relationship resource_group security_group vm vm_or_template
   ).freeze
@@ -44,7 +62,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
 
       assert_table_counts
       assert_ems
-      assert_specific_zone
+      assert_specific_availability_zone
       assert_specific_key_pair
       assert_specific_cloud_network
       assert_specific_cloud_subnet
@@ -59,6 +77,12 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       assert_specific_snapshot_template
       assert_specific_cloud_volume
       assert_specific_cloud_volume_snapshot
+
+      # TODO: missing asserts
+      # asserts_specific_network_port
+      # assert_specific_operating_system
+      # assert_specific_hardware
+      # assert_specific_disk
     end
   end
 
@@ -67,12 +91,13 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       :availability_zone                 => 46,
       :cloud_network                     => 3,
       :cloud_subnet                      => 18,
-      :disk                              => 15,
+      :disk                              => 15, # same as :vm and :hardware
       :ext_management_system             => 2,
+      :firewall_rule                     => 19, # TODO: (old refresh doesn't meet it (first time == 20 ,second time == 19)), new refresh different
       :flavor                            => 29,
       :floating_ip                       => 13,
       :guest_device                      => 0,
-      :hardware                          => 15,
+      :hardware                          => 15, # same as :vm
       :key_pair                          => 1,
       :load_balancer                     => 4,
       :load_balancer_health_check_member => 1,
@@ -82,11 +107,13 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       :load_balancer_listener_pool       => 4,
       :load_balancer_pool_member         => 3,
       :load_balancer_pool_member_pool    => 4,
-      :miq_template                      => 1511,
+      :miq_template                      => 1511, # 1510 (images) + 1 (cloud_volume_snapshots)
       :network                           => 0,
       :network_port                      => 15,
+      :network_port_security_group       => 15,
       :network_router                    => 0,
-      :operating_system                  => 1523,
+      :operating_system                  => 1526, # 1510 (images) + 1 (cloud_volume_snapshots) + 15 (instances)
+      # :operating_system                  => 1523, # in old refresh (OS skipped for instances with instance.image.nil?)
       :orchestration_stack               => 0,
       :orchestration_stack_output        => 0,
       :orchestration_stack_parameter     => 0,
@@ -96,7 +123,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       :resource_group                    => 0,
       :security_group                    => 3,
       :vm                                => 15,
-      :vm_or_template                    => 1526,
+      :vm_or_template                    => 1526, # :miq_template + :vm
     }
   end
 
@@ -118,7 +145,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
     expect(@ems.miq_templates.size).to      eql(expected_table_counts[:miq_template])
   end
 
-  def assert_specific_zone
+  def assert_specific_availability_zone
     expect(zone_east).to have_attributes(
       :name   => "us-east1-c",
       :ems_id => @ems.id
@@ -369,6 +396,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
     assert_specific_vm_powered_off_hardware(vm_powered_off)
     assert_specific_vm_powered_off_hardware_disks(vm_powered_off)
     assert_specific_vm_powered_off_networks(vm_powered_off)
+    assert_specific_vm_powered_off_security_groups(vm_powered_off)
     assert_specific_vm_powered_off_floating_ips(vm_powered_off)
   end
 
@@ -416,6 +444,13 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
     expect(v.cloud_networks.first).to eq(v.cloud_network)
     expect(v.cloud_subnets.first).to  have_attributes(:name => 'default-372dec1aa369576e')
     expect(v.cloud_subnets.first).to  eq(v.cloud_subnet)
+  end
+
+  def assert_specific_vm_powered_off_security_groups(v)
+    expect(v.security_groups.size).to eq(1)
+    expect(v.network_ports.first.security_groups.size).to eq(1)
+
+    expect(v.security_groups.first).to have_attributes(:name => 'default')
   end
 
   def assert_specific_vm_powered_off_floating_ips(v)

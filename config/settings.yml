@@ -4,6 +4,15 @@
     :blacklisted_event_names: []
     :event_handling:
       :event_groups:
+:ems_refresh:
+  :gce:
+    :inventory_object_refresh: true
+    :inventory_collections:
+      :saver_strategy: default
+  :gce_network:
+    :inventory_object_refresh: false
+    :inventory_collections:
+      :saver_strategy: default
 :http_proxy:
   :google:
     :host:
