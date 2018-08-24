@@ -108,10 +108,9 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
       )
     end
     collector.floating_ips(:assigned).each do |ip|
-      network_port = persister.network_ports.find(ip[:fixed_ip])
-      if network_port.present?
-        vm = persister.vms.lazy_find(network_port.device_ref)
-      end
+      network_port = persister.network_ports.lazy_find(ip[:fixed_ip])
+      vm = persister.network_ports.lazy_find(ip[:fixed_ip], :key => :device)
+
       persister.floating_ips.build(
         :address          => ip[:external_ip],
         :ems_ref          => ip[:external_ip],
