@@ -3,12 +3,9 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
 
   def initialize
     super
-    # Mapping from disk url to source image id.
-    @disk_to_source_image_id = {}
-    # Mapping from disk url to disk uid
-    @disk_to_id = {}
 
-    @project_key_pairs = Set.new
+    @cloud_volume_url_to_source_image_id = {}
+    @cloud_volume_url_to_id = {}
   end
 
   def parse
@@ -16,14 +13,32 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     _log.info("#{log_header}...")
 
     availability_zones
-    flavors
-    cloud_volumes
-    cloud_volume_snapshots
 
-    images do |image, inventory_object|
-      image_os(inventory_object, image)
+    flavors
+
+    key_pairs
+
+    cloud_volumes
+
+    cloud_volume_snapshots do |persister_miq_template, snapshot|
+      image_os(persister_miq_template, snapshot)
     end
-    instances
+
+    images do |persister_miq_template, image|
+      image_os(persister_miq_template, image)
+    end
+
+    instances do |persister_instance, parent_image_uid, flavor, instance|
+      instance_os(persister_instance, parent_image_uid)
+
+      instance_hardware(persister_instance, flavor) do |persister_hardware|
+        hardware_disks(persister_hardware, instance)
+      end
+
+      instance_key_pairs(persister_instance, instance)
+
+      instance_advanced_settings(persister_instance, instance)
+    end
 
     _log.info("#{log_header}...Complete")
   end
@@ -41,16 +56,16 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
 
   def flavors
     collector.flavors.each do |flavor|
-      instance_flavor(flavor)
+      flavor(flavor)
     end
   end
 
-  def get_flavor(flavor_uid, availability_zone_uid)
+  def flavor_by_uid_and_zone_uid(flavor_uid, availability_zone_uid)
     flavor = collector.flavor(flavor_uid, availability_zone_uid)
-    instance_flavor(flavor)
+    flavor(flavor)
   end
 
-  def instance_flavor(flavor)
+  def flavor(flavor)
     persister.flavors.build(
       :cpus        => flavor.guest_cpus,
       :description => flavor.description,
@@ -78,8 +93,8 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
       )
 
       # Take note of the source_image_id so we can expose it in parse_instance
-      @disk_to_source_image_id[cloud_volume.self_link] = cloud_volume.source_image_id
-      @disk_to_id[cloud_volume.self_link] = cloud_volume.id.to_s
+      @cloud_volume_url_to_source_image_id[cloud_volume.self_link] = cloud_volume.source_image_id
+      @cloud_volume_url_to_id[cloud_volume.self_link] = cloud_volume.id.to_s
     end
   end
 
@@ -95,70 +110,58 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
         :cloud_volume  => persister.cloud_volumes.lazy_find(snapshot.source_disk)
       )
 
-      image = snapshot
-      uid = image.id.to_s
+      persister_miq_template = image(snapshot)
 
-      # TODO: duplicite code
-      persister_miq_template = persister.miq_templates.build(
-        :deprecated         => image.kind == "compute#image" ? !image.deprecated.nil? : false,
-        :ems_ref            => uid,
-        :location           => image.self_link,
-        :name               => image.name || uid,
-        :publicly_available => true,
-        :raw_power_state    => "never",
-        :template           => true,
-        :uid_ems            => uid,
-        :vendor             => VENDOR_GOOGLE
-      )
-      image_os(persister_miq_template, image)
+      yield persister_miq_template, snapshot
     end
   end
 
   def images
     collector.images.each do |image|
-      uid = image.id.to_s
+      persister_miq_template = image(image)
 
-      persister_image = persister.miq_templates.build(
-        :deprecated         => image.kind == "compute#image" ? !image.deprecated.nil? : false,
-        :ems_ref            => uid,
-        :location           => image.self_link,
-        :name               => image.name || uid,
-        :publicly_available => true,
-        :raw_power_state    => "never",
-        :template           => true,
-        :uid_ems            => uid,
-        :vendor             => VENDOR_GOOGLE
-      )
-      yield image, persister_image
+      yield(persister_miq_template, image)
     end
   end
 
+  def image(image)
+    uid = image.id.to_s
+
+    persister.miq_templates.build(
+      :deprecated         => image.kind == "compute#image" ? !image.deprecated.nil? : false,
+      :ems_ref            => uid,
+      :location           => image.self_link,
+      :name               => image.name || uid,
+      :publicly_available => true,
+      :raw_power_state    => "never",
+      :template           => true,
+      :uid_ems            => uid,
+      :vendor             => VENDOR_GOOGLE
+    )
+  end
+
   def instances
-    instances = collector.instances
-
-    key_pairs(instances) # TODO: merge with loop below
-
-    instances.each do |instance|
+    collector.instances.each do |instance|
       uid = instance.id.to_s
 
       flavor_uid = parse_uid_from_url(instance.machine_type)
       zone_uid = parse_uid_from_url(instance.zone)
 
+      # TODO(mslemr) if possible, change to lazy_find (now result needed immediately)
       flavor = persister.flavors.find(flavor_uid)
 
       # If the flavor isn't found in our index, check if it is a custom flavor
       # that we have to get directly
-      flavor = get_flavor(flavor_uid, zone_uid) if flavor.nil?
+      flavor = flavor_by_uid_and_zone_uid(flavor_uid, zone_uid) if flavor.nil?
 
-      availability_zone = persister.availability_zones.lazy_find(zone_uid)
       parent_image_uid = parse_instance_parent_image(instance)
 
       persister_instance = persister.vms.build(
-        :availability_zone => availability_zone,
+        :availability_zone => persister.availability_zones.lazy_find(zone_uid),
         :description       => instance.description,
         :ems_ref           => uid,
         :flavor            => flavor,
-        :location          => "unknown", # TODO: ??? || "unknown"
+        :location          => "unknown", # TODO(mslemr) instance.self_link,
         :name              => instance.name || uid,
         :genealogy_parent  => persister.miq_templates.lazy_find(parent_image_uid),
         :raw_power_state   => instance.status,
@@ -166,16 +169,13 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
         :vendor            => VENDOR_GOOGLE,
       )
 
-      instance_os(persister_instance, parent_image_uid)
-      instance_hardware(persister_instance, instance, flavor)
-      instance_key_pairs(persister_instance, instance)
-      instance_advanced_settings(persister_instance, instance)
-      #
+      yield persister_instance, parent_image_uid, flavor, instance
     end
   end
 
-  def key_pairs(instances)
-    collector.key_pairs(instances).each do |ssh_key|
+  # Adding global key-pairs (needed when instances count == 0)
+  def key_pairs
+    project_key_pairs.each do |ssh_key|
       persister.key_pairs.build(
         :name        => ssh_key[:name],
         :fingerprint => ssh_key[:fingerprint]
@@ -183,37 +183,28 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     end
   end
 
-  # TODO: collector.parse - refactoring needed
   def instance_key_pairs(persister_instance, instance)
     # Add project common ssh-keys with keys specific to this instance
-    instance_ssh_keys = collector.parse_compute_metadata_ssh_keys(instance.metadata) | collector.project_key_pairs
-    instance_ssh_keys.each do |ssh_key|
-      # select existing key pairs
-      # existing_key_pairs = persister.key_pairs.data.select do |kp|
-      #   kp.name == ssh_key[:name] && kp.fingerprint == ssh_key[:fingerprint]
-      # end
+    instance_ssh_keys = project_key_pairs | parse_compute_metadata_ssh_keys(instance.metadata)
 
-      key_pair = persister.key_pairs.find(:name        => ssh_key[:name],
-                                          :fingerprint => ssh_key[:fingerprint])
-      if key_pair.nil?
-        key_pair = persister.key_pairs.build(
-          :name        => ssh_key[:name],       # manager_ref
-          :fingerprint => ssh_key[:fingerprint] # manager_ref
-        )
-      end
+    instance_ssh_keys.each do |ssh_key|
+      key_pair = persister.key_pairs.build(
+        :name        => ssh_key[:name],       # manager_ref
+        :fingerprint => ssh_key[:fingerprint] # manager_ref
+      )
 
       key_pair.vms ||= []
       key_pair.vms << persister_instance
     end
   end
 
-  def instance_hardware(persister_instance, instance, series)
+  def instance_hardware(persister_instance, series)
     persister_hardware = persister.hardwares.build(
       :vm_or_template  => persister_instance, # manager_ref
       :cpu_total_cores => series[:cpus],
       :memory_mb       => series[:memory] / 1.megabyte
     )
-    hardware_disks(persister_hardware, instance)
+    yield persister_hardware
   end
 
   def instance_advanced_settings(persister_instance, instance)
@@ -255,7 +246,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
   def hardware_disks(persister_hardware, instance)
     instance.disks.each do |attached_disk|
       # TODO(mslemr): can't be better solution?
-      cloud_volume_ems_ref = @disk_to_id[attached_disk[:source]]
+      cloud_volume_ems_ref = @cloud_volume_url_to_id[attached_disk[:source]]
       persister_cloud_volume = persister.cloud_volumes.find(cloud_volume_ems_ref)
       next if persister_cloud_volume.nil?
 
@@ -288,7 +279,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     parent_image_uid = nil
 
     instance.disks.each do |disk|
-      parent_image_uid = @disk_to_source_image_id[disk[:source]]
+      parent_image_uid = @cloud_volume_url_to_source_image_id[disk[:source]]
       next if parent_image_uid.nil?
       break
     end
@@ -299,5 +290,46 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
   # @param ssh_key [Hash]
   def key_pairs_ems_ref(ssh_key)
     "#{ssh_key[:name]}:#{ssh_key[:fingerprint]}"
+  end
+
+  # Ssh keys that are common to all instances in the project
+  def project_key_pairs
+    if @project_key_pairs.nil?
+      project_common_metadata = collector.project_instance_metadata
+      @project_key_pairs      = parse_compute_metadata_ssh_keys(project_common_metadata)
+    end
+    @project_key_pairs
+  end
+
+  def parse_compute_metadata(metadata, key)
+    metadata_item = metadata[:items].to_a.detect { |x| x[:key] == key }
+    metadata_item.to_h[:value]
+  end
+
+  def parse_compute_metadata_ssh_keys(metadata)
+    require 'sshkey'
+
+    ssh_keys = []
+
+    # Find the sshKeys property in the instance metadata
+    metadata_ssh_keys = parse_compute_metadata(metadata, "sshKeys")
+
+    metadata_ssh_keys.to_s.split("\n").each do |ssh_key|
+      # Google returns the key in the form username:public_key
+      name, public_key = ssh_key.split(":", 2)
+      begin
+        fingerprint = SSHKey.sha1_fingerprint(public_key)
+
+        ssh_keys << {
+          :name        => name,
+          :public_key  => public_key,
+          :fingerprint => fingerprint
+        }
+      rescue => err
+        _log.warn("Failed to parse public key #{name}: #{err}")
+      end
+    end
+
+    ssh_keys
   end
 end
