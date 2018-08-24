@@ -23,7 +23,6 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
     _log.info("#{log_header}...")
 
     cloud_networks
-    # security_groups
     network_ports
     floating_ips
     load_balancers

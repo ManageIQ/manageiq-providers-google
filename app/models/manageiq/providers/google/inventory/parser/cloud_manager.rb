@@ -217,7 +217,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
   end
 
   def instance_advanced_settings(persister_instance, instance)
-    persister.advanced_settings.build(
+    persister.vms_and_templates_advanced_settings.build(
       :resource     => persister_instance, # manager_ref
       :name         => "preemptible?",
       :display_name => N_("Is VM Preemptible"),

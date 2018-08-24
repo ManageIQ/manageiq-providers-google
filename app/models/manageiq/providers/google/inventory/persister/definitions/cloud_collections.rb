@@ -64,9 +64,10 @@ module ManageIQ::Providers::Google::Inventory::Persister::Definitions::CloudColl
 
   # advanced_settings for VMs
   def add_advanced_settings
-    add_collection(cloud, :advanced_settings) do |builder|
+    add_collection(cloud, :vms_and_templates_advanced_settings) do |builder|
       builder.add_properties(
         :manager_ref                  => %i(resource),
+        :model_class                  => ::AdvancedSetting,
         :parent_inventory_collections => %i(vms)
       )
     end
