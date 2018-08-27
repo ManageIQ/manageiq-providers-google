@@ -1,4 +1,4 @@
-class ManageIQ::Providers::Google::Inventory::Collector < ManagerRefresh::Inventory::Collector
+class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::Inventory::Collector
   require_nested :CloudManager
   require_nested :NetworkManager
 
