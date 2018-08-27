@@ -22,8 +22,8 @@ module ManageIQ::Providers::Google::CloudManager::Provision::Cloning
     if clone_options[:user_data]
       clone_options[:metadata] = {
         :items => [
-            { :key => "user-data", :value => Base64.encode64(clone_options[:user_data]) },
-            { :key => "user-data-encoding", :value => "base64" },
+          { :key => "user-data", :value => Base64.encode64(clone_options[:user_data]) },
+          { :key => "user-data-encoding", :value => "base64" },
         ]
       }
     end

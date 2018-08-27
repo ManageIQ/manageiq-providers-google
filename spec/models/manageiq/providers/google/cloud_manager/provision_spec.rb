@@ -22,8 +22,10 @@ describe ManageIQ::Providers::Google::CloudManager::Provision do
       it "handles available user data" do
         expect(subject).to receive(:userdata_payload).and_return(user_data)
         clone_options = subject.prepare_for_clone_task
-        expect(clone_options[:metadata]["user-data-encoding"]).to eql("base64")
-        expect(clone_options[:metadata]["user-data"]).to eql(Base64.encode64(user_data))
+        expect(clone_options[:metadata][:items]).to include(
+          {:key => "user-data", :value => Base64.encode64(user_data)},
+          {:key => "user-data-encoding", :value => "base64"}
+        )
       end
 
       it "handles absent user data" do
