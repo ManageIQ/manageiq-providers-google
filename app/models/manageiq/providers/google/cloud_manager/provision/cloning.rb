@@ -20,8 +20,12 @@ module ManageIQ::Providers::Google::CloudManager::Provision::Cloning
     clone_options[:preemptible]  = get_option(:is_preemptible)
 
     if clone_options[:user_data]
-      clone_options[:metadata] = {"user-data"          => Base64.encode64(clone_options[:user_data]),
-                                  "user-data-encoding" => "base64"}
+      clone_options[:metadata] = {
+        :items => [
+          { :key => "user-data", :value => Base64.encode64(clone_options[:user_data]) },
+          { :key => "user-data-encoding", :value => "base64" },
+        ]
+      }
     end
 
     clone_options
