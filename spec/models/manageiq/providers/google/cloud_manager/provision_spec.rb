@@ -30,6 +30,17 @@ describe ManageIQ::Providers::Google::CloudManager::Provision do
         expect(subject).to receive(:userdata_payload).and_return(nil)
         expect(subject.prepare_for_clone_task[:metadata]).to eql(nil)
       end
+
+      it "sets preemptible flag" do
+        subject.options = {:is_preemptible => true}
+        clone_options = subject.prepare_for_clone_task
+
+        expect(clone_options).to include(
+          :scheduling => {
+            :preemptible => true
+          }
+        )
+      end
     end
   end
 end
