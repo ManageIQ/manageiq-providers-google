@@ -22,10 +22,34 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
     log_header = "MIQ(#{self.class.name}.#{__method__}) Collecting data for EMS name: [#{collector.manager.name}] id: [#{collector.manager.id}]"
     _log.info("#{log_header}...")
 
-    cloud_networks
-    network_ports
+    cloud_networks do |persister_cloud_network, network|
+      cloud_subnets(persister_cloud_network, network)
+
+      security_group(persister_cloud_network) do |persister_security_group, network_firewalls|
+        firewall_rules(persister_security_group, network_firewalls)
+      end
+    end
+
+    network_ports do |persister_network_port, network_port|
+      cloud_subnet_network_port(persister_network_port, network_port)
+    end
+
     floating_ips
-    load_balancers
+
+    load_balancers do |forwarding_rules|
+      load_balancer_pools do |persister_load_balancer_pool, target_pool|
+        load_balancer_pool_members(persister_load_balancer_pool, target_pool)
+        load_balancer_health_check(target_pool) do |persister_load_balancer_health_check|
+          load_balancer_health_check_members(persister_load_balancer_health_check, target_pool)
+        end
+      end
+
+      forwarding_rules.each do |forwarding_rule|
+        load_balancer_listener(forwarding_rule) do |persister_load_balancer_listener|
+          load_balancer_listener_pool(persister_load_balancer_listener, forwarding_rule)
+        end
+      end
+    end
 
     _log.info("#{log_header}...Complete")
   end
@@ -33,8 +57,6 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
   private
 
   def cloud_networks
-    firewalls = collector.firewalls
-
     collector.cloud_networks.each do |network|
       persister_cloud_network = persister.cloud_networks.build(
         :cidr    => network.ipv4_range,
@@ -43,12 +65,12 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
         :name    => network.name,
         :status  => "active"
       )
-
-      cloud_subnets(persister_cloud_network, network)
-      security_group(persister_cloud_network, firewalls)
+      yield persister_cloud_network, network
     end
   end
 
+  # @param persister_cloud_network [InventoryObject<ManageIQ::Providers::Google::NetworkManager::CloudNetwork>]
+  # @param network [Fog::Compute::Google::Network]
   def cloud_subnets(persister_cloud_network, network)
     @subnets_by_network_link ||= collector.cloud_subnets.each_with_object({}) { |x, subnets| (subnets[x.network] ||= []) << x }
     @subnets_by_network_link[network.self_link].each do |cloud_subnet|
@@ -80,10 +102,12 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
       persister_network_port.security_groups ||= []
       persister_network_port.security_groups << persister.security_groups.lazy_find(parse_uid_from_url(network_port[:network]))
 
-      cloud_subnet_network_port(persister_network_port, network_port)
+      yield persister_network_port, network_port
     end
   end
 
+  # @param persister_network_port [InventoryObject<ManageIQ::Providers::Google::MetworkManager::NetworkPort>]
+  # @param network_port [Hash]
   def cloud_subnet_network_port(persister_network_port, network_port)
     subnets_by_link ||= collector.cloud_subnets.each_with_object({}) { |x, subnets| subnets[x.self_link] = x }
 
@@ -121,7 +145,8 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
     end
   end
 
-  def security_group(persister_cloud_network, firewalls)
+  # @param persister_cloud_network [InventoryObject<ManageIQ::Providers::Google::NetworkManager::CloudNetwork>]
+  def security_group(persister_cloud_network)
     uid = persister_cloud_network.name
     persister_security_group = persister.security_groups.build(
       :cloud_network => persister_cloud_network,
@@ -129,14 +154,15 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
       :name          => uid
     )
 
-    network_firewalls = firewalls.select do |firewall|
+    network_firewalls = collector.firewalls.select do |firewall|
       parse_uid_from_url(firewall.network) == persister_cloud_network.name
     end
 
-    # Build firewall rules
-    firewall_rules(persister_security_group, network_firewalls)
+    yield persister_security_group, network_firewalls
   end
 
+  # @param persister_security_group [InventoryObject<ManageIQ::Providers::Google::NetworkManager::SecurityGroup>]
+  # @param firewalls [Array<Fog::Compute::Google::Firewall>]
   def firewall_rules(persister_security_group, firewalls)
     firewalls.each do |firewall|
       name = firewall.name
@@ -184,14 +210,11 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
       end
     end
 
-    load_balancer_pools
-
-    forwarding_rules.each do |forwarding_rule|
-      load_balancer_listener(persister.load_balancers.lazy_find(forwarding_rule.id.to_s), forwarding_rule)
-    end
+    yield forwarding_rules
   end
 
-  def load_balancer_listener(persister_load_balancer, forwarding_rule)
+  # @param forwarding_rule [Fog::Compute::Google::ForwardingRule]
+  def load_balancer_listener(forwarding_rule)
     # Only TCP/UDP/SCTP forwarding rules have ports
     has_ports = %w(TCP UDP SCTP).include?(forwarding_rule.ip_protocol)
     port_range = (parse_port_range(forwarding_rule.port_range) if has_ports)
@@ -203,12 +226,14 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
       :instance_protocol        => forwarding_rule.ip_protocol,
       :load_balancer_port_range => port_range,
       :instance_port_range      => port_range,
-      :load_balancer            => persister_load_balancer
+      :load_balancer            => persister.load_balancers.lazy_find(forwarding_rule.id.to_s)
     )
 
-    load_balancer_listener_pool(persister_load_balancer_listener, forwarding_rule)
+    yield persister_load_balancer_listener
   end
 
+  # @param persister_load_balancer_listener [InventoryObject<ManageIQ::Providers::google::NetworkManager::LoadBalancerListener]
+  # @param forwarding_rule [Fog::Compute::Google::ForwardingRule]
   def load_balancer_listener_pool(persister_load_balancer_listener, forwarding_rule)
     persister_lb_listener_pool = persister.load_balancer_listener_pools.build(
       :load_balancer_listener => persister_load_balancer_listener,
@@ -228,11 +253,12 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
 
       @target_pool_index[target_pool.self_link] = persister_load_balancer_pool
 
-      load_balancer_pool_members(persister_load_balancer_pool, target_pool)
-      load_balancer_health_check(target_pool)
+      yield persister_load_balancer_pool, target_pool
     end
   end
 
+  # @param persister_load_balancer_pool [InventoryObject<ManageIQ::Providers::Google::NetworkManager::LoadBalancerPool>]
+  # @param target_pool [Fog::Compute::Google::TargetPool]
   def load_balancer_pool_members(persister_load_balancer_pool, target_pool)
     target_pool.instances.to_a.each do |member_link|
       persister_lb_pool_member = persister.load_balancer_pool_members.find(Digest::MD5.base64digest(member_link))
@@ -252,6 +278,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
     end
   end
 
+  # @param target_pool [Fog::Compute::Google::TargetPool]
   def load_balancer_health_check(target_pool)
     # Target pools aren't required to have health checks
     return if target_pool.health_checks.blank?
@@ -286,10 +313,12 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
           :url_path               => health_check.request_path,
         )
 
-      load_balancer_health_check_members(persister_load_balancer_health_check, target_pool)
+      yield persister_load_balancer_health_check
     end
   end
 
+  # @param persister_load_balancer_health_check [InventoryObject<ManageIQ::Providers::Google::NetworkManager::LoadBalancerHealthCheck>]
+  # @param target_pool [Fog::Compute::Google::TargetPool]
   def load_balancer_health_check_members(persister_load_balancer_health_check, target_pool)
     return if target_pool.instances.blank?
     # First attempt to get the health of the instance

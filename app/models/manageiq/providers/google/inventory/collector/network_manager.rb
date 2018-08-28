@@ -55,7 +55,7 @@ class ManageIQ::Providers::Google::Inventory::Collector::NetworkManager < Manage
 
   # for IC firewall_rules
   def firewalls
-    connection.firewalls.all
+    @firewalls ||= connection.firewalls.all
   end
 
   # for IC load_balancers

@@ -13,11 +13,8 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     _log.info("#{log_header}...")
 
     availability_zones
-
     flavors
-
     key_pairs
-
     cloud_volumes
 
     cloud_volume_snapshots do |persister_miq_template, snapshot|
@@ -36,7 +33,6 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
       end
 
       instance_key_pairs(persister_instance, instance)
-
       instance_advanced_settings(persister_instance, instance)
     end
 
@@ -183,6 +179,8 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     end
   end
 
+  # @param persister_instance [InventoryObject<ManageIQ::Providers::Google::CloudManager::Vm>]
+  # @param instance [Fog::Compute::Google::Server]
   def instance_key_pairs(persister_instance, instance)
     # Add project common ssh-keys with keys specific to this instance
     instance_ssh_keys = project_key_pairs | parse_compute_metadata_ssh_keys(instance.metadata)
@@ -198,6 +196,8 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     end
   end
 
+  # @param persister_instance [InventoryObject<ManageIQ::Providers::Google::CloudManager::Vm>]
+  # @param series [InventoryObject<ManageIQ::Providers::Google::CloudManager::Flavor>]
   def instance_hardware(persister_instance, series)
     persister_hardware = persister.hardwares.build(
       :vm_or_template  => persister_instance, # manager_ref
@@ -207,6 +207,8 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     yield persister_hardware
   end
 
+  # @param persister_instance [InventoryObject<ManageIQ::Providers::Google::CloudManager::Vm>]
+  # @param instance [Fog::Compute::Google::Server]
   def instance_advanced_settings(persister_instance, instance)
     persister.vms_and_templates_advanced_settings.build(
       :resource     => persister_instance, # manager_ref
@@ -219,7 +221,8 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     )
   end
 
-  # @param persister_template [InventoryObject]
+  # @param persister_template [InventoryObject<ManageIQ::Providers::Google::CloudManager::Template]
+  # @param image [Fog::Compute::Google::Snapshot, Fog::Compute::Google::Image]
   def image_os(persister_template, image)
     persister.operating_systems.build(
       :vm_or_template => persister_template, # manager_ref
@@ -231,7 +234,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
   # It's name is taken from parent image's OS
   # Note: Not added when parent image not found
   #
-  # @param persister_vm [InventoryObject] -> IC <ManageIQ::Providers::Google::CloudManager::Vm>
+  # @param persister_vm [InventoryObject<ManageIQ::Providers::Google::CloudManager::Vm>]
   # @param parent_image_uid [String] UID of vm's template
   def instance_os(persister_vm, parent_image_uid)
     persister.operating_systems.build(
@@ -243,6 +246,8 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     )
   end
 
+  # @param persister_hardware [InventoryObject<Hardware>]
+  # @param instance [Fog::Compute::Google::Server]
   def hardware_disks(persister_hardware, instance)
     instance.disks.each do |attached_disk|
       # TODO(mslemr): can't be better solution?
