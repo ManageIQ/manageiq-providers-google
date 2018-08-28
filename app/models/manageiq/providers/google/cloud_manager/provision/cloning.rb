@@ -17,7 +17,9 @@ module ManageIQ::Providers::Google::CloudManager::Provision::Cloning
     clone_options[:disks]        = [boot_disk]
     clone_options[:machine_type] = instance_type.ems_ref
     clone_options[:zone_name]    = dest_availability_zone.ems_ref
-    clone_options[:preemptible]  = get_option(:is_preemptible)
+    clone_options[:scheduling]   = {
+      :preemptible => get_option(:is_preemptible)
+    }
 
     if clone_options[:user_data]
       clone_options[:metadata] = {
