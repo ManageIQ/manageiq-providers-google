@@ -37,16 +37,17 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
     floating_ips
 
     load_balancers do |forwarding_rules|
-      load_balancer_pools do |persister_load_balancer_pool, target_pool|
-        load_balancer_pool_members(persister_load_balancer_pool, target_pool)
-        load_balancer_health_check(target_pool) do |persister_load_balancer_health_check|
-          load_balancer_health_check_members(persister_load_balancer_health_check, target_pool)
+      load_balancer_pools do |persister_lb_pool, target_pool|
+        load_balancer_pool_members(persister_lb_pool, target_pool)
+
+        load_balancer_health_check(target_pool) do |persister_lb_health_check|
+          load_balancer_health_check_members(persister_lb_health_check, target_pool)
         end
       end
 
       forwarding_rules.each do |forwarding_rule|
-        load_balancer_listener(forwarding_rule) do |persister_load_balancer_listener|
-          load_balancer_listener_pool(persister_load_balancer_listener, forwarding_rule)
+        load_balancer_listener(forwarding_rule) do |persister_lb_listener|
+          load_balancer_listener_pool(persister_lb_listener, forwarding_rule)
         end
       end
     end
@@ -219,7 +220,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
     has_ports = %w(TCP UDP SCTP).include?(forwarding_rule.ip_protocol)
     port_range = (parse_port_range(forwarding_rule.port_range) if has_ports)
 
-    persister_load_balancer_listener = persister.load_balancer_listeners.build(
+    persister_lb_listener = persister.load_balancer_listeners.build(
       :name                     => forwarding_rule.name,
       :ems_ref                  => forwarding_rule.id.to_s,
       :load_balancer_protocol   => forwarding_rule.ip_protocol,
@@ -229,37 +230,37 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
       :load_balancer            => persister.load_balancers.lazy_find(forwarding_rule.id.to_s)
     )
 
-    yield persister_load_balancer_listener
+    yield persister_lb_listener
   end
 
-  # @param persister_load_balancer_listener [InventoryObject<ManageIQ::Providers::google::NetworkManager::LoadBalancerListener]
+  # @param persister_lb_listener [InventoryObject<ManageIQ::Providers::google::NetworkManager::LoadBalancerListener]
   # @param forwarding_rule [Fog::Compute::Google::ForwardingRule]
-  def load_balancer_listener_pool(persister_load_balancer_listener, forwarding_rule)
+  def load_balancer_listener_pool(persister_lb_listener, forwarding_rule)
     persister_lb_listener_pool = persister.load_balancer_listener_pools.build(
-      :load_balancer_listener => persister_load_balancer_listener,
+      :load_balancer_listener => persister_lb_listener,
       :load_balancer_pool     => @target_pool_index[forwarding_rule.target]
     )
 
-    persister_load_balancer_listener.load_balancer_listener_pools ||= []
-    persister_load_balancer_listener.load_balancer_listener_pools << persister_lb_listener_pool
+    persister_lb_listener.load_balancer_listener_pools ||= []
+    persister_lb_listener.load_balancer_listener_pools << persister_lb_listener_pool
   end
 
   def load_balancer_pools
     collector.target_pools.each do |target_pool|
-      persister_load_balancer_pool = persister.load_balancer_pools.build(
+      persister_lb_pool = persister.load_balancer_pools.build(
         :ems_ref => target_pool.id.to_s,
         :name    => target_pool.name
       )
 
-      @target_pool_index[target_pool.self_link] = persister_load_balancer_pool
+      @target_pool_index[target_pool.self_link] = persister_lb_pool
 
-      yield persister_load_balancer_pool, target_pool
+      yield persister_lb_pool, target_pool
     end
   end
 
-  # @param persister_load_balancer_pool [InventoryObject<ManageIQ::Providers::Google::NetworkManager::LoadBalancerPool>]
+  # @param persister_lb_pool [InventoryObject<ManageIQ::Providers::Google::NetworkManager::LoadBalancerPool>]
   # @param target_pool [Fog::Compute::Google::TargetPool]
-  def load_balancer_pool_members(persister_load_balancer_pool, target_pool)
+  def load_balancer_pool_members(persister_lb_pool, target_pool)
     target_pool.instances.to_a.each do |member_link|
       persister_lb_pool_member = persister.load_balancer_pool_members.find(Digest::MD5.base64digest(member_link))
 
@@ -272,7 +273,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
         )
       end
       persister.load_balancer_pool_member_pools.build(
-        :load_balancer_pool        => persister_load_balancer_pool,
+        :load_balancer_pool        => persister_lb_pool,
         :load_balancer_pool_member => persister_lb_pool_member
       )
     end
@@ -298,7 +299,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
       # return nil if load_balancer_listener.nil? #TODO: return inside collect?
 
       uid = "#{persister_load_balancer.ems_ref}_#{target_pool.id}_#{health_check.id}"
-      persister_load_balancer_health_check = \
+      persister_lb_health_check = \
         persister.load_balancer_health_checks.build(
           :ems_ref                => uid,
           :healthy_threshold      => health_check.healthy_threshold,
@@ -313,13 +314,13 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
           :url_path               => health_check.request_path,
         )
 
-      yield persister_load_balancer_health_check
+      yield persister_lb_health_check
     end
   end
 
-  # @param persister_load_balancer_health_check [InventoryObject<ManageIQ::Providers::Google::NetworkManager::LoadBalancerHealthCheck>]
+  # @param persister_lb_health_check [InventoryObject<ManageIQ::Providers::Google::NetworkManager::LoadBalancerHealthCheck>]
   # @param target_pool [Fog::Compute::Google::TargetPool]
-  def load_balancer_health_check_members(persister_load_balancer_health_check, target_pool)
+  def load_balancer_health_check_members(persister_lb_health_check, target_pool)
     return if target_pool.instances.blank?
     # First attempt to get the health of the instance
     # Due to a bug in fog, there's no way to get the health of an individual
@@ -345,7 +346,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
       end
 
       persister.load_balancer_health_check_members.build(
-        :load_balancer_health_check => persister_load_balancer_health_check,
+        :load_balancer_health_check => persister_lb_health_check,
         :load_balancer_pool_member  => member,
         :status                     => status,
         :status_reason              => ""

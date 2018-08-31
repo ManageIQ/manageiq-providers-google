@@ -25,15 +25,15 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
       image_os(persister_miq_template, image)
     end
 
-    instances do |persister_instance, parent_image_uid, flavor, instance|
-      instance_os(persister_instance, parent_image_uid)
+    instances do |persister_vm, parent_image_uid, flavor, instance|
+      instance_os(persister_vm, parent_image_uid)
 
-      instance_hardware(persister_instance, flavor) do |persister_hardware|
+      instance_hardware(persister_vm, flavor) do |persister_hardware|
         hardware_disks(persister_hardware, instance)
       end
 
-      instance_key_pairs(persister_instance, instance)
-      instance_advanced_settings(persister_instance, instance)
+      instance_key_pairs(persister_vm, instance)
+      instance_advanced_settings(persister_vm, instance)
     end
 
     _log.info("#{log_header}...Complete")
@@ -143,7 +143,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
       flavor_uid = parse_uid_from_url(instance.machine_type)
       zone_uid = parse_uid_from_url(instance.zone)
 
-      # TODO(mslemr) if possible, change to lazy_find (now result needed immediately)
+      # TODO(mslemr) lazy_find (now result needed immediately)
       flavor = persister.flavors.find(flavor_uid)
 
       # If the flavor isn't found in our index, check if it is a custom flavor
@@ -152,12 +152,12 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
 
       parent_image_uid = parse_instance_parent_image(instance)
 
-      persister_instance = persister.vms.build(
+      persister_vm = persister.vms.build(
         :availability_zone => persister.availability_zones.lazy_find(zone_uid),
         :description       => instance.description,
         :ems_ref           => uid,
         :flavor            => flavor,
-        :location          => "unknown", # TODO(mslemr) instance.self_link,
+        :location          => "unknown", # TODO(mslemr) instance.self_link?,
         :name              => instance.name || uid,
         :genealogy_parent  => persister.miq_templates.lazy_find(parent_image_uid),
         :raw_power_state   => instance.status,
@@ -165,7 +165,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
         :vendor            => VENDOR_GOOGLE,
       )
 
-      yield persister_instance, parent_image_uid, flavor, instance
+      yield persister_vm, parent_image_uid, flavor, instance
     end
   end
 
@@ -179,9 +179,9 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     end
   end
 
-  # @param persister_instance [InventoryObject<ManageIQ::Providers::Google::CloudManager::Vm>]
+  # @param persister_vm [InventoryObject<ManageIQ::Providers::Google::CloudManager::Vm>]
   # @param instance [Fog::Compute::Google::Server]
-  def instance_key_pairs(persister_instance, instance)
+  def instance_key_pairs(persister_vm, instance)
     # Add project common ssh-keys with keys specific to this instance
     instance_ssh_keys = project_key_pairs | parse_compute_metadata_ssh_keys(instance.metadata)
 
@@ -192,26 +192,26 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
       )
 
       key_pair.vms ||= []
-      key_pair.vms << persister_instance
+      key_pair.vms << persister_vm
     end
   end
 
-  # @param persister_instance [InventoryObject<ManageIQ::Providers::Google::CloudManager::Vm>]
+  # @param persister_vm [InventoryObject<ManageIQ::Providers::Google::CloudManager::Vm>]
   # @param series [InventoryObject<ManageIQ::Providers::Google::CloudManager::Flavor>]
-  def instance_hardware(persister_instance, series)
+  def instance_hardware(persister_vm, series)
     persister_hardware = persister.hardwares.build(
-      :vm_or_template  => persister_instance, # manager_ref
+      :vm_or_template  => persister_vm, # manager_ref
       :cpu_total_cores => series[:cpus],
       :memory_mb       => series[:memory] / 1.megabyte
     )
     yield persister_hardware
   end
 
-  # @param persister_instance [InventoryObject<ManageIQ::Providers::Google::CloudManager::Vm>]
+  # @param persister_vm [InventoryObject<ManageIQ::Providers::Google::CloudManager::Vm>]
   # @param instance [Fog::Compute::Google::Server]
-  def instance_advanced_settings(persister_instance, instance)
+  def instance_advanced_settings(persister_vm, instance)
     persister.vms_and_templates_advanced_settings.build(
-      :resource     => persister_instance, # manager_ref
+      :resource     => persister_vm, # manager_ref
       :name         => "preemptible?",
       :display_name => N_("Is VM Preemptible"),
       :description  => N_("Whether or not the VM is 'preemptible'. See"\
@@ -250,7 +250,6 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
   # @param instance [Fog::Compute::Google::Server]
   def hardware_disks(persister_hardware, instance)
     instance.disks.each do |attached_disk|
-      # TODO(mslemr): can't be better solution?
       cloud_volume_ems_ref = @cloud_volume_url_to_id[attached_disk[:source]]
       persister_cloud_volume = persister.cloud_volumes.find(cloud_volume_ems_ref)
       next if persister_cloud_volume.nil?
