@@ -1,5 +1,5 @@
 module ManageIQ::Providers::Google
-  class CloudManager::Refresher < ManageIQ::Providers::BaseManager::Refresher
+  class CloudManager::Refresher < ManageIQ::Providers::BaseManager::ManagerRefresher
     def parse_legacy_inventory(ems)
       ManageIQ::Providers::Google::CloudManager::RefreshParser.ems_inv_to_hashes(ems, refresher_options)
     end
