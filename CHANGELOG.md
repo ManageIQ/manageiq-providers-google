@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 94 ending 2018-09-10
+
+### Added
+- Add plugin display name [(#68)](https://github.com/ManageIQ/manageiq-providers-google/pull/68)
+- Google graph refresh  [(#67)](https://github.com/ManageIQ/manageiq-providers-google/pull/67)
+
+### Fixed
+- Fix API request scheme for preemptible flag when provisioning [(#70)](https://github.com/ManageIQ/manageiq-providers-google/pull/70)
+
 ## Unreleased as of Sprint 88 ending 2018-06-18
 
 ### Added
