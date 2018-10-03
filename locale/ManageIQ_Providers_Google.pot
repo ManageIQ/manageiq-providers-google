@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ManageIQ_Providers_Google package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ManageIQ_Providers_Google 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-10-03 15:02+0200\n"
+"PO-Revision-Date: 2018-10-03 15:02+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: ../app/models/manageiq/providers/google/network_manager/cloud_network.rb:3
+msgid "Cloud Network (Google)"
+msgid_plural "Cloud Networks (Google)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/models/manageiq/providers/google/network_manager/cloud_subnet.rb:3
+msgid "Cloud Subnet (Google)"
+msgid_plural "Cloud Subnets (Google)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/models/manageiq/providers/google/cloud_manager/flavor.rb:3
+msgid "Flavor (Google)"
+msgid_plural "Flavors (Google)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/models/manageiq/providers/google/network_manager/floating_ip.rb:3
+msgid "Floating IP (Google)"
+msgid_plural "Floating IPs (Google)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../lib/manageiq/providers/google/engine.rb:8
+msgid "Google Provider"
+msgstr ""
+
+#: ../app/models/manageiq/providers/google/cloud_manager/vm.rb:58
+msgid "Instance (Google)"
+msgid_plural "Instances (Google)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/models/manageiq/providers/google/inventory/parser/cloud_manager.rb:216 ../app/models/manageiq/providers/google/cloud_manager/refresh_parser.rb:252
+msgid "Is VM Preemptible"
+msgstr ""
+
+#: ../app/models/manageiq/providers/google/network_manager/load_balancer.rb:3
+msgid "Load Balancer (Google)"
+msgid_plural "Load Balancers (Google)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/models/manageiq/providers/google/network_manager/network_port.rb:3
+msgid "Network Port (Google)"
+msgid_plural "Network Ports (Google)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/models/manageiq/providers/google/network_manager.rb:51
+msgid "Network Provider (Google)"
+msgid_plural "Network Providers (Google)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/models/manageiq/providers/google/network_manager/network_router.rb:3
+msgid "Network Router (Google)"
+msgid_plural "Network Routers (Google)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:8 ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:16
+msgid "Pause Operation"
+msgstr ""
+
+#: ../app/models/manageiq/providers/google/network_manager/security_group.rb:3
+msgid "Security Group (Google)"
+msgid_plural "Security Groups (Google)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:24
+msgid "Shelve Offload Operation"
+msgstr ""
+
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:20
+msgid "Shelve Operation"
+msgstr ""
+
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:12
+msgid "Suspend Operation"
+msgstr ""
+
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/guest.rb:7
+msgid "The VM is not powered on"
+msgstr ""
+
+#: ../app/models/manageiq/providers/google/inventory/parser/cloud_manager.rb:217 ../app/models/manageiq/providers/google/cloud_manager/refresh_parser.rb:253
+msgid "Whether or not the VM is 'preemptible'. See https://cloud.google.com/compute/docs/instances/preemptible for more details."
+msgstr ""
+
+#: ../app/models/manageiq/providers/google/cloud_manager/template.rb:6
+msgid "not connected to ems"
+msgstr ""
