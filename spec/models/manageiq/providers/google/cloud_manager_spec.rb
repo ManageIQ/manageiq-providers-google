@@ -7,9 +7,7 @@ describe ManageIQ::Providers::Google::CloudManager do
         :google_json_key_string => "encrypted",
         :app_name               => Vmdb::Appliance.PRODUCT_NAME,
         :app_version            => Vmdb::Appliance.VERSION,
-        :google_client_options  => {
-          :proxy => "proxy_uri"
-        }
+        :google_client_options  => { :proxy_url => "proxy_uri" },
       }
     end
 
@@ -93,7 +91,7 @@ describe ManageIQ::Providers::Google::CloudManager do
 
         require 'fog/google'
         expect(Fog::Compute::Google).to receive(:new) do |options|
-          expect(options.fetch_path(:google_client_options, :proxy).to_s)
+          expect(options.fetch_path(:google_client_options, :proxy_url).to_s)
             .to eq("http://my_user:my_password@192.168.24.99:1234")
         end
         @e.connect
