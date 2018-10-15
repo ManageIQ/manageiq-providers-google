@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 - Upgrade to fog-google 1.5.0 [(#64)](https://github.com/ManageIQ/manageiq-providers-google/pull/64)
 - Migrate model display names from locale/en.yml to plugin [(#42)](https://github.com/ManageIQ/manageiq-providers-google/pull/42)
 - Add user data injection for cloud-init scripts for GCE [(#20)](https://github.com/ManageIQ/manageiq-providers-google/pull/20)
+- rename client's proxy option [(#73)](https://github.com/ManageIQ/manageiq-providers-google/pull/73)
+- Update i18n catalog for hammer [(#76)](https://github.com/ManageIQ/manageiq-providers-google/pull/76)
 
 ### Fixed
 - Fix API request scheme for preemptible flag when provisioning [(#70)](https://github.com/ManageIQ/manageiq-providers-google/pull/70)
