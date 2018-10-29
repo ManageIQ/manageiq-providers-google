@@ -1,95 +1,121 @@
-# Spanish translations for ManageIQ_Providers_Google package.
-# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the ManageIQ_Providers_Google package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
-#
+# Reviwer <ed.rh02@oceantranslations.com>, 2018. #zanata
+# Translator <tr.rh02@oceantranslations.com>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ManageIQ_Providers_Google 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2018-10-03 15:02+0200\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2018-10-03 15:02+0200\n"
+"PO-Revision-Date: 2018-10-23 03:12+0000\n"
+"Last-Translator: Reviwer <ed.rh02@oceantranslations.com>\n"
 "Language-Team: Spanish\n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Zanata 4.6.2\n"
 
+#: ../app/models/manageiq/providers/google/network_manager/cloud_network.rb:3
 msgid "Cloud Network (Google)"
 msgid_plural "Cloud Networks (Google)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Red de nube (Amazon)"
+msgstr[1] "Redes de nube (Amazon)"
 
+#: ../app/models/manageiq/providers/google/network_manager/cloud_subnet.rb:3
 msgid "Cloud Subnet (Google)"
 msgid_plural "Cloud Subnets (Google)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Subred de nube (Amazon)"
+msgstr[1] "Subredes de nube (Amazon)"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/flavor.rb:3
 msgid "Flavor (Google)"
 msgid_plural "Flavors (Google)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Clase (Google)"
+msgstr[1] "Clases (Google)"
 
+#: ../app/models/manageiq/providers/google/network_manager/floating_ip.rb:3
 msgid "Floating IP (Google)"
 msgid_plural "Floating IPs (Google)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "IP flotante (Google)"
+msgstr[1] "IP flotantes (Google)"
 
+#: ../lib/manageiq/providers/google/engine.rb:8
 msgid "Google Provider"
-msgstr ""
+msgstr "Google"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm.rb:58
 msgid "Instance (Google)"
 msgid_plural "Instances (Google)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Instancia (Google)"
+msgstr[1] "Instancias (Google)"
 
+#: ../app/models/manageiq/providers/google/inventory/parser/cloud_manager.rb:216
+#: ../app/models/manageiq/providers/google/cloud_manager/refresh_parser.rb:252
 msgid "Is VM Preemptible"
-msgstr ""
+msgstr "Es una máquina virtual sin garantía de uso continuo"
 
+#: ../app/models/manageiq/providers/google/network_manager/load_balancer.rb:3
 msgid "Load Balancer (Google)"
 msgid_plural "Load Balancers (Google)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Equilibrador de carga (Google)"
+msgstr[1] "Equilibradores de carga (Google)"
 
+#: ../app/models/manageiq/providers/google/network_manager/network_port.rb:3
 msgid "Network Port (Google)"
 msgid_plural "Network Ports (Google)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Puerto de red (Google)"
+msgstr[1] "Puertos de red (Google)"
 
+#: ../app/models/manageiq/providers/google/network_manager.rb:51
 msgid "Network Provider (Google)"
 msgid_plural "Network Providers (Google)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Proveedor de red (Google)"
+msgstr[1] "Proveedores de red (Google)"
 
+#: ../app/models/manageiq/providers/google/network_manager/network_router.rb:3
 msgid "Network Router (Google)"
 msgid_plural "Network Routers (Google)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Enrutador de red (Google)"
+msgstr[1] "Enrutadores de red (Google)"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:8
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:16
 msgid "Pause Operation"
-msgstr ""
+msgstr "Pausar operación"
 
+#: ../app/models/manageiq/providers/google/network_manager/security_group.rb:3
 msgid "Security Group (Google)"
 msgid_plural "Security Groups (Google)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Grupo de seguridad (Google)"
+msgstr[1] "Grupos de seguridad (Google)"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:24
 msgid "Shelve Offload Operation"
-msgstr ""
+msgstr "Aplazar operación de descarga"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:20
 msgid "Shelve Operation"
-msgstr ""
+msgstr "Aplazar operación"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/power.rb:12
 msgid "Suspend Operation"
-msgstr ""
+msgstr "Suspender operación"
 
+#: ../app/models/manageiq/providers/google/cloud_manager/vm/operations/guest.rb:7
 msgid "The VM is not powered on"
-msgstr ""
+msgstr "La máquina virtual no está encendida"
 
-msgid "Whether or not the VM is 'preemptible'. See https://cloud.google.com/compute/docs/instances/preemptible for more details."
+#: ../app/models/manageiq/providers/google/inventory/parser/cloud_manager.rb:217
+#: ../app/models/manageiq/providers/google/cloud_manager/refresh_parser.rb:253
+msgid ""
+"Whether or not the VM is 'preemptible'. See "
+"https://cloud.google.com/compute/docs/instances/preemptible for more "
+"details."
 msgstr ""
+"Si la máquina virtual está 'garantizada' o no. Consulte "
+"https://cloud.google.com/compute/docs/instances/preemptible para obtener más"
+" información."
 
+#: ../app/models/manageiq/providers/google/cloud_manager/template.rb:6
 msgid "not connected to ems"
-msgstr ""
+msgstr "no está conectado a EMS"
