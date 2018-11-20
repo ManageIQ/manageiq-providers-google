@@ -268,7 +268,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
     def assert_specific_vm_powered_on
       expect(vm_powered_on).to have_attributes(
         :boot_time             => nil,
-        :connection_state      => nil,
+        :connection_state      => "connected",
         :cpu_affinity          => nil,
         :cpu_limit             => nil,
         :cpu_reserve           => nil,
@@ -363,7 +363,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
     def assert_specific_vm_powered_off
       expect(vm_powered_off).to have_attributes(
         :boot_time             => nil,
-        :connection_state      => nil,
+        :connection_state      => "connected",
         :cpu_affinity          => nil,
         :cpu_limit             => nil,
         :cpu_reserve           => nil,
@@ -489,7 +489,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
         :tools_status          => nil,
         :boot_time             => nil,
         :standby_action        => nil,
-        :connection_state      => nil,
+        :connection_state      => "connected",
         :cpu_affinity          => nil,
         :memory_reserve        => nil,
         :memory_reserve_expand => nil,
@@ -521,7 +521,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
         :tools_status          => nil,
         :boot_time             => nil,
         :standby_action        => nil,
-        :connection_state      => nil,
+        :connection_state      => "connected",
         :cpu_affinity          => nil,
         :memory_reserve        => nil,
         :memory_reserve_expand => nil,
