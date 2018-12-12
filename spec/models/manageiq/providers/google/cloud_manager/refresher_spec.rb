@@ -29,7 +29,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
     orchestration_template relationship resource_group security_group vm vm_or_template
   ).freeze
 
-  let(:ems) { FactoryGirl.create(:ems_google_with_vcr_authentication) }
+  let(:ems) { FactoryBot.create(:ems_google_with_vcr_authentication) }
 
   [
     {

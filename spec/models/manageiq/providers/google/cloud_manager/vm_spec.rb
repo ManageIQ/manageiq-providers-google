@@ -1,7 +1,7 @@
 describe ManageIQ::Providers::Google::CloudManager::Vm do
   context "#is_available?" do
-    let(:ems)                   { FactoryGirl.create(:ems_google) }
-    let(:vm)                    { FactoryGirl.create(:vm_google, :ext_management_system => ems) }
+    let(:ems)                   { FactoryBot.create(:ems_google) }
+    let(:vm)                    { FactoryBot.create(:vm_google, :ext_management_system => ems) }
     let(:power_state_on)        { "running" }
     let(:power_state_suspended) { "pending" }
 

@@ -1,7 +1,7 @@
 describe ManageIQ::Providers::Google::CloudManager::EventCatcher::Stream do
   require 'fog/google'
 
-  let(:ems)               { FactoryGirl.create(:ems_google_with_project) }
+  let(:ems)               { FactoryBot.create(:ems_google_with_project) }
   let(:subscription)      { Fog::Google::Pubsub::Subscription.new }
   let(:pubsub_connection) { ems.connect(:service => 'pubsub') }
   let(:stream)            { described_class.new(ems) }

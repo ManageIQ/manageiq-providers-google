@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :ems_google_with_vcr_authentication, :parent => :ems_google, :traits => [:with_zone] do
     after(:create) do |ems|
       project         = Rails.application.secrets.google.try(:[], 'project') || 'GOOGLE_PROJECT'
@@ -15,7 +15,7 @@ FactoryGirl.define do
       }
       GOOGLE_SERVICE_ACCOUNT
 
-      ems.authentications << FactoryGirl.create(
+      ems.authentications << FactoryBot.create(
         :authentication,
         :type     => "AuthToken",
         :auth_key => service_account,
