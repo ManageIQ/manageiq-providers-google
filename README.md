@@ -1,7 +1,7 @@
 # manageiq-providers-google
 
 [![Gem Version](https://badge.fury.io/rb/manageiq-providers-google.svg)](http://badge.fury.io/rb/manageiq-providers-google)
-[![Build Status](https://travis-ci.org/ManageIQ/manageiq-providers-google.svg)](https://travis-ci.org/ManageIQ/manageiq-providers-google)
+[![Build Status](https://travis-ci.org/ManageIQ/manageiq-providers-google.svg?branch=master)](https://travis-ci.org/ManageIQ/manageiq-providers-google)
 [![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-providers-google.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-google)
 [![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-providers-google/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-google/coverage)
 [![Dependency Status](https://gemnasium.com/ManageIQ/manageiq-providers-google.svg)](https://gemnasium.com/ManageIQ/manageiq-providers-google)
