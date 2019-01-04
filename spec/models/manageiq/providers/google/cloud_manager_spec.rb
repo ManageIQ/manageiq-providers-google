@@ -37,7 +37,7 @@ describe ManageIQ::Providers::Google::CloudManager do
   end
 
   it "does not create orphaned network_manager" do
-    ems = FactoryGirl.create(:ems_google)
+    ems = FactoryBot.create(:ems_google)
     same_ems = ExtManagementSystem.find(ems.id)
 
     ems.destroy
@@ -48,10 +48,10 @@ describe ManageIQ::Providers::Google::CloudManager do
   end
 
   it "moves the network_manager to the same zone as the cloud_manager" do
-    zone1 = FactoryGirl.create(:zone)
-    zone2 = FactoryGirl.create(:zone)
+    zone1 = FactoryBot.create(:zone)
+    zone2 = FactoryBot.create(:zone)
 
-    ems = FactoryGirl.create(:ems_google, :zone => zone1)
+    ems = FactoryBot.create(:ems_google, :zone => zone1)
     expect(ems.network_manager.zone).to eq zone1
     expect(ems.network_manager.zone_id).to eq zone1.id
 
@@ -67,8 +67,8 @@ describe ManageIQ::Providers::Google::CloudManager do
     before do
       @google_project = "yourprojectid"
       @google_json_key = "{\r\n\"type\": \"service_account\",\r\n\"private_key_id\": \"abcdefg\"}"
-      @e = FactoryGirl.create(:ems_google)
-      @e.authentications << FactoryGirl.create(:authentication, :userid => "_", :auth_key => @google_json_key)
+      @e = FactoryBot.create(:ems_google)
+      @e.authentications << FactoryBot.create(:authentication, :userid => "_", :auth_key => @google_json_key)
       @e.project = @google_project
     end
 
@@ -107,7 +107,7 @@ describe ManageIQ::Providers::Google::CloudManager do
   end
 
   context 'catalog types' do
-    let(:ems) { FactoryGirl.create(:ems_google) }
+    let(:ems) { FactoryBot.create(:ems_google) }
 
     it "#supported_google_types" do
       expect(ems.supported_catalog_types).to eq(%w(google))

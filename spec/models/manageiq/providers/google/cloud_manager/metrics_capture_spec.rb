@@ -1,7 +1,7 @@
 describe ManageIQ::Providers::Google::CloudManager::MetricsCapture do
   require 'fog/google'
 
-  let(:ems)                   { FactoryGirl.create(:ems_google_with_project) }
+  let(:ems)                   { FactoryBot.create(:ems_google_with_project) }
   let(:metrics_connection)    { ems.connect(:service => 'monitoring') }
   let(:timeseries_collection) { double }
 
@@ -19,13 +19,13 @@ describe ManageIQ::Providers::Google::CloudManager::MetricsCapture do
 
     context 'no metrics collected' do
       context 'when no EMS is defined' do
-        let(:vm) { FactoryGirl.build(:vm_google) }
+        let(:vm) { FactoryBot.build(:vm_google) }
 
         it { expect { subject }.to raise_error(RuntimeError, /No EMS defined/) }
       end
 
       context 'when target is not a vm' do
-        let(:vm) { FactoryGirl.build(:template_google, :ext_management_system => ems) }
+        let(:vm) { FactoryBot.build(:template_google, :ext_management_system => ems) }
 
         it { is_expected.to eq([{}, {}]) }
       end
@@ -33,7 +33,7 @@ describe ManageIQ::Providers::Google::CloudManager::MetricsCapture do
 
     context 'metrics collected' do
       let(:vm) do
-        FactoryGirl.build(:vm_google, :ext_management_system => ems, :ems_ref => "my_ems_ref")
+        FactoryBot.build(:vm_google, :ext_management_system => ems, :ems_ref => "my_ems_ref")
       end
 
       it 'sets metrics name and ems_ref in filter' do

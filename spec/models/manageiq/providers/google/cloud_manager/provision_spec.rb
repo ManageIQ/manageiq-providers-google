@@ -1,11 +1,11 @@
 describe ManageIQ::Providers::Google::CloudManager::Provision do
-  let(:provider) { FactoryGirl.create(:ems_google_with_authentication) }
+  let(:provider) { FactoryBot.create(:ems_google_with_authentication) }
 
   context "Cloning" do
     describe "#prepare_for_clone_task" do
       let(:user_data) { "simple test user data" }
-      let(:flavor) { FactoryGirl.create(:flavor_google) }
-      let(:availability_zone) { FactoryGirl.create(:availability_zone_google) }
+      let(:flavor) { FactoryBot.create(:flavor_google) }
+      let(:availability_zone) { FactoryBot.create(:availability_zone_google) }
 
       before do
         allow(subject).to receive(:instance_type).and_return(flavor)
