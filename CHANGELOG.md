@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
-## Hammer Beta-1
+## Hammer-1
 
 ### Added
 - Add plugin display name [(#68)](https://github.com/ManageIQ/manageiq-providers-google/pull/68)
@@ -41,4 +41,3 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 - Fix exception handing for credential validation on raw_connect [(#28)](https://github.com/ManageIQ/manageiq-providers-google/pull/28)
 
 ## Initial changelog added
-
