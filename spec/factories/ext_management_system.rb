@@ -26,7 +26,7 @@ FactoryBot.define do
   end
 
   factory :ems_google_with_project, :parent => :ems_google_with_authentication, :traits => [:with_zone] do
-    project 'GOOGLE_PROJECT'
+    project { 'GOOGLE_PROJECT' }
   end
 
   trait :with_zone do
