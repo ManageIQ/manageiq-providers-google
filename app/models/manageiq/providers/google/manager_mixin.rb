@@ -26,7 +26,7 @@ module ManageIQ::Providers::Google::ManagerMixin
       config = {
         :provider               => "Google",
         :google_project         => google_project,
-        :google_json_key_string => MiqPassword.try_decrypt(google_json_key),
+        :google_json_key_string => ManageIQ::Password.try_decrypt(google_json_key),
         :app_name               => Vmdb::Appliance.PRODUCT_NAME,
         :app_version            => Vmdb::Appliance.VERSION,
         :google_client_options  => { :proxy_url => proxy_uri },

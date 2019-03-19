@@ -18,7 +18,7 @@ describe ManageIQ::Providers::Google::CloudManager do
     it "decrypts json keys" do
       expect(::Fog::Compute).to receive(:new).with(config)
 
-      described_class.raw_connect("project", MiqPassword.encrypt("encrypted"), {:service => "compute"}, "proxy_uri")
+      described_class.raw_connect("project", ManageIQ::Password.encrypt("encrypted"), {:service => "compute"}, "proxy_uri")
     end
 
     it "works with unencrypted keys" do
