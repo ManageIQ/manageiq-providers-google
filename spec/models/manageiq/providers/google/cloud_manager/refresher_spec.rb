@@ -7,7 +7,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
   let(:floating_ip_1)         { FloatingIp.find_by(:address => "35.184.135.147") }
   let(:floating_ip_2)         { FloatingIp.find_by(:address => "35.194.238.83") }
   let(:floating_ip_3)         { FloatingIp.find_by(:address => "35.194.238.83") }
-  let(:key_pair)              { AuthPrivateKey.find_by(:name => "gke-4866da88e59a4051ce37") }
+  let(:key_pair)              { ManageIQ::Providers::Google::CloudManager::AuthKeyPair.find_by(:name => "gke-4866da88e59a4051ce37") }
   let(:load_balancer)         { LoadBalancer.find_by(:name => "test-first-load-balancer-forwarding-rule") }
   let(:security_group)        { SecurityGroup.find_by(:name => "lkhomenk-network") }
   let(:zone_central)          { AvailabilityZone.find_by(:ems_ref => "us-central1-a") }
@@ -130,7 +130,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
 
     def assert_table_counts
       actual = Hash[MODELS.collect { |m| [m, m.to_s.classify.constantize.count] }]
-      actual[:key_pair] = AuthPrivateKey.count
+      actual[:key_pair] = ManageIQ::Providers::Google::CloudManager::AuthKeyPair.count
 
       expect(actual).to eq expected_table_counts
     end
