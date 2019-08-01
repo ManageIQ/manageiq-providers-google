@@ -7,7 +7,6 @@ class ManageIQ::Providers::Google::CloudManager < ManageIQ::Providers::CloudMana
   require_nested :ProvisionWorkflow
   require_nested :MetricsCapture
   require_nested :MetricsCollectorWorker
-  require_nested :RefreshParser
   require_nested :RefreshWorker
   require_nested :Refresher
   require_nested :Template
@@ -56,6 +55,10 @@ class ManageIQ::Providers::Google::CloudManager < ManageIQ::Providers::CloudMana
 
   def supported_catalog_types
     %w(google)
+  end
+
+  def inventory_object_refresh?
+    true
   end
 
   # TODO(lwander) determine if user wants to use OAUTH or a service account
