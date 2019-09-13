@@ -21,7 +21,7 @@ FactoryBot.define do
         :auth_key => service_account,
         :userid   => "_"
       )
-      ems.update_attributes(:project => project)
+      ems.update(:project => project)
     end
   end
 

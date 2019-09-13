@@ -26,11 +26,11 @@ module ManageIQ::Providers::Google::CloudManager::Vm::Operations::Power
 
   def raw_start
     with_provider_object(&:start)
-    self.update_attributes!(:raw_power_state => "starting")
+    self.update!(:raw_power_state => "starting")
   end
 
   def raw_stop
     with_provider_object(&:stop)
-    self.update_attributes!(:raw_power_state => "stopping")
+    self.update!(:raw_power_state => "stopping")
   end
 end
