@@ -20,6 +20,47 @@ module ManageIQ::Providers::Google::ManagerMixin
   end
 
   module ClassMethods
+    def params_for_create
+      @params_for_create ||= {
+        :title  => "Configure #{description}",
+        :fields => [
+          {
+            :component  => "text-field",
+            :name       => "endpoints.default.google_project",
+            :label      => "Project",
+            :isRequired => true,
+            :validate   => [{:type => "required-validator"}]
+          },
+          {
+            :component  => "text-field",
+            :name       => "endpoints.default.google_json_key",
+            :label      => "JSON Key",
+            :type       => "password",
+            :isRequired => true,
+            :validate   => [{:type => "required-validator"}]
+          }
+        ]
+      }.freeze
+    end
+
+    # Verify Credentials
+    # args:
+    # {
+    #   "endpoints" => {
+    #     "default" => {
+    #       "google_project"  => "",
+    #       "google_json_key" => "",
+    #     }
+    #   }
+    # }
+    def verify_credentials(args)
+      default_endpoint = args.dig("endpoints", "default")
+
+      google_project, google_json_key = default_endpoint&.values_at("google_project", "google_json_key")
+
+      !!raw_connect(google_project, google_json_key, {:service => "compute"}, http_proxy_uri, true)
+    end
+
     def raw_connect(google_project, google_json_key, options, proxy_uri = nil, validate = false)
       require 'fog/google'
 
