@@ -254,7 +254,6 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       :cpu_shares            => nil,
       :cpu_shares_level      => nil,
       :ems_ref               => "9028819323520596299",
-      :ems_ref_obj           => nil,
       :location              => "unknown",
       :memory_limit          => nil,
       :memory_reserve        => nil,
@@ -349,7 +348,6 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       :cpu_shares            => nil,
       :cpu_shares_level      => nil,
       :ems_ref               => "3801021534917226736",
-      :ems_ref_obj           => nil,
       :location              => "unknown",
       :memory_limit          => nil,
       :memory_reserve        => nil,
@@ -459,7 +457,6 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
     expect(image_template).to have_attributes(
       :template              => true,
       :ems_ref               => "532520468831844769",
-      :ems_ref_obj           => nil,
       :uid_ems               => "532520468831844769",
       :vendor                => "google",
       :power_state           => "never",
@@ -491,7 +488,6 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
     expect(snapshot_template).to have_attributes(
       :template              => true,
       :ems_ref               => "4530445150875817520",
-      :ems_ref_obj           => nil,
       :uid_ems               => "4530445150875817520",
       :vendor                => "google",
       :power_state           => "never",
