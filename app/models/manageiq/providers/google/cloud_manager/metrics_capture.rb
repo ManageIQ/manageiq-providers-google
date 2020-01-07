@@ -1,4 +1,4 @@
-class ManageIQ::Providers::Google::CloudManager::MetricsCapture < ManageIQ::Providers::BaseManager::MetricsCapture
+class ManageIQ::Providers::Google::CloudManager::MetricsCapture < ManageIQ::Providers::CloudManager::MetricsCapture
   # List of counters we expose to the caller
   VIM_STYLE_COUNTERS = {
     "cpu_usage_rate_average"  => {

@@ -8,6 +8,12 @@ describe ManageIQ::Providers::Google::CloudManager::MetricsCapture do
   before(:all) { Fog.mock! }
   after(:all)  { Fog.unmock! }
 
+  context "#perf_capture_object" do
+    it "returns the correct class" do
+      expect(ems.perf_capture_object.class).to eq(described_class)
+    end
+  end
+
   describe '#perf_collect_metrics' do
     subject { vm.perf_collect_metrics('realtime') }
 
