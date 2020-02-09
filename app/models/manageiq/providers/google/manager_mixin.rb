@@ -22,24 +22,37 @@ module ManageIQ::Providers::Google::ManagerMixin
   module ClassMethods
     def params_for_create
       @params_for_create ||= {
-        :title  => "Configure #{description}",
         :fields => [
           {
-            :component  => "text-field",
-            :name       => "endpoints.default.google_project",
-            :label      => "Project",
-            :isRequired => true,
-            :validate   => [{:type => "required-validator"}]
+            :component => 'sub-form',
+            :name      => 'endpoints',
+            :title     => _("Endpoint"),
+            :fields    => [
+              :component              => 'validate-provider-credentials',
+              :name                   => 'endpoints.default.valid',
+              :validationDependencies => %w[zone_name provider_region],
+              :fields                 => [
+                {
+                  :component  => "text-field",
+                  :name       => "endpoints.default.google_project",
+                  :label      => _("Project ID"),
+                  :isRequired => true,
+                  :validate   => [{:type => "required-validator"}]
+                },
+                {
+                  :component  => "textarea-field",
+                  :name       => "endpoints.default.google_json_key",
+                  :label      => _("Service Account JSON"),
+                  :rows       => 10,
+                  :type       => "password",
+                  :isRequired => true,
+                  :helperText => _('Copy and paste the contents of your Service Account JSON file above.'),
+                  :validate   => [{:type => "required-validator"}]
+                },
+              ],
+            ],
           },
-          {
-            :component  => "text-field",
-            :name       => "endpoints.default.google_json_key",
-            :label      => "JSON Key",
-            :type       => "password",
-            :isRequired => true,
-            :validate   => [{:type => "required-validator"}]
-          }
-        ]
+        ],
       }.freeze
     end
 
