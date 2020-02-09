@@ -30,7 +30,7 @@ module ManageIQ::Providers::Google::ManagerMixin
             :fields    => [
               :component              => 'validate-provider-credentials',
               :name                   => 'endpoints.default.valid',
-              :validationDependencies => %w[zone_name provider_region],
+              :validationDependencies => %w[zone_name],
               :fields                 => [
                 {
                   :component  => "text-field",
