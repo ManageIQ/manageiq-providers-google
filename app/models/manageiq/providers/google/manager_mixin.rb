@@ -19,35 +19,49 @@ module ManageIQ::Providers::Google::ManagerMixin
     @gce ||= connect(:service => "compute")
   end
 
+  def edit_with_params(params)
+    default_endpoint = params.delete("endpoints")&.dig("default") || {}
+    default_authentication = params.delete("authentications")&.dig("default") || {}
+
+    tap do |ems|
+      ems.default_authentication.assign_attributes(default_authentication)
+      ems.default_endpoint.assign_attributes(default_endpoint)
+
+      ems.assign_attributes(params)
+
+      ems.save!
+    end
+  end
+
   module ClassMethods
     def params_for_create
       @params_for_create ||= {
         :fields => [
+          {
+            :component  => "text-field",
+            :name       => "project",
+            :label      => _("Project ID"),
+            :isRequired => true,
+            :validate   => [{:type => "required-validator"}]
+          },
           {
             :component => 'sub-form',
             :name      => 'endpoints',
             :title     => _("Endpoint"),
             :fields    => [
               :component              => 'validate-provider-credentials',
-              :name                   => 'endpoints.default.valid',
-              :validationDependencies => %w[type zone_name],
+              :name                   => 'authentications.default.valid',
+              :validationDependencies => %w[type project zone_name],
               :fields                 => [
                 {
-                  :component  => "text-field",
-                  :name       => "endpoints.default.google_project",
-                  :label      => _("Project ID"),
-                  :isRequired => true,
-                  :validate   => [{:type => "required-validator"}]
-                },
-                {
-                  :component  => "textarea-field",
-                  :name       => "endpoints.default.google_json_key",
-                  :label      => _("Service Account JSON"),
-                  :rows       => 10,
-                  :type       => "password",
-                  :isRequired => true,
-                  :helperText => _('Copy and paste the contents of your Service Account JSON file above.'),
-                  :validate   => [{:type => "required-validator"}]
+                  :component      => "password-field",
+                  :componentClass => 'textarea',
+                  :rows           => 10,
+                  :name           => "authentications.default.auth_key",
+                  :label          => _("Service Account JSON"),
+                  :isRequired     => true,
+                  :helperText     => _('Copy and paste the contents of your Service Account JSON file above.'),
+                  :validate       => [{:type => "required-validator"}]
                 },
               ],
             ],
@@ -56,22 +70,41 @@ module ManageIQ::Providers::Google::ManagerMixin
       }.freeze
     end
 
+    def create_from_params(params)
+      endpoints = params.delete("endpoints") || {'default' => {}} # Fall back to an empty default endpoint
+      authentications = params.delete("authentications")
+
+      params[:zone] = Zone.find_by(:name => params.delete("zone_name"))
+      new(params).tap do |ems|
+        endpoints.each do |authtype, endpoint|
+          ems.endpoints.new(endpoint.merge(:role => authtype))
+        end
+
+        authentications.each do |authtype, authentication|
+          ems.authentications << AuthToken.new(authentication.merge(:authtype => authtype))
+        end
+
+        ems.save!
+      end
+    end
+
     # Verify Credentials
     # args:
     # {
-    #   "endpoints" => {
+    #   "project"         => "",
+    #   "authentications" => {
     #     "default" => {
-    #       "google_project"  => "",
-    #       "google_json_key" => "",
+    #       "auth_key" => "",
     #     }
     #   }
     # }
     def verify_credentials(args)
-      default_endpoint = args.dig("endpoints", "default")
+      project = args.dig("project")
+      auth_key = args.dig("authentications", "default", "auth_key")
+      auth_key = MiqPassword.try_decrypt(auth_key)
+      auth_key ||= find(args["id"]).authentication_token('default')
 
-      google_project, google_json_key = default_endpoint&.values_at("google_project", "google_json_key")
-
-      !!raw_connect(google_project, google_json_key, {:service => "compute"}, http_proxy_uri, true)
+      !!raw_connect(project, auth_key, {:service => "compute"}, http_proxy_uri, true)
     end
 
     def raw_connect(google_project, google_json_key, options, proxy_uri = nil, validate = false)
