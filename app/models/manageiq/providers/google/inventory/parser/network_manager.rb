@@ -74,7 +74,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
   # @param network [Fog::Compute::Google::Network]
   def cloud_subnets(persister_cloud_network, network)
     @subnets_by_network_link ||= collector.cloud_subnets.each_with_object({}) { |x, subnets| (subnets[x.network] ||= []) << x }
-    @subnets_by_network_link[network.self_link].each do |cloud_subnet|
+    @subnets_by_network_link[network.self_link]&.each do |cloud_subnet|
       uid = cloud_subnet.id.to_s
       persister.cloud_subnets.build(
         :cidr          => cloud_subnet.ip_cidr_range,
