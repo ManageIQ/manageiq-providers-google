@@ -11,8 +11,8 @@ class ManageIQ::Providers::Google::Inventory::Collector::NetworkManager < Manage
       @subnetworks += connection.networks.select { |x| x.ipv4_range.present? }.map do |x|
         Fog::Compute::Google::Subnetwork.new(
           :name               => x.name,
-          :gateway_address    => x.gateway_ipv4,
-          :ip_cidr_range      => x.ipv4_range,
+          :gateway_address    => x.gateway_i_pv4,
+          :ip_cidr_range      => x.i_pv4_range,
           :id                 => x.id,
           :network            => x.self_link,
           :self_link          => x.self_link,
