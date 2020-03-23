@@ -49,9 +49,4 @@ class ManageIQ::Providers::Google::NetworkManager < ManageIQ::Providers::Network
   def self.display_name(number = 1)
     n_('Network Provider (Google)', 'Network Providers (Google)', number)
   end
-
-
-  def inventory_object_refresh?
-    true
-  end
 end
