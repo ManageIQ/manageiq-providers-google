@@ -57,10 +57,6 @@ class ManageIQ::Providers::Google::CloudManager < ManageIQ::Providers::CloudMana
     %w(google)
   end
 
-  def inventory_object_refresh?
-    true
-  end
-
   # TODO(lwander) determine if user wants to use OAUTH or a service account
   def missing_credentials?(_type = {})
     false
