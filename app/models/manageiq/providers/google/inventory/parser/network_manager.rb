@@ -1,6 +1,4 @@
 class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ::Providers::Google::Inventory::Parser
-  include ManageIQ::Providers::Google::RefreshHelperMethods
-
   GCP_HEALTH_STATUS_MAP = {
     "HEALTHY"   => "InService",
     "UNHEALTHY" => "OutOfService"
