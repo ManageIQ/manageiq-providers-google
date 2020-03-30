@@ -1,6 +1,4 @@
 class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::Providers::Google::Inventory::Parser
-  include ManageIQ::Providers::Google::RefreshHelperMethods
-
   def initialize
     super
 
