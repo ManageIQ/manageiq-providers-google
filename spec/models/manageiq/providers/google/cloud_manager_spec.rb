@@ -105,11 +105,11 @@ describe ManageIQ::Providers::Google::CloudManager do
     end
   end
 
-  context 'catalog types' do
+  describe "#catalog_types" do
     let(:ems) { FactoryBot.create(:ems_google) }
 
-    it "#supported_google_types" do
-      expect(ems.supported_catalog_types).to eq(%w(google))
+    it "catalog_types" do
+      expect(ems.catalog_types).to include("google")
     end
   end
 end
