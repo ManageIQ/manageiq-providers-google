@@ -49,9 +49,9 @@ module ManageIQ::Providers::Google::ManagerMixin
             :name      => 'endpoints',
             :title     => _("Endpoint"),
             :fields    => [
-              :component              => 'validate-provider-credentials',
+              :component              => 'provider-credentials',
               :name                   => 'authentications.default.valid',
-              :validationDependencies => %w[type project zone_name],
+              :validationDependencies => %w[type project zone_id],
               :fields                 => [
                 {
                   :component      => "password-field",
@@ -74,7 +74,6 @@ module ManageIQ::Providers::Google::ManagerMixin
       endpoints = params.delete("endpoints") || {'default' => {}} # Fall back to an empty default endpoint
       authentications = params.delete("authentications")
 
-      params[:zone] = Zone.find_by(:name => params.delete("zone_name"))
       new(params).tap do |ems|
         endpoints.each do |authtype, endpoint|
           ems.endpoints.new(endpoint.merge(:role => authtype))
