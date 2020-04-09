@@ -53,8 +53,8 @@ class ManageIQ::Providers::Google::CloudManager < ManageIQ::Providers::CloudMana
     %w(auth_key)
   end
 
-  def supported_catalog_types
-    %w(google)
+  def self.catalog_types
+    {"google" => N_("Google")}
   end
 
   # TODO(lwander) determine if user wants to use OAUTH or a service account
