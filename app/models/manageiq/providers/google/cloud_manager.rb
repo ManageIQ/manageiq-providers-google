@@ -53,8 +53,8 @@ class ManageIQ::Providers::Google::CloudManager < ManageIQ::Providers::CloudMana
     %w(auth_key)
   end
 
-  def supported_catalog_types
-    %w(google)
+  def self.catalog_types
+    {"google" => N_("Google")}
   end
 
   def inventory_object_refresh?
