@@ -352,7 +352,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
         :status_reason              => ""
       )
     end
-  rescue Fog::Errors::Error => err
+  rescue Fog::Errors::Error, Google::Apis::ClientError => err
     _log.warn("Caught unexpected error when probing health for target pool #{target_pool.name}: #{err}")
     _log.warn(err.backtrace.join("\n"))
     return []
