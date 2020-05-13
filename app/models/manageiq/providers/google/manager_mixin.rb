@@ -19,20 +19,6 @@ module ManageIQ::Providers::Google::ManagerMixin
     @gce ||= connect(:service => "compute")
   end
 
-  def edit_with_params(params)
-    default_endpoint = params.delete("endpoints")&.dig("default") || {}
-    default_authentication = params.delete("authentications")&.dig("default") || {}
-
-    tap do |ems|
-      ems.default_authentication.assign_attributes(default_authentication)
-      ems.default_endpoint.assign_attributes(default_endpoint)
-
-      ems.assign_attributes(params)
-
-      ems.save!
-    end
-  end
-
   module ClassMethods
     def params_for_create
       @params_for_create ||= {
@@ -46,11 +32,12 @@ module ManageIQ::Providers::Google::ManagerMixin
           },
           {
             :component => 'sub-form',
-            :name      => 'endpoints',
+            :name      => 'endpoints-subform',
             :title     => _("Endpoint"),
             :fields    => [
               :component              => 'provider-credentials',
               :name                   => 'authentications.default.valid',
+              :skipSubmit             => true,
               :validationDependencies => %w[type project zone_id],
               :fields                 => [
                 {
@@ -68,23 +55,6 @@ module ManageIQ::Providers::Google::ManagerMixin
           },
         ],
       }.freeze
-    end
-
-    def create_from_params(params)
-      endpoints = params.delete("endpoints") || {'default' => {}} # Fall back to an empty default endpoint
-      authentications = params.delete("authentications")
-
-      new(params).tap do |ems|
-        endpoints.each do |authtype, endpoint|
-          ems.endpoints.new(endpoint.merge(:role => authtype))
-        end
-
-        authentications.each do |authtype, authentication|
-          ems.authentications << AuthToken.new(authentication.merge(:authtype => authtype))
-        end
-
-        ems.save!
-      end
     end
 
     # Verify Credentials
