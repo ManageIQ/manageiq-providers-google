@@ -35,7 +35,7 @@ module ManageIQ::Providers::Google::ManagerMixin
             :name      => 'endpoints-subform',
             :title     => _("Endpoint"),
             :fields    => [
-              :component              => 'provider-credentials',
+              :component              => 'validate-provider-credentials',
               :name                   => 'authentications.default.valid',
               :skipSubmit             => true,
               :validationDependencies => %w[type project zone_id],
