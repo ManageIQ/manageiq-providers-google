@@ -13,6 +13,7 @@ class ManageIQ::Providers::Google::NetworkManager < ManageIQ::Providers::Network
   require_nested :Refresher
   require_nested :SecurityGroup
 
+  include BelongsToParentManagerMixin
   include ManageIQ::Providers::Google::ManagerMixin
 
   # Auth and endpoints delegations, editing of this type of manager must be disabled
