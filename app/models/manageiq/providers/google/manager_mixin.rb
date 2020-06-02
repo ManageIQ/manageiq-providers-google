@@ -77,6 +77,9 @@ module ManageIQ::Providers::Google::ManagerMixin
     end
 
     def raw_connect(google_project, google_json_key, options, proxy_uri = nil, validate = false)
+      require "google/apis"
+      ::Google::Apis.logger = $gce_log
+
       require 'fog/google'
 
       config = {
