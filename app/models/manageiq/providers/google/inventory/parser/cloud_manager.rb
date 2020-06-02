@@ -318,9 +318,11 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     # Find the sshKeys property in the instance metadata
     metadata_ssh_keys = parse_compute_metadata(metadata, "sshKeys")
 
-    metadata_ssh_keys.to_s.split("\n").each do |ssh_key|
+    metadata_ssh_keys.to_s.split("\n").reject(&:blank?).each do |ssh_key|
       # Google returns the key in the form username:public_key
       name, public_key = ssh_key.split(":", 2)
+      next if public_key.blank?
+
       begin
         fingerprint = SSHKey.sha1_fingerprint(public_key)
 
