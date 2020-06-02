@@ -149,10 +149,8 @@ class ManageIQ::Providers::Google::Inventory::Collector::NetworkManager < Manage
 
     begin
       @vm_cache.store_path(zone, instance, connection.get_server(instance, zone).id)
-    rescue Fog::Errors::Error, ::Google::Apis::ClientError => err
-      m = "Error during data collection for [#{manager&.name}] id: [#{manager&.id}] when querying link for vm_id: #{err}"
-      _log.warn(m)
-      _log.warn(err.backtrace.join("\n"))
+    rescue Fog::Errors::Error, ::Google::Apis::ClientError => _err
+      # It is common for load balancers to have "stale" servers defined which fail when queried
       nil
     end
   end
@@ -163,10 +161,8 @@ class ManageIQ::Providers::Google::Inventory::Collector::NetworkManager < Manage
     return @health_check_cache.fetch_path(health_check) if @health_check_cache.has_key_path?(health_check)
 
     @health_check_cache.store_path(health_check, connection.http_health_checks.get(health_check))
-  rescue Fog::Errors::Error => err
-    m = "Error during data collection for [#{manager&.name}] id: [#{manager&.id}] when querying link for health check: #{err}"
-    _log.warn(m)
-    _log.warn(err.backtrace.join("\n"))
+  rescue Fog::Errors::Error, ::Google::Apis::ClientError => _err
+    # It is common for load balancers to have "stale" servers defined which fail when queried
     nil
   end
 end
