@@ -352,8 +352,9 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
         :status_reason              => ""
       )
     end
-  rescue Fog::Errors::Error, Google::Apis::ClientError => _err
+  rescue Fog::Errors::Error, Google::Apis::ClientError => err
     # It is common for load balancers to have "stale" servers defined which fail when queried
+    _log.warn("Unexpected error when probing health for target pool #{target_pool.name}: #{err}") unless err.message.start_with?("notFound: ")
     return []
   end
   #
