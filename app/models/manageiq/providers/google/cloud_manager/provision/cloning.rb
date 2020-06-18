@@ -21,6 +21,10 @@ module ManageIQ::Providers::Google::CloudManager::Provision::Cloning
       :preemptible => get_option(:is_preemptible)
     }
 
+    clone_options[:network_interfaces] = [
+      {:access_configs => [{:name => "External NAT", :type => "ONE_TO_ONE_NAT"}]}
+    ]
+
     if clone_options[:user_data]
       clone_options[:metadata] = {
         :items => [
