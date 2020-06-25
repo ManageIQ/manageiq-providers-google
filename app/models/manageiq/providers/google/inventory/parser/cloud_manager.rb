@@ -14,25 +14,9 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     flavors
     key_pairs
     cloud_volumes
-
-    cloud_volume_snapshots do |persister_miq_template, snapshot|
-      image_os(persister_miq_template, snapshot)
-    end
-
-    images do |persister_miq_template, image|
-      image_os(persister_miq_template, image)
-    end
-
-    instances do |persister_vm, parent_image_uid, flavor, instance|
-      instance_os(persister_vm, parent_image_uid)
-
-      instance_hardware(persister_vm, flavor) do |persister_hardware|
-        hardware_disks(persister_hardware, instance)
-      end
-
-      instance_key_pairs(persister_vm, instance)
-      instance_advanced_settings(persister_vm, instance)
-    end
+    cloud_volume_snapshots
+    images
+    instances
 
     _log.info("#{log_header}...Complete")
   end
@@ -106,7 +90,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
 
       persister_miq_template = image(snapshot)
 
-      yield persister_miq_template, snapshot
+      image_os(persister_miq_template, snapshot)
     end
   end
 
@@ -114,7 +98,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     collector.images.each do |image|
       persister_miq_template = image(image)
 
-      yield(persister_miq_template, image)
+      image_os(persister_miq_template, image)
     end
   end
 
@@ -165,7 +149,10 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
         :vendor            => VENDOR_GOOGLE,
       )
 
-      yield persister_vm, parent_image_uid, flavor, instance
+      instance_os(persister_vm, parent_image_uid)
+      instance_hardware(persister_vm, instance, flavor)
+      instance_key_pairs(persister_vm, instance)
+      instance_advanced_settings(persister_vm, instance)
     end
   end
 
@@ -198,13 +185,14 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
 
   # @param persister_vm [InventoryObject<ManageIQ::Providers::Google::CloudManager::Vm>]
   # @param series [InventoryObject<ManageIQ::Providers::Google::CloudManager::Flavor>]
-  def instance_hardware(persister_vm, series)
+  def instance_hardware(persister_vm, instance, series)
     persister_hardware = persister.hardwares.build(
       :vm_or_template  => persister_vm, # manager_ref
       :cpu_total_cores => series[:cpus],
       :memory_mb       => series[:memory] / 1.megabyte
     )
-    yield persister_hardware
+
+    hardware_disks(persister_hardware, instance)
   end
 
   # @param persister_vm [InventoryObject<ManageIQ::Providers::Google::CloudManager::Vm>]
