@@ -36,7 +36,6 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       ems.reload
       VCR.use_cassette(described_class.name.underscore, :allow_unused_http_interactions => true) do
         EmsRefresh.refresh(ems)
-        EmsRefresh.refresh(ems.network_manager)
       end
       ems.reload
       assert_table_counts
