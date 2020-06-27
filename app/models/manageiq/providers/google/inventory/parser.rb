@@ -561,13 +561,15 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
       persister_lb_pool_member = persister.load_balancer_pool_members.find(Digest::MD5.base64digest(member_link))
 
       if persister_lb_pool_member.nil?
-        vm_id = collector.get_vm_id_from_link(member_link)
+        member = collector.instances_by_link[member_link]
+        vm     = persister.vms.lazy_find(member.id) if member
 
         persister_lb_pool_member = persister.load_balancer_pool_members.build(
           :ems_ref => Digest::MD5.base64digest(member_link),
-          :vm      => (persister.vms.lazy_find(vm_id) if vm_id)
+          :vm      => vm
         )
       end
+
       persister.load_balancer_pool_member_pools.build(
         :load_balancer_pool        => persister_lb_pool,
         :load_balancer_pool_member => persister_lb_pool_member

@@ -31,7 +31,11 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
   end
 
   def instances
-    connection.servers.all
+    @instances ||= connection.servers.all
+  end
+
+  def instances_by_link
+    @instances_by_project_name ||= instances.index_by(&:self_link)
   end
 
   # Used for ssh keys common to all instances in the project
@@ -124,25 +128,6 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
     get_health_check_cached(parts[:health_check])
   end
 
-  # Lookup a VM in fog via its link to get the VM id (which is equivalent to
-  # the ems_ref).
-  #
-  # @param link [String] the full url to the vm
-  # @return [String, nil] the vm id, or nil if it could not be found
-  def get_vm_id_from_link(link)
-    parts = parse_vm_link(link)
-    unless parts
-      _log.warn("Unable to parse vm link: #{link}")
-      return nil
-    end
-
-    # Ensure our connection is using the same project; if it's not we can't
-    # do much
-    return nil unless connection.project == parts[:project]
-
-    get_vm_id_cached(parts[:zone], parts[:instance])
-  end
-
   # Parses a VM's self_link attribute to extract the project name, zone, and
   # instance name. Used when other services refer to a VM by its link.
   #
@@ -173,31 +158,6 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
       :project      => m[1],
       :health_check => m[2]
     }
-  end
-
-  # Look up a VM in fog via a given zone and instance for the current
-  # project to get the VM id. Note this method caches matched values during
-  # this instance's entire lifetime.
-  #
-  # @param zone [String] the zone of the vm
-  # @param instance [String] the name of the vm
-  # @return [String, nil] the vm id, or nil if it could not be found
-  def get_vm_id_cached(zone, instance)
-    @vm_cache ||= {}
-
-    return @vm_cache.fetch_path(zone, instance) if @vm_cache.has_key_path?(zone, instance)
-
-    vm = get_vm_id(instance, zone)
-    @vm_cache.store_path(zone, instance, vm) if vm
-    vm
-  end
-
-  def get_vm_id(instance, zone)
-    connection.get_server(instance, zone).id
-  rescue Fog::Errors::Error, ::Google::Apis::ClientError => err
-    # It is common for load balancers to have "stale" servers defined which fail when queried
-    _log.warn("#{log_header} failed to query link for vm_id: #{err}") unless err.message.start_with?("notFound: ")
-    nil
   end
 
   def get_health_check_cached(health_check)
