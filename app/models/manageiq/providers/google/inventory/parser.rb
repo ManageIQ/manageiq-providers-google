@@ -165,7 +165,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
         :connection_state  => "connected",
         :raw_power_state   => instance.status,
         :uid_ems           => uid,
-        :vendor            => VENDOR_GOOGLE,
+        :vendor            => VENDOR_GOOGLE
       )
 
       instance_os(persister_vm, parent_image_uid)
@@ -291,8 +291,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
 
     instance.disks.each do |disk|
       parent_image_uid = @cloud_volume_url_to_source_image_id[disk[:source]]
-      next if parent_image_uid.nil?
-      break
+      break if parent_image_uid.present?
     end
 
     parent_image_uid
@@ -373,7 +372,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
         :ems_ref       => uid, # manager_ref
         :gateway       => cloud_subnet.gateway_address,
         :name          => cloud_subnet.name || uid,
-        :status        => "active",
+        :status        => "active"
       )
     end
   end
@@ -388,7 +387,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
         :ems_ref     => uid,
         :mac_address => nil,
         :name        => network_port[:name],
-        :status      => nil,
+        :status      => nil
       )
 
       persister_network_port.security_groups ||= []
@@ -494,12 +493,12 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
         :name    => forwarding_rule.name
       )
 
-      if forwarding_rule.target
-        # Make sure we link the target link back to this instance for future
-        # back-references
-        @target_pool_link_to_load_balancers[forwarding_rule.target] ||= Set.new
-        @target_pool_link_to_load_balancers[forwarding_rule.target].add(persister_load_balancer)
-      end
+      next if forwarding_rule.target.nil?
+
+      # Make sure we link the target link back to this instance for future
+      # back-references
+      @target_pool_link_to_load_balancers[forwarding_rule.target] ||= Set.new
+      @target_pool_link_to_load_balancers[forwarding_rule.target].add(persister_load_balancer)
     end
   end
 
@@ -512,7 +511,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   # @param forwarding_rule [Fog::Compute::Google::ForwardingRule]
   def load_balancer_listener(forwarding_rule)
     # Only TCP/UDP/SCTP forwarding rules have ports
-    has_ports = %w(TCP UDP SCTP).include?(forwarding_rule.ip_protocol)
+    has_ports = %w[TCP UDP SCTP].include?(forwarding_rule.ip_protocol)
     port_range = (parse_port_range(forwarding_rule.port_range) if has_ports)
 
     persister_lb_listener = persister.load_balancer_listeners.build(
@@ -608,7 +607,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
         :port                   => health_check.port,
         :timeout                => health_check.timeout_sec,
         :unhealthy_threshold    => health_check.unhealthy_threshold,
-        :url_path               => health_check.request_path,
+        :url_path               => health_check.request_path
       )
 
       load_balancer_health_check_members(persister_lb_health_check, target_pool)
@@ -619,6 +618,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   # @param target_pool [Fog::Compute::Google::TargetPool]
   def load_balancer_health_check_members(persister_lb_health_check, target_pool)
     return if target_pool.instances.blank?
+
     # First attempt to get the health of the instance
     # Due to a bug in fog, there's no way to get the health of an individual
     # member. Instead we have to get the health of the entire target_pool,
@@ -652,7 +652,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   rescue Fog::Errors::Error, Google::Apis::ClientError => err
     # It is common for load balancers to have "stale" servers defined which fail when queried
     _log.warn("Unexpected error when probing health for target pool #{target_pool.name}: #{err}") unless err.message.start_with?("notFound: ")
-    return []
+    []
   end
   #
   # --- helpers ---

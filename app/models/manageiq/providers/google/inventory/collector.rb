@@ -5,7 +5,7 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
   attr_reader :project_key_pairs
 
   def availability_zones
-    connection.zones.all
+    @availability_zones ||= connection.zones.all
   end
 
   def flavors
@@ -18,16 +18,16 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
   end
 
   def cloud_volumes
-    connection.disks.all
+    @cloud_volumes ||= connection.disks.all
   end
 
   # !also parse vms! there
   def cloud_volume_snapshots
-    connection.snapshots.all
+    @cloud_volume_snapshots ||= connection.snapshots.all
   end
 
   def images
-    connection.images.all
+    @images ||= connection.images.all
   end
 
   def instances
@@ -35,26 +35,24 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
   end
 
   def instances_by_link
-    @instances_by_project_name ||= instances.index_by(&:self_link)
+    @instances_by_link ||= instances.index_by(&:self_link)
   end
 
   # Used for ssh keys common to all instances in the project
   def project_instance_metadata
-    if @common_instance_metadata.nil?
-      @common_instance_metadata = connection.projects.get(manager.project).common_instance_metadata
-    end
-    @common_instance_metadata
+    @project_instance_metadata ||= connection.projects.get(manager.project).common_instance_metadata
   end
+
   def cloud_networks
-    connection.networks.all
+    @cloud_networks ||= connection.networks.all
   end
 
   def cloud_subnets
-    if @subnetworks.nil?
-      @subnetworks = connection.subnetworks.all
+    if @cloud_subnets.nil?
+      @cloud_subnets = connection.subnetworks.all
       # For a backwards compatibility, old GCE networks were created without subnet. It's not possible now, but
       # GCE haven't migrated to new format. We will create a fake subnet for each network without subnets.
-      @subnetworks += connection.networks.select { |x| x.ipv4_range.present? }.map do |x|
+      @cloud_subnets += connection.networks.select { |x| x.ipv4_range.present? }.map do |x|
         Fog::Compute::Google::Subnetwork.new(
           :name               => x.name,
           :gateway_address    => x.gateway_i_pv4,
@@ -69,7 +67,7 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
       end
     end
 
-    @subnetworks
+    @cloud_subnets
   end
 
   def network_ports
@@ -106,7 +104,7 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
 
   # for IC load_balancers
   def forwarding_rules
-    connection.forwarding_rules.all
+    @forwarding_rules ||= connection.forwarding_rules.all
   end
 
   # for IC load_balancer_pools
@@ -125,6 +123,7 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
     end
 
     return nil unless connection.project == parts[:project]
+
     get_health_check_cached(parts[:health_check])
   end
 

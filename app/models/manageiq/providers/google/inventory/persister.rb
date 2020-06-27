@@ -10,12 +10,12 @@ class ManageIQ::Providers::Google::Inventory::Persister < ManageIQ::Providers::I
   private
 
   def initialize_cloud_inventory_collections
-    %i(availability_zones
+    %i[availability_zones
        disks
        flavors
        hardwares
        operating_systems
-       vms).each do |name|
+       vms].each do |name|
 
       add_cloud_collection(name)
     end
@@ -31,11 +31,10 @@ class ManageIQ::Providers::Google::Inventory::Persister < ManageIQ::Providers::I
 
     # Custom processing of Ancestry
     add_cloud_collection(:vm_and_miq_template_ancestry)
-
   end
 
   def initialize_network_inventory_collections
-    %i(cloud_networks
+    %i[cloud_networks
        cloud_subnets
        floating_ips
        load_balancers
@@ -46,7 +45,7 @@ class ManageIQ::Providers::Google::Inventory::Persister < ManageIQ::Providers::I
        load_balancer_pool_members
        load_balancer_pool_member_pools
        network_ports
-       security_groups).each do |name|
+       security_groups].each do |name|
 
       add_network_collection(name)
     end
@@ -85,7 +84,7 @@ class ManageIQ::Providers::Google::Inventory::Persister < ManageIQ::Providers::I
   def add_key_pairs
     add_cloud_collection(:key_pairs) do |builder|
       builder.add_properties(
-        :manager_ref => %i(name fingerprint),
+        :manager_ref => %i[name fingerprint],
         :model_class => ManageIQ::Providers::Google::CloudManager::AuthKeyPair
       )
     end
@@ -95,31 +94,31 @@ class ManageIQ::Providers::Google::Inventory::Persister < ManageIQ::Providers::I
   def add_advanced_settings
     add_cloud_collection(:vms_and_templates_advanced_settings) do |builder|
       builder.add_properties(
-        :manager_ref                  => %i(resource),
+        :manager_ref                  => %i[resource],
         :model_class                  => ::AdvancedSetting,
-        :parent_inventory_collections => %i(vms)
+        :parent_inventory_collections => %i[vms]
       )
     end
   end
 
   def add_cloud_subnet_network_ports
     add_network_collection(:cloud_subnet_network_ports) do |builder|
-      builder.add_properties(:manager_ref_allowed_nil => %i(cloud_subnet))
+      builder.add_properties(:manager_ref_allowed_nil => %i[cloud_subnet])
     end
   end
 
   def add_firewall_rules
     add_network_collection(:firewall_rules) do |builder|
       builder.add_properties(
-        :manager_ref             => %i(name resource source_security_group direction host_protocol port end_port source_ip_range),
-        :manager_ref_allowed_nil => %i(source_security_group)
+        :manager_ref             => %i[name resource source_security_group direction host_protocol port end_port source_ip_range],
+        :manager_ref_allowed_nil => %i[source_security_group]
       )
     end
   end
 
   def add_load_balancer_listener_pools
     add_network_collection(:load_balancer_listener_pools) do |builder|
-      builder.add_properties(:manager_ref_allowed_nil => %i(load_balancer_pool))
+      builder.add_properties(:manager_ref_allowed_nil => %i[load_balancer_pool])
     end
   end
 
