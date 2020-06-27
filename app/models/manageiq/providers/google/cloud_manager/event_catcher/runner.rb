@@ -13,8 +13,8 @@ class ManageIQ::Providers::Google::CloudManager::EventCatcher::Runner <
   # #stop_event_monitor is called.
   def monitor_events
     _log.info "#{log_prefix} Monitoring for events"
+    event_monitor_running
     event_monitor_handle.each_batch do |events|
-      event_monitor_running
       _log.debug "#{log_prefix} Received events #{events.collect { |e| parse_event_type(e) }}"
       @queue.enq events
       sleep_poll_normal
