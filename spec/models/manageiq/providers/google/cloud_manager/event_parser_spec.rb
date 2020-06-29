@@ -11,7 +11,8 @@ describe ManageIQ::Providers::Google::CloudManager::EventParser do
           :message    => event_type,
           :timestamp  => "2018-05-21T13:36:40.472279Z",
           :full_data  => event_json,
-          :ems_id     => nil
+          :ems_id     => nil,
+          :vm_ems_ref => event_json.fetch_path("jsonPayload", "resource", "id")
         )
       end
     end
