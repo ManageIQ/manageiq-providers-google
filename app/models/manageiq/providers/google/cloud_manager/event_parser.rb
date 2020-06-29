@@ -17,6 +17,12 @@ module ManageIQ::Providers::Google::CloudManager::EventParser
       :ems_id     => ems_id
     }
 
+    resource = event.dig("jsonPayload", "resource") || {}
+    if resource["type"] == "instance"
+      event_hash[:vm_ems_ref] = resource["id"]
+      event_hash[:vm_uid_ems] = resource["id"]
+    end
+
     event_hash
   end
 end
