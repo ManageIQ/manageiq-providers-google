@@ -12,7 +12,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
 
     availability_zones
     flavors
-    key_pairs
+    auth_key_pairs
     cloud_volumes
     cloud_volume_snapshots
     images
@@ -157,9 +157,9 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
   end
 
   # Adding global key-pairs (needed when instances count == 0)
-  def key_pairs
+  def auth_key_pairs
     project_key_pairs.each do |ssh_key|
-      persister.key_pairs.build(
+      persister.auth_key_pairs.build(
         :name        => ssh_key[:name],
         :fingerprint => ssh_key[:fingerprint]
       )
@@ -173,7 +173,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::CloudManager < ManageIQ::P
     instance_ssh_keys = project_key_pairs | parse_compute_metadata_ssh_keys(instance.metadata)
 
     instance_ssh_keys.each do |ssh_key|
-      key_pair = persister.key_pairs.build(
+      key_pair = persister.auth_key_pairs.build(
         :name        => ssh_key[:name],       # manager_ref
         :fingerprint => ssh_key[:fingerprint] # manager_ref
       )

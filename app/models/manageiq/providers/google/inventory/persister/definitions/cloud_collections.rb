@@ -14,7 +14,7 @@ module ManageIQ::Providers::Google::Inventory::Persister::Definitions::CloudColl
 
     add_miq_templates
 
-    add_key_pairs
+    add_auth_key_pairs
 
     add_cloud_volumes
     add_cloud_volume_snapshots
@@ -53,11 +53,10 @@ module ManageIQ::Providers::Google::Inventory::Persister::Definitions::CloudColl
     end
   end
 
-  def add_key_pairs
-    add_collection(cloud, :key_pairs) do |builder|
+  def add_auth_key_pairs
+    add_collection(cloud, :auth_key_pairs) do |builder|
       builder.add_properties(
         :manager_ref => %i(name fingerprint),
-        :model_class => ManageIQ::Providers::Google::CloudManager::AuthKeyPair
       )
     end
   end
