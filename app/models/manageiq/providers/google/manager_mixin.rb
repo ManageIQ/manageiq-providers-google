@@ -28,7 +28,7 @@ module ManageIQ::Providers::Google::ManagerMixin
             :name       => "project",
             :label      => _("Project ID"),
             :isRequired => true,
-            :validate   => [{:type => "required-validator"}]
+            :validate   => [{:type => "required"}]
           },
           {
             :component => 'sub-form',
@@ -48,7 +48,7 @@ module ManageIQ::Providers::Google::ManagerMixin
                   :label          => _("Service Account JSON"),
                   :isRequired     => true,
                   :helperText     => _('Copy and paste the contents of your Service Account JSON file above.'),
-                  :validate       => [{:type => "required-validator"}]
+                  :validate       => [{:type => "required"}]
                 },
               ],
             ],
