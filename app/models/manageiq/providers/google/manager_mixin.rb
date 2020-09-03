@@ -25,6 +25,7 @@ module ManageIQ::Providers::Google::ManagerMixin
         :fields => [
           {
             :component  => "text-field",
+            :id         => "project",
             :name       => "project",
             :label      => _("Project ID"),
             :isRequired => true,
@@ -32,10 +33,12 @@ module ManageIQ::Providers::Google::ManagerMixin
           },
           {
             :component => 'sub-form',
+            :id        => 'endpoints-subform',
             :name      => 'endpoints-subform',
             :title     => _("Endpoint"),
             :fields    => [
               :component              => 'validate-provider-credentials',
+              :id                     => 'authentications.default.valid',
               :name                   => 'authentications.default.valid',
               :skipSubmit             => true,
               :validationDependencies => %w[type project zone_id],
@@ -44,6 +47,7 @@ module ManageIQ::Providers::Google::ManagerMixin
                   :component      => "password-field",
                   :componentClass => 'textarea',
                   :rows           => 10,
+                  :id             => "authentications.default.auth_key",
                   :name           => "authentications.default.auth_key",
                   :label          => _("Service Account JSON"),
                   :isRequired     => true,
