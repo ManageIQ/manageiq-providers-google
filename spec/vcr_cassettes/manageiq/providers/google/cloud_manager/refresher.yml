@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://www.googleapis.com/oauth2/v3/token
+    uri: https://www.googleapis.com/oauth2/v4/token
     body:
       encoding: ASCII-8BIT
       string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiIxMzU3NzY1MTA2NjYtY29tcHV0ZUBkZXZlbG9wZXIuZ3NlcnZpY2VhY2NvdW50LmNvbSIsImF1ZCI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL29hdXRoMi92My90b2tlbiIsImV4cCI6MTUyNjA0OTIyOSwiaWF0IjoxNTI2MDQ5MTA5LCJzY29wZSI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY29tcHV0ZSBodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2RldnN0b3JhZ2UucmVhZF93cml0ZSBodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL25kZXYuY2xvdWRtYW4gaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9jbG91ZC1wbGF0Zm9ybSJ9.D2z-cvUtyN6IA5Fjxj6hQ9mqIbgIA14foFKDLPMncWSctMBTTsQ0ZlWGHums09NfbROjqRRFo-157fXWkcK_j0wv2h7dSoBMAIQcawMwbS7R_DitAeabuBieHbZBYhfo6mTpxSVzn4tXOc7YlFX0GTsbdDvOnznCbZQ4fRQPpysxPuv9T5CmNS0U6gWWGjbeEd8hiEhM2010CDmfxpcAUSMhaHZA6QeM51IoGCaisMCFf8BWmQRCfPaWg2dFA11Ix0Y7XFmCu1wpOMnbGkpHtYDkw9yLdRfYTgOVEDnjaQgilqH4MqyoFvzCYL_FblL0X76rt3rg8FvIiPnFXop3pQ
@@ -58,7 +58,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:49 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones
     body:
       encoding: UTF-8
       string: ''
@@ -754,7 +754,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:49 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/machineTypes
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/machineTypes
     body:
       encoding: UTF-8
       string: ''
@@ -8705,7 +8705,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:50 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/disks
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/disks
     body:
       encoding: UTF-8
       string: ''
@@ -10698,7 +10698,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:50 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/snapshots
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/snapshots
     body:
       encoding: UTF-8
       string: ''
@@ -10784,7 +10784,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:51 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/images
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/images
     body:
       encoding: UTF-8
       string: ''
@@ -11870,7 +11870,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:51 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images
+    uri: https://compute.googleapis.com/compute/v1/projects/centos-cloud/global/images
     body:
       encoding: UTF-8
       string: ''
@@ -15394,7 +15394,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:51 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images
+    uri: https://compute.googleapis.com/compute/v1/projects/cos-cloud/global/images
     body:
       encoding: UTF-8
       string: ''
@@ -20053,7 +20053,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:52 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images
+    uri: https://compute.googleapis.com/compute/v1/projects/coreos-cloud/global/images
     body:
       encoding: UTF-8
       string: ''
@@ -22677,7 +22677,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:52 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images
+    uri: https://compute.googleapis.com/compute/v1/projects/debian-cloud/global/images
     body:
       encoding: UTF-8
       string: ''
@@ -26908,7 +26908,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:53 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images
+    uri: https://compute.googleapis.com/compute/v1/projects/rhel-cloud/global/images
     body:
       encoding: UTF-8
       string: ''
@@ -30651,7 +30651,73 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:53 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images
+    uri: https://compute.googleapis.com/compute/v1/projects/rhel-sap-cloud/global/images
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - |-
+        ManageIQ/master fog/1.3.3 google-api-ruby-client/0.19.8 Linux/4.16.7-1-ARCH
+         (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Fri, 11 May 2018 14:32:53 GMT
+      Authorization:
+      - Bearer ya29.c.EmC4BdUk3rY5ZSoqTl2cRs6iiC5bLmCCcWMh3VPJ9Rj6F9iFB64oPIPXel9NcloXD0_BSRCyGqHVfnhvndbJoCeapl_ZsIURiI4IQTWARmoJ2oe1f5PrVVClOKVP8jGh6dk
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 11 May 2018 14:32:53 GMT
+      Date:
+      - Fri, 11 May 2018 14:32:53 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"m5zgsm3eBqrpIvwNxgMUU6DDHQQ=/K5WMvnsR81BPaFBwRGVKTSbRil8="'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Encoding:
+      - gzip
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - hq=":443"; ma=2592000; quic=51303433; quic=51303432; quic=51303431; quic=51303339;
+        quic=51303335,quic=":443"; ma=2592000; v="43,42,41,39,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "compute#imageList",
+         "id": "projects/rhel-sap-cloud/global/images",
+         "items": [
+         ],
+         "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images"
+        }
+    http_version: 
+  recorded_at: Fri, 11 May 2018 14:32:53 GMT
+- request:
+    method: get
+    uri: https://compute.googleapis.com/compute/v1/projects/suse-cloud/global/images
     body:
       encoding: UTF-8
       string: ''
@@ -30939,7 +31005,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:53 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/suse-sap-cloud/global/images
+    uri: https://compute.googleapis.com/compute/v1/projects/suse-sap-cloud/global/images
     body:
       encoding: UTF-8
       string: ''
@@ -31314,7 +31380,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:53 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images
+    uri: https://compute.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images
     body:
       encoding: UTF-8
       string: ''
@@ -38500,7 +38566,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:54 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images
+    uri: https://compute.googleapis.com/compute/v1/projects/windows-cloud/global/images
     body:
       encoding: UTF-8
       string: ''
@@ -43780,7 +43846,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:54 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images
+    uri: https://compute.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images
     body:
       encoding: UTF-8
       string: ''
@@ -56659,7 +56725,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:55 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images
+    uri: https://compute.googleapis.com/compute/v1/projects/opensuse-cloud/global/images
     body:
       encoding: UTF-8
       string: ''
@@ -56830,7 +56896,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:55 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/instances
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/instances
     body:
       encoding: UTF-8
       string: ''
@@ -58755,7 +58821,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:56 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT
     body:
       encoding: UTF-8
       string: ''
@@ -58974,7 +59040,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:56 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/us-central1-a/machineTypes/custom-1-1024
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/us-central1-a/machineTypes/custom-1-1024
     body:
       encoding: UTF-8
       string: ''
@@ -59044,7 +59110,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:32:57 GMT
 - request:
     method: post
-    uri: https://www.googleapis.com/oauth2/v3/token
+    uri: https://www.googleapis.com/oauth2/v4/token
     body:
       encoding: ASCII-8BIT
       string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiIxMzU3NzY1MTA2NjYtY29tcHV0ZUBkZXZlbG9wZXIuZ3NlcnZpY2VhY2NvdW50LmNvbSIsImF1ZCI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL29hdXRoMi92My90b2tlbiIsImV4cCI6MTUyNjA0OTI4OCwiaWF0IjoxNTI2MDQ5MTY4LCJzY29wZSI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY29tcHV0ZSBodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2RldnN0b3JhZ2UucmVhZF93cml0ZSBodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL25kZXYuY2xvdWRtYW4gaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9jbG91ZC1wbGF0Zm9ybSJ9.sO6nQVSvwc16Kr0CvSHtaFdz9r_0glves046b-aZM6lx7iZ0VZB4nfOU9qOxQhyhAy-g3qNEjqvlUvcF3yVpGyzLKKJ5rzG1Sp7qFu1Ze8XCorsfMZOK6t2PcFE_S6E_TESR0DAqCNsY4fG1NfOeUShxJZ8kKcUjrZLRPBi9n3M2yDfCkxuWf2m-WLWPGR0AZP5OigKNyNwDfj7d6aa4nYDQFqnDqI4L6nZZU5WTCmt0vTNniAiUkK3B-eInR3_-bfu4B4-WHhn1CFH2o9UNf24rWGQcSDHY5fEXjTHm99L1CKiRQzK73jlx9aB1035CenpaX_7PIP_8tCqx-wzB3Q
@@ -59100,7 +59166,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:48 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/networks
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/networks
     body:
       encoding: UTF-8
       string: ''
@@ -59224,7 +59290,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:49 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/subnetworks
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/subnetworks
     body:
       encoding: UTF-8
       string: ''
@@ -59584,7 +59650,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:49 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/networks
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/networks
     body:
       encoding: UTF-8
       string: ''
@@ -59708,7 +59774,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:49 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/firewalls
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/firewalls
     body:
       encoding: UTF-8
       string: ''
@@ -60055,7 +60121,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:50 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/instances
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/instances
     body:
       encoding: UTF-8
       string: ''
@@ -61980,7 +62046,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:50 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/addresses
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/addresses
     body:
       encoding: UTF-8
       string: ''
@@ -62241,7 +62307,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:51 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/forwardingRules
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/forwardingRules
     body:
       encoding: UTF-8
       string: ''
@@ -62538,7 +62604,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:51 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/targetPools
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/targetPools
     body:
       encoding: UTF-8
       string: ''
@@ -62811,7 +62877,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:51 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/us-central1-a/instances/instance-group-1-gvej
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/us-central1-a/instances/instance-group-1-gvej
     body:
       encoding: UTF-8
       string: ''
@@ -62958,7 +63024,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:52 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/asia-east1-a/instances/load-balancer-1
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/asia-east1-a/instances/load-balancer-1
     body:
       encoding: UTF-8
       string: ''
@@ -63091,7 +63157,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:52 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/asia-east1-a/instances/load-balancer-2
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/asia-east1-a/instances/load-balancer-2
     body:
       encoding: UTF-8
       string: ''
@@ -63161,7 +63227,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:52 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/forwardingRules
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/forwardingRules
     body:
       encoding: UTF-8
       string: ''
@@ -63458,7 +63524,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:52 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/targetPools
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/targetPools
     body:
       encoding: UTF-8
       string: ''
@@ -63731,7 +63797,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:53 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/httpHealthChecks/test-lb-health-check
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/httpHealthChecks/test-lb-health-check
     body:
       encoding: UTF-8
       string: ''
@@ -63805,7 +63871,7 @@ http_interactions:
   recorded_at: Fri, 11 May 2018 14:33:53 GMT
 - request:
     method: post
-    uri: https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/regions/asia-east1/targetPools/test-first-load-balancer/getHealth
+    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/regions/asia-east1/targetPools/test-first-load-balancer/getHealth
     body:
       encoding: UTF-8
       string: '{"instance":"https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/asia-east1-a/instances/load-balancer-1"}'
