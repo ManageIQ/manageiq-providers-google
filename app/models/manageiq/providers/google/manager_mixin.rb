@@ -41,6 +41,7 @@ module ManageIQ::Providers::Google::ManagerMixin
               :id                     => 'authentications.default.valid',
               :name                   => 'authentications.default.valid',
               :skipSubmit             => true,
+              :isRequired             => true,
               :validationDependencies => %w[type project zone_id],
               :fields                 => [
                 {
