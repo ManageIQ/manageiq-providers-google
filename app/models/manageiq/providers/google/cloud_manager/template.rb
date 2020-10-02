@@ -11,4 +11,8 @@ class ManageIQ::Providers::Google::CloudManager::Template < ManageIQ::Providers:
     connection ||= ext_management_system.connect
     connection.images[ems_ref]
   end
+
+  def self.display_name(number = 1)
+    n_('Image (Google)', 'Images (Google)', number)
+  end
 end
