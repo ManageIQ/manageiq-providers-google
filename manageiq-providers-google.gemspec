@@ -20,5 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "fog-google", "~> 1.10"
 
+  spec.add_development_dependency "manageiq-style"
   spec.add_development_dependency "simplecov"
 end
