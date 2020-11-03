@@ -2,6 +2,7 @@ class ManageIQ::Providers::Google::CloudManager < ManageIQ::Providers::CloudMana
   require_nested :AuthKeyPair
   require_nested :AvailabilityZone
   require_nested :CloudVolume
+  require_nested :CloudVolumeSnapshot
   require_nested :EventCatcher
   require_nested :EventParser
   require_nested :Flavor
