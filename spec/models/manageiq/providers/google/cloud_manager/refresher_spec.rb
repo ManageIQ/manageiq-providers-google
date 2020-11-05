@@ -518,6 +518,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
   def assert_specific_cloud_volume
     expect(cloud_volume).to have_attributes(
       :ems_ref           => "1368210998906894667",
+      :type              => "ManageIQ::Providers::Google::CloudManager::CloudVolume",
       :name              => "instance-group-1-gvej",
       :status            => "READY",
       :volume_type       => "pd-standard",
@@ -531,6 +532,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
   def assert_specific_cloud_volume_snapshot
     expect(cloud_volume_snapshot).to have_attributes(
       :name        => "test-snapshot-1",
+      :type        => "ManageIQ::Providers::Google::CloudManager::CloudVolumeSnapshot",
       :ems_ref     => "4530445150875817520",
       :status      => "READY",
       :description => nil,
