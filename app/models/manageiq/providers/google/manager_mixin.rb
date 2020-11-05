@@ -88,7 +88,6 @@ module ManageIQ::Providers::Google::ManagerMixin
       require 'fog/google'
 
       config = {
-        :provider               => "Google",
         :google_project         => google_project,
         :google_json_key_string => ManageIQ::Password.try_decrypt(google_json_key),
         :app_name               => Vmdb::Appliance.PRODUCT_NAME,
@@ -100,11 +99,11 @@ module ManageIQ::Providers::Google::ManagerMixin
         case options[:service]
           # specify Compute as the default
         when 'compute', nil
-          connection = ::Fog::Compute.new(config)
+          connection = ::Fog::Compute::Google.new(config)
         when 'pubsub'
-          connection = ::Fog::Google::Pubsub.new(config.except(:provider))
+          connection = ::Fog::Google::Pubsub.new(config)
         when 'monitoring'
-          connection = ::Fog::Google::Monitoring.new(config.except(:provider))
+          connection = ::Fog::Google::Monitoring.new(config)
         else
           raise ArgumentError, "Unknown service: #{options[:service]}"
         end
