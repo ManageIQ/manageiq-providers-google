@@ -274,7 +274,10 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
     end
 
     health_check = collector.get_health_check_from_link(target_pool.health_checks.first)
-    @target_pool_link_to_load_balancers[target_pool.self_link].each do |persister_load_balancer|
+    load_balancers = @target_pool_link_to_load_balancers[target_pool.self_link]
+    return if load_balancers.blank?
+
+    load_balancers.each do |persister_load_balancer|
       # load_balancer and listener have same ems_ref
       load_balancer_listener = persister.load_balancer_listeners.lazy_find(persister_load_balancer.ems_ref)
 
