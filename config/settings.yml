@@ -17,6 +17,13 @@
     :password:
     :port:
     :user:
+  :gce:
+    :host:
+    :password:
+    :port:
+    :user:
+:log:
+  :level_gce: info
 :workers:
   :worker_base:
     :event_catcher:
