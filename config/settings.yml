@@ -12,11 +12,6 @@
     :inventory_collections:
       :saver_strategy: default
 :http_proxy:
-  :google:
-    :host:
-    :password:
-    :port:
-    :user:
   :gce:
     :host:
     :password:
