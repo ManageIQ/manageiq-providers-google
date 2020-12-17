@@ -1,5 +1,5 @@
 module ManageIQ::Providers::Google::CloudManager::Provision::Cloning
-  def do_clone_task_check(clone_task_ref)
+  def do_clone_task_check(_clone_task_ref)
     source.with_provider_connection(:service => 'compute') do |google|
       instance = google.servers.get(dest_name, dest_availability_zone.ems_ref)
 
