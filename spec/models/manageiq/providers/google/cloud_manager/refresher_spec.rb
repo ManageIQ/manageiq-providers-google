@@ -98,7 +98,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       :orchestration_stack_parameter     => 0,
       :orchestration_stack_resource      => 0,
       :orchestration_template            => 0,
-      :relationship                      => 18,
+      :relationship                      => 0,
       :resource_group                    => 0,
       :security_group                    => 3,
       :vm                                => 15,
