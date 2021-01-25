@@ -20,13 +20,12 @@
 :log:
   :level_gce: info
 :workers:
-  :worker_base:
-    :event_catcher:
-      :event_catcher_google:
-        :poll: 15.seconds
-    :queue_worker_base:
-      :ems_metrics_collector_worker:
-        :ems_metrics_collector_worker_google: {}
-      :ems_refresh_worker:
-        :ems_refresh_worker_google: {}
-        :ems_refresh_worker_google_network: {}
+  :ems_metrics_collector_worker_google:
+    :inherits_from: ems_metrics_collector_worker
+  :ems_refresh_worker_google:
+    :inherits_from: ems_refresh_worker
+  :ems_refresh_worker_google_network:
+    :inherits_from: ems_refresh_worker
+  :event_catcher_google:
+    :inherits_from: event_catcher
+    :poll: 15.seconds
