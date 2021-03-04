@@ -7,12 +7,11 @@ module ManageIQ::Providers::Google::Inventory::Persister::Definitions::CloudColl
        flavors
        hardwares
        operating_systems
+       miq_templates
        vms).each do |name|
 
       add_collection(cloud, name)
     end
-
-    add_miq_templates
 
     add_auth_key_pairs
 
@@ -28,14 +27,6 @@ module ManageIQ::Providers::Google::Inventory::Persister::Definitions::CloudColl
   end
 
   # ------ IC provider specific definitions -------------------------
-
-  def add_miq_templates
-    add_collection(cloud, :miq_templates) do |builder|
-      builder.add_properties(
-        :model_class => ManageIQ::Providers::Google::CloudManager::Template
-      )
-    end
-  end
 
   def add_cloud_volumes
     add_collection(cloud, :cloud_volumes) do |builder|
