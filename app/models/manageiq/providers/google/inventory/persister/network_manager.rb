@@ -8,12 +8,9 @@ class ManageIQ::Providers::Google::Inventory::Persister::NetworkManager < Manage
   end
 
   def initialize_cloud_inventory_collections
-    %i(vms).each do |name|
+    %i[vms].each do |name|
       add_collection(cloud, name) do |builder|
-        builder.add_properties(
-          :parent   => manager.parent_manager,
-          :strategy => :local_db_cache_all
-        )
+        builder.add_properties(:strategy => :local_db_cache_all)
       end
     end
   end
