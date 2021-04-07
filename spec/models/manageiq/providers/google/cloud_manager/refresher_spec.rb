@@ -34,7 +34,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
   it "will perform a full refresh" do
     2.times do # Run twice to verify that a second run with existing data does not change anything
       ems.reload
-      VCR.use_cassette(described_class.name.underscore, :allow_unused_http_interactions => true) do
+      VCR.use_cassette(described_class.name.underscore) do
         EmsRefresh.refresh(ems)
       end
       ems.reload
