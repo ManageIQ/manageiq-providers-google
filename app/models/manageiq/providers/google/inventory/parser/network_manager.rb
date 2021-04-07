@@ -248,7 +248,7 @@ class ManageIQ::Providers::Google::Inventory::Parser::NetworkManager < ManageIQ:
       persister_lb_pool_member = persister.load_balancer_pool_members.find(Digest::MD5.base64digest(member_link))
 
       if persister_lb_pool_member.nil?
-        vm_id = collector.get_vm_id_from_link(member_link)
+        vm_id = collector.instances_by_self_link[member_link]&.id
 
         persister_lb_pool_member = persister.load_balancer_pool_members.build(
           :ems_ref => Digest::MD5.base64digest(member_link),
