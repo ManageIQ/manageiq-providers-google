@@ -8,8 +8,4 @@ class ManageIQ::Providers::Google::Inventory < ManageIQ::Providers::Inventory
   def self.default_manager_name
     "CloudManager"
   end
-
-  def self.parser_classes_for(_ems, _target)
-    [ManageIQ::Providers::Google::Inventory::Parser::CloudManager, ManageIQ::Providers::Google::Inventory::Parser::NetworkManager]
-  end
 end
