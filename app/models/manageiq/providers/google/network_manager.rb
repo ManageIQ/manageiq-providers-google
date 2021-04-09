@@ -9,7 +9,6 @@ class ManageIQ::Providers::Google::NetworkManager < ManageIQ::Providers::Network
   require_nested :LoadBalancerPoolMember
   require_nested :NetworkPort
   require_nested :NetworkRouter
-  require_nested :RefreshWorker
   require_nested :Refresher
   require_nested :SecurityGroup
 
