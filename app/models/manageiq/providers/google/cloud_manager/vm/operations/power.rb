@@ -16,14 +16,6 @@ module ManageIQ::Providers::Google::CloudManager::Vm::Operations::Power
     validate_unsupported(_("Pause Operation"))
   end
 
-  def raw_shelve
-    validate_unsupported(_("Shelve Operation"))
-  end
-
-  def raw_shelve_offload
-    validate_unsupported(_("Shelve Offload Operation"))
-  end
-
   def raw_start
     with_provider_object(&:start)
     self.update!(:raw_power_state => "starting")
