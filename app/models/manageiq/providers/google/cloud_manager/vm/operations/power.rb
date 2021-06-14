@@ -1,19 +1,8 @@
 module ManageIQ::Providers::Google::CloudManager::Vm::Operations::Power
   extend ActiveSupport::Concern
   included do
+    supports_not :pause, :reason => "Pause Operation is not available for Google Cloud Instances"
     supports_not :suspend
-  end
-
-  def validate_pause
-    validate_unsupported(_("Pause Operation"))
-  end
-
-  def raw_suspend
-    validate_unsupported(_("Suspend Operation"))
-  end
-
-  def raw_pause
-    validate_unsupported(_("Pause Operation"))
   end
 
   def raw_start
