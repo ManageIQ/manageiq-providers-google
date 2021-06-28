@@ -70,12 +70,12 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
 
   def flavor(flavor)
     persister.flavors.build(
-      :cpus        => flavor.guest_cpus,
-      :description => flavor.description,
-      :ems_ref     => flavor.name,
-      :enabled     => !flavor.deprecated,
-      :memory      => flavor.memory_mb * 1.megabyte,
-      :name        => flavor.name
+      :cpu_total_cores => flavor.guest_cpus,
+      :description     => flavor.description,
+      :ems_ref         => flavor.name,
+      :enabled         => !flavor.deprecated,
+      :memory          => flavor.memory_mb * 1.megabyte,
+      :name            => flavor.name
     )
   end
 
@@ -213,7 +213,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   def instance_hardware(persister_vm, instance, series)
     persister_hardware = persister.hardwares.build(
       :vm_or_template  => persister_vm, # manager_ref
-      :cpu_total_cores => series[:cpus],
+      :cpu_total_cores => series[:cpu_total_cores],
       :memory_mb       => series[:memory] / 1.megabyte
     )
 
