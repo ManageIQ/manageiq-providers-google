@@ -231,12 +231,12 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
 
   def assert_specific_flavor
     expect(flavor).to have_attributes(
-      :name        => "n1-standard-1",
-      :ems_ref     => "n1-standard-1",
-      :description => "1 vCPU, 3.75 GB RAM",
-      :enabled     => true,
-      :cpus        => 1,
-      :memory      => 4_026_531_840
+      :name            => "n1-standard-1",
+      :ems_ref         => "n1-standard-1",
+      :description     => "1 vCPU, 3.75 GB RAM",
+      :enabled         => true,
+      :cpu_total_cores => 1,
+      :memory          => 4_026_531_840
     )
 
     expect(flavor.ext_management_system).to eq(ems)
