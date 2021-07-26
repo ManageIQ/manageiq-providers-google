@@ -30,6 +30,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
     availability_zones
     flavors
     auth_key_pairs
+    cloud_databases
     cloud_volumes
     cloud_volume_snapshots
     images
@@ -77,6 +78,15 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
       :memory          => flavor.memory_mb * 1.megabyte,
       :name            => flavor.name
     )
+  end
+
+  def cloud_databases
+    collector.cloud_databases.each do |cloud_database|
+      persister.cloud_databases.build(
+        :ems_ref => cloud_database.id.to_s,
+        :name    => cloud_database.name
+      )
+    end
   end
 
   def cloud_volumes
