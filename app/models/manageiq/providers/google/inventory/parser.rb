@@ -31,6 +31,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
     flavors
     auth_key_pairs
     cloud_databases
+    cloud_database_flavors
     cloud_volumes
     cloud_volume_snapshots
     images
@@ -83,8 +84,22 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   def cloud_databases
     collector.cloud_databases.each do |cloud_database|
       persister.cloud_databases.build(
-        :ems_ref => cloud_database.id.to_s,
-        :name    => cloud_database.name
+        :ems_ref               => cloud_database.name,
+        :name                  => cloud_database.name,
+        :status                => cloud_database.state,
+        :db_engine             => cloud_database.database_version,
+        :cloud_database_flavor => persister.cloud_database_flavors.lazy_find(cloud_database.tier)
+      )
+    end
+  end
+
+  def cloud_database_flavors
+    collector.cloud_database_flavors.each do |cloud_database_flavor|
+      persister.cloud_database_flavors.build(
+        :ems_ref => cloud_database_flavor.tier,
+        :name    => cloud_database_flavor.tier,
+        :enabled => true,
+        :memory  => cloud_database_flavor.ram
       )
     end
   end

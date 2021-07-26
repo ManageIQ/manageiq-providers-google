@@ -11,6 +11,7 @@ class ManageIQ::Providers::Google::Inventory::Persister < ManageIQ::Providers::I
     %i[
       availability_zones
       cloud_databases
+      cloud_database_flavors
       cloud_volumes
       disks
       flavors

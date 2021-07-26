@@ -26,6 +26,12 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
     []
   end
 
+  def cloud_database_flavors
+    @cloud_database_flavors ||= sql.tiers.all
+  rescue Google::Apis::ClientError
+    []
+  end
+
   def flavors
     flavors_by_zone = compute.list_aggregated_machine_types.items
     flavors_by_zone.values.flat_map(&:machine_types).compact.uniq(&:id)
@@ -144,6 +150,7 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
     end
 
     return nil unless compute.project == parts[:project]
+
     get_health_check_cached(parts[:health_check])
   end
 
