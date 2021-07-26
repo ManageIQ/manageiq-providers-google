@@ -1,4 +1,6 @@
 describe ManageIQ::Providers::Google::CloudManager::Refresher do
+  let(:cloud_database)        { CloudDatabase.find_by(:name => "miq-test") }
+  let(:cloud_database_flavor) { CloudDatabaseFlavor.find_by(:name => "db-f1-micro") }
   let(:cloud_network)         { CloudNetwork.find_by(:name => "default") }
   let(:cloud_subnet)          { CloudSubnet.find_by(:name => "default") }
   let(:cloud_volume)          { CloudVolume.find_by(:name => "instance-group-1-gvej") }
@@ -21,7 +23,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
   let(:snapshot_location)     { "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/snapshots/test-snapshot-1" }
 
   MODELS = %i(
-    availability_zone cloud_network cloud_subnet disk ext_management_system firewall_rule flavor floating_ip
+    availability_zone cloud_database cloud_database_flavor cloud_network cloud_subnet disk ext_management_system firewall_rule flavor floating_ip
     guest_device hardware load_balancer load_balancer_health_check load_balancer_health_check_member
     load_balancer_listener load_balancer_listener_pool load_balancer_pool load_balancer_pool_member
     load_balancer_pool_member_pool miq_template network network_port network_port_security_group network_router operating_system
@@ -42,6 +44,8 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       assert_ems
       assert_specific_availability_zone
       assert_specific_key_pair
+      assert_specific_cloud_database_flavor
+      assert_specific_cloud_database
       assert_specific_cloud_network
       assert_specific_cloud_subnet
       assert_specific_floating_ips
@@ -67,6 +71,8 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
   def expected_table_counts
     {
       :availability_zone                 => 46,
+      :cloud_database                    => 1,
+      :cloud_database_flavor             => 17,
       :cloud_network                     => 3,
       :cloud_subnet                      => 18,
       :disk                              => 15, # same as :vm and :hardware
@@ -113,14 +119,16 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
   end
 
   def assert_ems
-    expect(ems.flavors.size).to            eql(expected_table_counts[:flavor])
-    expect(ems.key_pairs.size).to          eql(expected_table_counts[:key_pair])
-    expect(ems.availability_zones.size).to eql(expected_table_counts[:availability_zone])
-    expect(ems.vms_and_templates.size).to  eql(expected_table_counts[:vm_or_template])
-    expect(ems.cloud_networks.size).to     eql(expected_table_counts[:cloud_network])
-    expect(ems.security_groups.size).to    eql(expected_table_counts[:security_group])
-    expect(ems.vms.size).to                eql(expected_table_counts[:vm])
-    expect(ems.miq_templates.size).to      eql(expected_table_counts[:miq_template])
+    expect(ems.cloud_databases.size).to        eql(expected_table_counts[:cloud_database])
+    expect(ems.cloud_database_flavors.size).to eql(expected_table_counts[:cloud_database_flavor])
+    expect(ems.flavors.size).to                eql(expected_table_counts[:flavor])
+    expect(ems.key_pairs.size).to              eql(expected_table_counts[:key_pair])
+    expect(ems.availability_zones.size).to     eql(expected_table_counts[:availability_zone])
+    expect(ems.vms_and_templates.size).to      eql(expected_table_counts[:vm_or_template])
+    expect(ems.cloud_networks.size).to         eql(expected_table_counts[:cloud_network])
+    expect(ems.security_groups.size).to        eql(expected_table_counts[:security_group])
+    expect(ems.vms.size).to                    eql(expected_table_counts[:vm])
+    expect(ems.miq_templates.size).to          eql(expected_table_counts[:miq_template])
   end
 
   def assert_specific_availability_zone
@@ -132,6 +140,27 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
     expect(zone_central).to have_attributes(
       :name   => "us-central1-a",
       :ems_id => ems.id
+    )
+  end
+
+  def assert_specific_cloud_database_flavor
+    expect(cloud_database_flavor).to have_attributes(
+      :name    => "db-f1-micro",
+      :type    => "ManageIQ::Providers::Google::CloudManager::CloudDatabaseFlavor",
+      :ems_ref => "db-f1-micro",
+      :memory  => 644_245_094,
+      :enabled => true
+    )
+  end
+
+  def assert_specific_cloud_database
+    expect(cloud_database).to have_attributes(
+      :name                  => "miq-test",
+      :type                  => "ManageIQ::Providers::Google::CloudManager::CloudDatabase",
+      :ems_ref               => "miq-test",
+      :db_engine             => "POSTGRES_13",
+      :status                => "RUNNABLE",
+      :cloud_database_flavor => cloud_database_flavor
     )
   end
 

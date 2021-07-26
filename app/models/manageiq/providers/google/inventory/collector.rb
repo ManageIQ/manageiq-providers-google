@@ -22,13 +22,13 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
 
   def cloud_databases
     @cloud_databases ||= sql.instances.all
-  rescue Google::Apis::ClientError
+  rescue Google::Apis::ClientError # Catch an API exception if the sqladmin API isn't enabled
     []
   end
 
   def cloud_database_flavors
     @cloud_database_flavors ||= sql.tiers.all
-  rescue Google::Apis::ClientError
+  rescue Google::Apis::ClientError # Catch an API exception if the sqladmin API isn't enabled
     []
   end
 
