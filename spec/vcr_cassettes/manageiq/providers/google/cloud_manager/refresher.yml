@@ -63258,4 +63258,844 @@ http_interactions:
         }
     http_version:
   recorded_at: Fri, 11 May 2018 14:33:53 GMT
+- request:
+    method: post
+    uri: https://www.googleapis.com/oauth2/v4/token
+    body:
+      encoding: ASCII-8BIT
+      string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJtYW5hZ2VpcS1zZXJ2aWNlLWFjY291bnRAYW1iaWVudC1hbnRlbm5hLTMwNTYxOS5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsImF1ZCI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL29hdXRoMi92NC90b2tlbiIsImV4cCI6MTYyNzMzNTc4MywiaWF0IjoxNjI3MzM1NjYzLCJzY29wZSI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvc3Fsc2VydmljZS5hZG1pbiBodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtIn0.PDQ1zFK5j8Ya_5hM0jK6O2fUZkDipTfHgG3AVn9BamnNVPaRAuLHsgYkpEFAyldD02MA_yGfMtxfAgWm44QTBlcRKAWeet-WfmzCuZu53HB2iGfw4mhAV5JRqQ2fkNPDpYGJi7881tAFmi-pZUvB8i9FfrJCb3h4XpeoxQG6rLbvZDOXa9Qv0yEPhpv6b1cZWCmdf0H2kxETuuiCs9I06f-SWhfIoXSkX2qrdCvIaeKPU7PnVXhR5-lBUKdGNCvslo-R3vBZqCKH-748WaS7-N0tCZlksEA-mui63hrM7JF8vMh-cmgiTviKyUGI7oX1Gcq-8bB52OKLD2CelFtkag
+    headers:
+      User-Agent:
+      - Faraday v0.17.4
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Mon, 26 Jul 2021 21:42:03 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"ya29.c.KqEBCQgjJlYHqIJBWDCAydhP6uOdzA667EElwuarwtiHDqGYzHb7Anm43RzYaBV8564QOcbI4_D0ThAOEQ0ZlEwmvSIjOftcp2b5npvT6STM8rbhY7sMtqlMgp0ccsfkeurYckI1XmQYd2f8oAh11q4W73Cpj4im3qEIIJBGVqnNGuC6pDfa_05zhS7-GZUGerYQNL-JWgxcjfhfiNzLGQ6l6Tk","expires_in":3599,"token_type":"Bearer"}'
+    http_version: null
+  recorded_at: Mon, 26 Jul 2021 21:42:03 GMT
+- request:
+    method: get
+    uri: https://sqladmin.googleapis.com/sql/v1beta4/projects/GOOGLE_PROJECT/tiers
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - ManageIQ/master fog/1.15.0 google-api-ruby-client/0.50.0 Linux/5.10.0-8-amd64
+        (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Mon, 26 Jul 2021 21:42:03 GMT
+      X-Goog-Api-Client:
+      - gl-ruby/2.7.4 gdcl/0.50.0
+      Authorization:
+      - Bearer ya29.c.KqEBCQgjJlYHqIJBWDCAydhP6uOdzA667EElwuarwtiHDqGYzHb7Anm43RzYaBV8564QOcbI4_D0ThAOEQ0ZlEwmvSIjOftcp2b5npvT6STM8rbhY7sMtqlMgp0ccsfkeurYckI1XmQYd2f8oAh11q4W73Cpj4im3qEIIJBGVqnNGuC6pDfa_05zhS7-GZUGerYQNL-JWgxcjfhfiNzLGQ6l6Tk
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Content-Encoding:
+      - gzip
+      Date:
+      - Mon, 26 Jul 2021 21:42:03 GMT
+      Server:
+      - ESF
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "sql#tiersList",
+          "items": [
+            {
+              "tier": "db-f1-micro",
+              "RAM": "644245094",
+              "kind": "sql#tier",
+              "DiskQuota": "3279207530496",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-g1-small",
+              "RAM": "1825361100",
+              "kind": "sql#tier",
+              "DiskQuota": "3279207530496",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-1",
+              "RAM": "4026531840",
+              "kind": "sql#tier",
+              "DiskQuota": "32985348833280",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-2",
+              "RAM": "8053063680",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-4",
+              "RAM": "16106127360",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-8",
+              "RAM": "32212254720",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-16",
+              "RAM": "64424509440",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-32",
+              "RAM": "128849018880",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-64",
+              "RAM": "257698037760",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-96",
+              "RAM": "386547056640",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-highmem-2",
+              "RAM": "13958643712",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-highmem-4",
+              "RAM": "27917287424",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-highmem-8",
+              "RAM": "55834574848",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-highmem-16",
+              "RAM": "111669149696",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-highmem-32",
+              "RAM": "223338299392",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-highmem-64",
+              "RAM": "446676598784",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-highmem-96",
+              "RAM": "670014898176",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            }
+          ]
+        }
+    http_version: null
+  recorded_at: Mon, 26 Jul 2021 21:42:03 GMT
+- request:
+    method: get
+    uri: https://sqladmin.googleapis.com/sql/v1beta4/projects/GOOGLE_PROJECT/instances
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - ManageIQ/master fog/1.15.0 google-api-ruby-client/0.50.0 Linux/5.10.0-8-amd64
+        (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Mon, 26 Jul 2021 21:42:03 GMT
+      X-Goog-Api-Client:
+      - gl-ruby/2.7.4 gdcl/0.50.0
+      Authorization:
+      - Bearer ya29.c.KqEBCQgjJlYHqIJBWDCAydhP6uOdzA667EElwuarwtiHDqGYzHb7Anm43RzYaBV8564QOcbI4_D0ThAOEQ0ZlEwmvSIjOftcp2b5npvT6STM8rbhY7sMtqlMgp0ccsfkeurYckI1XmQYd2f8oAh11q4W73Cpj4im3qEIIJBGVqnNGuC6pDfa_05zhS7-GZUGerYQNL-JWgxcjfhfiNzLGQ6l6Tk
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Content-Encoding:
+      - gzip
+      Date:
+      - Mon, 26 Jul 2021 21:42:04 GMT
+      Server:
+      - ESF
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "items": [
+            {
+              "kind": "sql#instance",
+              "state": "RUNNABLE",
+              "databaseVersion": "POSTGRES_13",
+              "settings": {
+                "authorizedGaeApplications": [],
+                "tier": "db-f1-micro",
+                "kind": "sql#settings",
+                "availabilityType": "ZONAL",
+                "pricingPlan": "PER_USE",
+                "replicationType": "SYNCHRONOUS",
+                "activationPolicy": "ALWAYS",
+                "ipConfiguration": {
+                  "privateNetwork": "projects/GOOGLE_PROJECT/global/networks/default",
+                  "authorizedNetworks": [],
+                  "ipv4Enabled": false
+                },
+                "locationPreference": {
+                  "zone": "us-east1-c",
+                  "kind": "sql#locationPreference"
+                },
+                "dataDiskType": "PD_HDD",
+                "maintenanceWindow": {
+                  "kind": "sql#maintenanceWindow",
+                  "hour": 0,
+                  "day": 0
+                },
+                "backupConfiguration": {
+                  "startTime": "08:00",
+                  "kind": "sql#backupConfiguration",
+                  "backupRetentionSettings": {
+                    "retentionUnit": "COUNT",
+                    "retainedBackups": 7
+                  },
+                  "enabled": false,
+                  "replicationLogArchivingEnabled": false,
+                  "pointInTimeRecoveryEnabled": false,
+                  "transactionLogRetentionDays": 7
+                },
+                "settingsVersion": "1",
+                "storageAutoResizeLimit": "0",
+                "storageAutoResize": false,
+                "dataDiskSizeGb": "10"
+              },
+              "etag": "59fa1ee8bde71cdff093dd71eb75f1eef391ee6d5e22c374acd1fb1cac449d78",
+              "ipAddresses": [
+                {
+                  "type": "PRIVATE",
+                  "ipAddress": "10.28.208.3"
+                }
+              ],
+              "serverCaCert": {
+                "kind": "sql#sslCert",
+                "certSerialNumber": "0",
+                "cert": "-----BEGIN CERTIFICATE-----\nMIIDfzCCAmegAwIBAgIBADANBgkqhkiG9w0BAQsFADB3MS0wKwYDVQQuEyQ1YTU1\nYTdmOC0wM2RmLTQ5NDEtOWMwNC1lZDY2YTZmNjQxNDIxIzAhBgNVBAMTGkdvb2ds\nZSBDbG91ZCBTUUwgU2VydmVyIENBMRQwEgYDVQQKEwtHb29nbGUsIEluYzELMAkG\nA1UEBhMCVVMwHhcNMjEwNzI2MjExMTAzWhcNMzEwNzI0MjExMjAzWjB3MS0wKwYD\nVQQuEyQ1YTU1YTdmOC0wM2RmLTQ5NDEtOWMwNC1lZDY2YTZmNjQxNDIxIzAhBgNV\nBAMTGkdvb2dsZSBDbG91ZCBTUUwgU2VydmVyIENBMRQwEgYDVQQKEwtHb29nbGUs\nIEluYzELMAkGA1UEBhMCVVMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\nAQDGzxxSIsNaKzDVEYbeKddNHYnt2JmEl5ilPy8bFOBVy8VuCJZpJwPzFO6/tS7g\njy9sgJea9SeHO0vLkRHaRH/N6mfzfjMxCNzAj6tPXtD83Q5kec9mCNviApQmsr03\nWRLCj5mHJ454dJgchN65cufh6KlrCtL260eVd4TYUksKJmfjiH3+baDBttyyvjoU\nIX4497Evs0xtiXb6dO3nydX65rx/hy62picvFZEXt0zcoZMITT5h0uG5iPKwsta4\ndUdjMz0+z2Y5X+peKdDyO/VaBfGqtlGkE3KnQlvLgdNWtEH4vXjm0uih6tHjrGn9\nRD8pOPhixR/pGIN7yVa6sPalAgMBAAGjFjAUMBIGA1UdEwEB/wQIMAYBAf8CAQAw\nDQYJKoZIhvcNAQELBQADggEBABA+bBkbbBH1zSjCu8wfXh/65PQMqxrKmtDtvy3R\nprVjjBLP9C/L56HUDWeqo2yWY6HvBaCNijKknppahtDPChwzgwWbZJxKny/VzXm6\n4lRMzPy6GiR6TGvMAn0BtwR7pBP1bYueRlBGI/x8qpgWWLIr1aZqEzqj+TjBIATI\nXPcT5WkeHKbJbzXE0ApGH2D4JWXODR0nxruOnH12Rk4NhVMMslOEpG+y6tEx3Hc+\nDH93UoDMadZPyFzSFYEhTpSuAPyYAO7SMdg2PZRr8PSaLoyYzWTpAkM4HkoZmP1Q\nBhFmPGgmWxA/xHcrYEEbLQ3Njkg0FxGChISi/Wqz6St2L90=\n-----END CERTIFICATE-----",
+                "commonName": "C=US,O=Google\\, Inc,CN=Google Cloud SQL Server CA,dnQualifier=5a55a7f8-03df-4941-9c04-ed66a6f64142",
+                "sha1Fingerprint": "4385d22e362a7712a6710d2a1473e30caf9d1750",
+                "instance": "miq-test",
+                "createTime": "2021-07-26T21:11:03.290Z",
+                "expirationTime": "2031-07-24T21:12:03.290Z"
+              },
+              "instanceType": "CLOUD_SQL_INSTANCE",
+              "project": "GOOGLE_PROJECT",
+              "serviceAccountEmailAddress": "p1004059534762-62m0n3@gcp-sa-cloud-sql.iam.gserviceaccount.com",
+              "backendType": "SECOND_GEN",
+              "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/GOOGLE_PROJECT/instances/miq-test",
+              "connectionName": "GOOGLE_PROJECT:us-east1:miq-test",
+              "name": "miq-test",
+              "region": "us-east1",
+              "gceZone": "us-east1-c"
+            }
+          ]
+        }
+    http_version: null
+  recorded_at: Mon, 26 Jul 2021 21:42:04 GMT
 recorded_with: VCR 3.0.3

@@ -6,40 +6,56 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
     super
   end
 
-  def connection
-    @connection ||= manager.connect
+  def compute
+    @compute ||= manager.connect(:service => "compute")
+  end
+
+  def sql
+    @sql ||= manager.connect(:service => "sql")
   end
 
   attr_reader :project_key_pairs
 
   def availability_zones
-    connection.zones.all
+    compute.zones.all
+  end
+
+  def cloud_databases
+    @cloud_databases ||= sql.instances.all
+  rescue Google::Apis::ClientError # Catch an API exception if the sqladmin API isn't enabled
+    []
+  end
+
+  def cloud_database_flavors
+    @cloud_database_flavors ||= sql.tiers.all
+  rescue Google::Apis::ClientError # Catch an API exception if the sqladmin API isn't enabled
+    []
   end
 
   def flavors
-    flavors_by_zone = connection.list_aggregated_machine_types.items
+    flavors_by_zone = compute.list_aggregated_machine_types.items
     flavors_by_zone.values.flat_map(&:machine_types).compact.uniq(&:id)
   end
 
   def flavor(flavor_uid, availability_zone_uid)
-    connection.get_machine_type(flavor_uid, availability_zone_uid)
+    compute.get_machine_type(flavor_uid, availability_zone_uid)
   end
 
   def cloud_volumes
-    connection.disks.all
+    compute.disks.all
   end
 
   # !also parse vms! there
   def cloud_volume_snapshots
-    connection.snapshots.all
+    compute.snapshots.all
   end
 
   def images
-    connection.images.all
+    compute.images.all
   end
 
   def instances
-    @instances ||= connection.servers.all
+    @instances ||= compute.servers.all
   end
 
   def instances_by_self_link
@@ -49,21 +65,21 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
   # Used for ssh keys common to all instances in the project
   def project_instance_metadata
     if @common_instance_metadata.nil?
-      @common_instance_metadata = connection.projects.get(manager.project).common_instance_metadata
+      @common_instance_metadata = compute.projects.get(manager.project).common_instance_metadata
     end
     @common_instance_metadata
   end
 
   def cloud_networks
-    connection.networks.all
+    compute.networks.all
   end
 
   def cloud_subnets
     if @subnetworks.nil?
-      @subnetworks = connection.subnetworks.all
+      @subnetworks = compute.subnetworks.all
       # For a backwards compatibility, old GCE networks were created without subnet. It's not possible now, but
       # GCE haven't migrated to new format. We will create a fake subnet for each network without subnets.
-      @subnetworks += connection.networks.select { |x| x.ipv4_range.present? }.map do |x|
+      @subnetworks += compute.networks.select { |x| x.ipv4_range.present? }.map do |x|
         Fog::Compute::Google::Subnetwork.new(
           :name               => x.name,
           :gateway_address    => x.gateway_i_pv4,
@@ -84,7 +100,7 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
   def network_ports
     if @network_ports.nil?
       @network_ports = []
-      connection.servers.all.collect do |instance|
+      compute.servers.all.collect do |instance|
         @network_ports += instance.network_interfaces.each do |i|
           i[:device_id] = instance.id
         end
@@ -104,18 +120,18 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
       end
     else
       # Fetch non assigned static floating IPs
-      connection.addresses.reject { |x| x.status == "IN USE" }
+      compute.addresses.reject { |x| x.status == "IN USE" }
     end
   end
 
   # for IC firewall_rules
   def firewalls
-    @firewalls ||= connection.firewalls.all
+    @firewalls ||= compute.firewalls.all
   end
 
   # for IC load_balancers
   def forwarding_rules
-    connection.forwarding_rules.all
+    compute.forwarding_rules.all
   end
 
   # for IC load_balancer_pools
@@ -123,7 +139,7 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
     # Right now we only support network-based load-balancers, instead of the
     # more complicated HTTP/HTTPS load balancers.
     # TODO(jsselman): Add support for http/https proxies
-    connection.target_pools.all
+    compute.target_pools.all
   end
 
   def get_health_check_from_link(link)
@@ -133,7 +149,8 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
       return nil
     end
 
-    return nil unless connection.project == parts[:project]
+    return nil unless compute.project == parts[:project]
+
     get_health_check_cached(parts[:health_check])
   end
 
@@ -162,7 +179,7 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
   end
 
   def get_health_check(health_check)
-    connection.http_health_checks.get(health_check)
+    compute.http_health_checks.get(health_check)
   rescue Fog::Errors::Error, ::Google::Apis::ClientError => err
     # It is common for load balancers to have "stale" servers defined which fail when queried
     _log.warn("#{log_header} failed to query for health check: #{err}") unless err.message.start_with?("notFound: ")
