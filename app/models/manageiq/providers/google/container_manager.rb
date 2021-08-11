@@ -1,6 +1,12 @@
 ManageIQ::Providers::Kubernetes::ContainerManager.include(ActsAsStiLeafClass)
 
 class ManageIQ::Providers::Google::ContainerManager < ManageIQ::Providers::Kubernetes::ContainerManager
+  require_nested :Container
+  require_nested :ContainerGroup
+  require_nested :ContainerNode
+  require_nested :Refresher
+  require_nested :RefreshWorker
+
   def self.ems_type
     @ems_type ||= "gke".freeze
   end
