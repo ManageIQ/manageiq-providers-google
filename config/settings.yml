@@ -11,6 +11,11 @@
   :gce_network:
     :inventory_collections:
       :saver_strategy: default
+  :gke:
+    :streaming_refresh: true
+    :chunk_size: 1_000
+    :inventory_collections:
+      :saver_strategy: batch
 :http_proxy:
   :gce:
     :host:
