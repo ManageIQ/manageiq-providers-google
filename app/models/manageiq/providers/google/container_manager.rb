@@ -26,9 +26,9 @@ class ManageIQ::Providers::Google::ContainerManager < ManageIQ::Providers::Kuber
   end
 
   def self.kubernetes_auth_options(options)
-    auth_options = {}
-    auth_options[:bearer_token] = google_access_token(options[:bearer])
-    auth_options
+    {
+      :bearer_token => google_access_token(options[:bearer])
+    }
   end
 
   def self.google_access_token(json_key)
