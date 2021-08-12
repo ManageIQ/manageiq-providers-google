@@ -4,6 +4,8 @@ class ManageIQ::Providers::Google::ContainerManager < ManageIQ::Providers::Kuber
   require_nested :Container
   require_nested :ContainerGroup
   require_nested :ContainerNode
+  require_nested :EventCatcher
+  require_nested :EventParser
   require_nested :Refresher
   require_nested :RefreshWorker
 
