@@ -1,2 +1,2 @@
-class ManageIQ::Providers::Amazon::ContainerManager::RefreshWorker::Runner < ManageIQ::Providers::Kubernetes::ContainerManager::RefreshWorker::Runner
+class ManageIQ::Providers::Google::ContainerManager::RefreshWorker::Runner < ManageIQ::Providers::Kubernetes::ContainerManager::RefreshWorker::Runner
 end
