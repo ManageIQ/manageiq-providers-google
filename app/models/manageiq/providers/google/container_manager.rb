@@ -31,14 +31,23 @@ class ManageIQ::Providers::Google::ContainerManager < ManageIQ::Providers::Kuber
     auth_options
   end
 
-  def self.google_access_token(google_json_key)
+  def self.google_access_token(json_key)
     require "googleauth"
-    credentials = ::Google::Auth::ServiceAccountCredentials.make_creds(
-      :json_key_io => StringIO.new(google_json_key),
-      :scope       => [
-        'https://www.googleapis.com/auth/cloud-platform',
-        'https://www.googleapis.com/auth/userinfo.email'
-      ]
+
+    client_email, private_key, project_id, quota_project_id =
+      JSON.parse(json_key).values_at("client_email", "private_key", "project_id", "quota_project_id")
+
+    private_key = OpenSSL::PKey::RSA.new(private_key)
+    scope       = ["https://www.googleapis.com/auth/cloud-platform", "https://www.googleapis.com/auth/userinfo.email"]
+
+    credentials = ::Google::Auth::ServiceAccountCredentials.new(
+      :token_credential_uri => Google::Auth::ServiceAccountCredentials::TOKEN_CRED_URI,
+      :audience             => Google::Auth::ServiceAccountCredentials::TOKEN_CRED_URI,
+      :scope                => scope,
+      :issuer               => client_email,
+      :project_id           => project_id,
+      :quota_project_id     => quota_project_id,
+      :signing_key          => private_key
     )
 
     credentials.apply({})
