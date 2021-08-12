@@ -34,3 +34,4 @@
         :ems_metrics_collector_worker_google: {}
       :ems_refresh_worker:
         :ems_refresh_worker_google: {}
+        :ems_refresh_worker_google_gke: {}
