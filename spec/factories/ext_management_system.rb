@@ -18,6 +18,29 @@ FactoryBot.define do
     project { 'GOOGLE_PROJECT' }
   end
 
+  factory :ems_google_gke,
+          :aliases => ["manageiq/providers/google/container_manager"],
+          :class   => "ManageIQ::Providers::Google::ContainerManager",
+          :parent  => :ems_container do
+    security_protocol { "ssl-without-validation" }
+    port { 443 }
+  end
+
+  factory :ems_google_gke_with_vcr_authentication, :parent => :ems_google_gke, :traits => %i[with_zone] do
+    project { Rails.application.secrets.google_gke[:project] }
+    hostname { "34.71.86.84" }
+
+    after(:create) do |ems|
+      ems.authentications << FactoryBot.create(
+        :authentication,
+        :type     => "AuthToken",
+        :authtype => "bearer",
+        :auth_key => Rails.application.secrets.google_gke[:service_account],
+        :userid   => "_"
+      )
+    end
+  end
+
   trait :with_zone do
     zone do
       _guid, _server, zone = EvmSpecHelper.create_guid_miq_server_zone
