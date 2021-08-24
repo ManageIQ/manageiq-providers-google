@@ -1,9 +1,9 @@
 # ManageIQ::Providers::Google
 
-[![Build Status](https://travis-ci.com/ManageIQ/manageiq-providers-google.svg?branch=lasker)](https://travis-ci.com/ManageIQ/manageiq-providers-google)
+[![Build Status](https://travis-ci.com/ManageIQ/manageiq-providers-google.svg?branch=morphy)](https://travis-ci.com/ManageIQ/manageiq-providers-google)
 [![Maintainability](https://api.codeclimate.com/v1/badges/48e14bf73ba25baa13e4/maintainability)](https://codeclimate.com/github/ManageIQ/manageiq-providers-google/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/48e14bf73ba25baa13e4/test_coverage)](https://codeclimate.com/github/ManageIQ/manageiq-providers-google/test_coverage)
-[![Security](https://hakiri.io/github/ManageIQ/manageiq-providers-google/lasker.svg)](https://hakiri.io/github/ManageIQ/manageiq-providers-google/lasker)
+[![Security](https://hakiri.io/github/ManageIQ/manageiq-providers-google/morphy.svg)](https://hakiri.io/github/ManageIQ/manageiq-providers-google/morphy)
 
 [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/manageiq-providers-google?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
