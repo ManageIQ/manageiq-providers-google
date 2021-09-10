@@ -54,7 +54,7 @@ http_interactions:
          "token_type": "Bearer",
          "expires_in": 3600
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:49 GMT
 - request:
     method: get
@@ -750,7 +750,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:49 GMT
 - request:
     method: get
@@ -8701,7 +8701,7 @@ http_interactions:
          "nextPageToken": "CgsIAxHVCAAAAAAAABIPCg1uMS1oaWdobWVtLTE2",
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/machineTypes"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:50 GMT
 - request:
     method: get
@@ -10694,7 +10694,7 @@ http_interactions:
          },
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/disks"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:50 GMT
 - request:
     method: get
@@ -10780,7 +10780,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/snapshots"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:51 GMT
 - request:
     method: get
@@ -11866,7 +11866,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/images"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:51 GMT
 - request:
     method: get
@@ -15390,7 +15390,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:51 GMT
 - request:
     method: get
@@ -20049,7 +20049,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:52 GMT
 - request:
     method: get
@@ -22673,7 +22673,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:52 GMT
 - request:
     method: get
@@ -26904,7 +26904,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:53 GMT
 - request:
     method: get
@@ -30647,7 +30647,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:53 GMT
 - request:
     method: get
@@ -30713,7 +30713,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:53 GMT
 - request:
     method: get
@@ -31001,7 +31001,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:53 GMT
 - request:
     method: get
@@ -31376,7 +31376,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-sap-cloud/global/images"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:53 GMT
 - request:
     method: get
@@ -38562,7 +38562,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:54 GMT
 - request:
     method: get
@@ -43842,7 +43842,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/images"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:54 GMT
 - request:
     method: get
@@ -56721,7 +56721,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/windows-sql-cloud/global/images"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:55 GMT
 - request:
     method: get
@@ -56892,7 +56892,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:55 GMT
 - request:
     method: get
@@ -58817,7 +58817,7 @@ http_interactions:
          },
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/instances"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:56 GMT
 - request:
     method: get
@@ -59036,7 +59036,7 @@ http_interactions:
          "defaultServiceAccount": "135776510666-compute@developer.gserviceaccount.com",
          "xpnProjectStatus": "UNSPECIFIED_XPN_PROJECT_STATUS"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:56 GMT
 - request:
     method: get
@@ -59106,64 +59106,8 @@ http_interactions:
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/us-central1-a/machineTypes/custom-1-1024",
          "isSharedCpu": false
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:32:57 GMT
-- request:
-    method: post
-    uri: https://www.googleapis.com/oauth2/v4/token
-    body:
-      encoding: ASCII-8BIT
-      string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiIxMzU3NzY1MTA2NjYtY29tcHV0ZUBkZXZlbG9wZXIuZ3NlcnZpY2VhY2NvdW50LmNvbSIsImF1ZCI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL29hdXRoMi92My90b2tlbiIsImV4cCI6MTUyNjA0OTI4OCwiaWF0IjoxNTI2MDQ5MTY4LCJzY29wZSI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY29tcHV0ZSBodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2RldnN0b3JhZ2UucmVhZF93cml0ZSBodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL25kZXYuY2xvdWRtYW4gaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9jbG91ZC1wbGF0Zm9ybSJ9.sO6nQVSvwc16Kr0CvSHtaFdz9r_0glves046b-aZM6lx7iZ0VZB4nfOU9qOxQhyhAy-g3qNEjqvlUvcF3yVpGyzLKKJ5rzG1Sp7qFu1Ze8XCorsfMZOK6t2PcFE_S6E_TESR0DAqCNsY4fG1NfOeUShxJZ8kKcUjrZLRPBi9n3M2yDfCkxuWf2m-WLWPGR0AZP5OigKNyNwDfj7d6aa4nYDQFqnDqI4L6nZZU5WTCmt0vTNniAiUkK3B-eInR3_-bfu4B4-WHhn1CFH2o9UNf24rWGQcSDHY5fEXjTHm99L1CKiRQzK73jlx9aB1035CenpaX_7PIP_8tCqx-wzB3Q
-    headers:
-      User-Agent:
-      - Faraday v0.9.2
-      Content-Type:
-      - application/x-www-form-urlencoded
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, max-age=0, must-revalidate
-      Pragma:
-      - no-cache
-      Expires:
-      - Mon, 01 Jan 1990 00:00:00 GMT
-      Date:
-      - Fri, 11 May 2018 14:33:48 GMT
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Server:
-      - GSE
-      Alt-Svc:
-      - hq=":443"; ma=2592000; quic=51303433; quic=51303432; quic=51303431; quic=51303339;
-        quic=51303335,quic=":443"; ma=2592000; v="43,42,41,39,35"
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-         "access_token": "ya29.c.EmC4BS6EjCxzPc279N5085jcX3lduf6vcFxz3K3uCVVl52vzfjYD-CK5PD20YtqGINZeSNApTVfN3tKKfV14tTxjnoiQjotMDPt5MMfq328NdN1vGWfJIVC8DB9cth3fLiY",
-         "token_type": "Bearer",
-         "expires_in": 3600
-        }
-    http_version: 
-  recorded_at: Fri, 11 May 2018 14:33:48 GMT
 - request:
     method: get
     uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/networks
@@ -59286,7 +59230,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/networks"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:33:49 GMT
 - request:
     method: get
@@ -59646,7 +59590,7 @@ http_interactions:
          },
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/subnetworks"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:33:49 GMT
 - request:
     method: get
@@ -59770,7 +59714,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/networks"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:33:49 GMT
 - request:
     method: get
@@ -60117,7 +60061,7 @@ http_interactions:
          ],
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/firewalls"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:33:50 GMT
 - request:
     method: get
@@ -62042,7 +61986,7 @@ http_interactions:
          },
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/instances"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:33:50 GMT
 - request:
     method: get
@@ -62303,7 +62247,7 @@ http_interactions:
          },
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/addresses"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:33:51 GMT
 - request:
     method: get
@@ -62600,7 +62544,7 @@ http_interactions:
          },
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/forwardingRules"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:33:51 GMT
 - request:
     method: get
@@ -62873,358 +62817,8 @@ http_interactions:
          },
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/targetPools"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:33:51 GMT
-- request:
-    method: get
-    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/us-central1-a/instances/instance-group-1-gvej
-    body:
-      encoding: UTF-8
-      string: ''
-    headers:
-      User-Agent:
-      - |-
-        ManageIQ/master fog/1.3.3 google-api-ruby-client/0.19.8 Linux/4.16.7-1-ARCH
-         (gzip)
-      Accept:
-      - "*/*"
-      Accept-Encoding:
-      - gzip,deflate
-      Date:
-      - Fri, 11 May 2018 14:33:51 GMT
-      Authorization:
-      - Bearer ya29.c.EmC4BS6EjCxzPc279N5085jcX3lduf6vcFxz3K3uCVVl52vzfjYD-CK5PD20YtqGINZeSNApTVfN3tKKfV14tTxjnoiQjotMDPt5MMfq328NdN1vGWfJIVC8DB9cth3fLiY
-      Content-Type:
-      - application/x-www-form-urlencoded
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - Fri, 11 May 2018 14:33:51 GMT
-      Date:
-      - Fri, 11 May 2018 14:33:51 GMT
-      Cache-Control:
-      - private, max-age=0, must-revalidate, no-transform
-      Etag:
-      - '"kCgRWkhqX_-hy6SskqDjeHzP6wY=/0wRj2NUMHeebhK8sdECSdFO5FT4="'
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      Content-Encoding:
-      - gzip
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Server:
-      - GSE
-      Alt-Svc:
-      - hq=":443"; ma=2592000; quic=51303433; quic=51303432; quic=51303431; quic=51303339;
-        quic=51303335,quic=":443"; ma=2592000; v="43,42,41,39,35"
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: |
-        {
-         "kind": "compute#instance",
-         "id": "9028819323520596299",
-         "creationTimestamp": "2017-05-05T16:15:49.368-07:00",
-         "name": "instance-group-1-gvej",
-         "tags": {
-          "items": [
-           "http-server",
-           "https-server"
-          ],
-          "fingerprint": "6smc4R4d39I="
-         },
-         "machineType": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/us-central1-a/machineTypes/n1-standard-1",
-         "status": "RUNNING",
-         "zone": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/us-central1-a",
-         "canIpForward": false,
-         "networkInterfaces": [
-          {
-           "kind": "compute#networkInterface",
-           "network": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/networks/default",
-           "subnetwork": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/regions/us-central1/subnetworks/default-175e7dd38602e139",
-           "networkIP": "10.128.0.3",
-           "name": "nic0",
-           "accessConfigs": [
-            {
-             "kind": "compute#accessConfig",
-             "type": "ONE_TO_ONE_NAT",
-             "name": "External NAT",
-             "natIP": "35.184.135.147"
-            }
-           ],
-           "fingerprint": "FNADd--WMGI="
-          }
-         ],
-         "disks": [
-          {
-           "kind": "compute#attachedDisk",
-           "type": "PERSISTENT",
-           "mode": "READ_WRITE",
-           "source": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/us-central1-a/disks/instance-group-1-gvej",
-           "deviceName": "instance-template-1",
-           "index": 0,
-           "boot": true,
-           "autoDelete": true,
-           "licenses": [
-            "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-8-jessie"
-           ],
-           "interface": "SCSI"
-          }
-         ],
-         "metadata": {
-          "kind": "compute#metadata",
-          "fingerprint": "MaK5DI9wgnw=",
-          "items": [
-           {
-            "key": "instance-template",
-            "value": "projects/135776510666/global/instanceTemplates/instance-template-1"
-           },
-           {
-            "key": "created-by",
-            "value": "projects/135776510666/zones/us-central1-a/instanceGroupManagers/instance-group-1"
-           }
-          ]
-         },
-         "serviceAccounts": [
-          {
-           "email": "135776510666-compute@developer.gserviceaccount.com",
-           "scopes": [
-            "https://www.googleapis.com/auth/devstorage.read_only",
-            "https://www.googleapis.com/auth/logging.write",
-            "https://www.googleapis.com/auth/monitoring.write",
-            "https://www.googleapis.com/auth/servicecontrol",
-            "https://www.googleapis.com/auth/service.management.readonly",
-            "https://www.googleapis.com/auth/trace.append"
-           ]
-          }
-         ],
-         "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/us-central1-a/instances/instance-group-1-gvej",
-         "scheduling": {
-          "onHostMaintenance": "MIGRATE",
-          "automaticRestart": true,
-          "preemptible": false
-         },
-         "cpuPlatform": "Intel Sandy Bridge",
-         "labelFingerprint": "42WmSpB8rSM=",
-         "startRestricted": false,
-         "deletionProtection": false
-        }
-    http_version: 
-  recorded_at: Fri, 11 May 2018 14:33:52 GMT
-- request:
-    method: get
-    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/asia-east1-a/instances/load-balancer-1
-    body:
-      encoding: UTF-8
-      string: ''
-    headers:
-      User-Agent:
-      - |-
-        ManageIQ/master fog/1.3.3 google-api-ruby-client/0.19.8 Linux/4.16.7-1-ARCH
-         (gzip)
-      Accept:
-      - "*/*"
-      Accept-Encoding:
-      - gzip,deflate
-      Date:
-      - Fri, 11 May 2018 14:33:52 GMT
-      Authorization:
-      - Bearer ya29.c.EmC4BS6EjCxzPc279N5085jcX3lduf6vcFxz3K3uCVVl52vzfjYD-CK5PD20YtqGINZeSNApTVfN3tKKfV14tTxjnoiQjotMDPt5MMfq328NdN1vGWfJIVC8DB9cth3fLiY
-      Content-Type:
-      - application/x-www-form-urlencoded
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - Fri, 11 May 2018 14:33:52 GMT
-      Date:
-      - Fri, 11 May 2018 14:33:52 GMT
-      Cache-Control:
-      - private, max-age=0, must-revalidate, no-transform
-      Etag:
-      - '"AWV4c5esSXeW4AQoaUmDsIHnbhA=/IFiW1IE2MtHiRTaOe5X_HKJDIZs="'
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      Content-Encoding:
-      - gzip
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Server:
-      - GSE
-      Alt-Svc:
-      - hq=":443"; ma=2592000; quic=51303433; quic=51303432; quic=51303431; quic=51303339;
-        quic=51303335,quic=":443"; ma=2592000; v="43,42,41,39,35"
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: |
-        {
-         "kind": "compute#instance",
-         "id": "2226781571317376688",
-         "creationTimestamp": "2017-01-06T05:15:11.409-08:00",
-         "name": "load-balancer-1",
-         "description": "",
-         "tags": {
-          "fingerprint": "42WmSpB8rSM="
-         },
-         "machineType": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/asia-east1-a/machineTypes/n1-standard-1",
-         "status": "TERMINATED",
-         "zone": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/asia-east1-a",
-         "canIpForward": false,
-         "networkInterfaces": [
-          {
-           "kind": "compute#networkInterface",
-           "network": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/networks/default",
-           "subnetwork": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/regions/asia-east1/subnetworks/default-0d01dc41a9f25811",
-           "networkIP": "10.140.0.5",
-           "name": "nic0",
-           "accessConfigs": [
-            {
-             "kind": "compute#accessConfig",
-             "type": "ONE_TO_ONE_NAT",
-             "name": "External NAT"
-            }
-           ],
-           "fingerprint": "Txrbd_lIc_E="
-          }
-         ],
-         "disks": [
-          {
-           "kind": "compute#attachedDisk",
-           "type": "PERSISTENT",
-           "mode": "READ_WRITE",
-           "source": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/asia-east1-a/disks/load-balancer-1",
-           "deviceName": "load-balancer-1",
-           "index": 0,
-           "boot": true,
-           "autoDelete": true,
-           "licenses": [
-            "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-8-jessie"
-           ],
-           "interface": "SCSI"
-          }
-         ],
-         "metadata": {
-          "kind": "compute#metadata",
-          "fingerprint": "_t6z3Bf7i-o="
-         },
-         "serviceAccounts": [
-          {
-           "email": "135776510666-compute@developer.gserviceaccount.com",
-           "scopes": [
-            "https://www.googleapis.com/auth/devstorage.read_only",
-            "https://www.googleapis.com/auth/logging.write",
-            "https://www.googleapis.com/auth/monitoring.write",
-            "https://www.googleapis.com/auth/servicecontrol",
-            "https://www.googleapis.com/auth/service.management.readonly",
-            "https://www.googleapis.com/auth/trace.append"
-           ]
-          }
-         ],
-         "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/asia-east1-a/instances/load-balancer-1",
-         "scheduling": {
-          "onHostMaintenance": "MIGRATE",
-          "automaticRestart": true,
-          "preemptible": false
-         },
-         "cpuPlatform": "Unknown CPU Platform",
-         "labelFingerprint": "42WmSpB8rSM=",
-         "startRestricted": false,
-         "deletionProtection": false
-        }
-    http_version: 
-  recorded_at: Fri, 11 May 2018 14:33:52 GMT
-- request:
-    method: get
-    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/asia-east1-a/instances/load-balancer-2
-    body:
-      encoding: UTF-8
-      string: ''
-    headers:
-      User-Agent:
-      - |-
-        ManageIQ/master fog/1.3.3 google-api-ruby-client/0.19.8 Linux/4.16.7-1-ARCH
-         (gzip)
-      Accept:
-      - "*/*"
-      Accept-Encoding:
-      - gzip,deflate
-      Date:
-      - Fri, 11 May 2018 14:33:52 GMT
-      Authorization:
-      - Bearer ya29.c.EmC4BS6EjCxzPc279N5085jcX3lduf6vcFxz3K3uCVVl52vzfjYD-CK5PD20YtqGINZeSNApTVfN3tKKfV14tTxjnoiQjotMDPt5MMfq328NdN1vGWfJIVC8DB9cth3fLiY
-      Content-Type:
-      - application/x-www-form-urlencoded
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      Content-Encoding:
-      - gzip
-      Date:
-      - Fri, 11 May 2018 14:33:52 GMT
-      Expires:
-      - Fri, 11 May 2018 14:33:52 GMT
-      Cache-Control:
-      - private, max-age=0
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Server:
-      - GSE
-      Alt-Svc:
-      - hq=":443"; ma=2592000; quic=51303433; quic=51303432; quic=51303431; quic=51303339;
-        quic=51303335,quic=":443"; ma=2592000; v="43,42,41,39,35"
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: |
-        {
-         "error": {
-          "errors": [
-           {
-            "domain": "global",
-            "reason": "notFound",
-            "message": "The resource 'projects/GOOGLE_PROJECT/zones/asia-east1-a/instances/load-balancer-2' was not found"
-           }
-          ],
-          "code": 404,
-          "message": "The resource 'projects/GOOGLE_PROJECT/zones/asia-east1-a/instances/load-balancer-2' was not found"
-         }
-        }
-    http_version: 
-  recorded_at: Fri, 11 May 2018 14:33:52 GMT
 - request:
     method: get
     uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/forwardingRules
@@ -63520,281 +63114,8 @@ http_interactions:
          },
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/forwardingRules"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:33:52 GMT
-- request:
-    method: get
-    uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/targetPools
-    body:
-      encoding: UTF-8
-      string: ''
-    headers:
-      User-Agent:
-      - |-
-        ManageIQ/master fog/1.3.3 google-api-ruby-client/0.19.8 Linux/4.16.7-1-ARCH
-         (gzip)
-      Accept:
-      - "*/*"
-      Accept-Encoding:
-      - gzip,deflate
-      Date:
-      - Fri, 11 May 2018 14:33:52 GMT
-      Authorization:
-      - Bearer ya29.c.EmC4BS6EjCxzPc279N5085jcX3lduf6vcFxz3K3uCVVl52vzfjYD-CK5PD20YtqGINZeSNApTVfN3tKKfV14tTxjnoiQjotMDPt5MMfq328NdN1vGWfJIVC8DB9cth3fLiY
-      Content-Type:
-      - application/x-www-form-urlencoded
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - Fri, 11 May 2018 14:33:53 GMT
-      Date:
-      - Fri, 11 May 2018 14:33:53 GMT
-      Cache-Control:
-      - private, max-age=0, must-revalidate, no-transform
-      Etag:
-      - '"6EaaE9Q3EMZlNN_Ec9KDg10HpoM=/GDhN0LAlQZBILlqiOyEsApgL8uM="'
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      Content-Encoding:
-      - gzip
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Server:
-      - GSE
-      Alt-Svc:
-      - hq=":443"; ma=2592000; quic=51303433; quic=51303432; quic=51303431; quic=51303339;
-        quic=51303335,quic=":443"; ma=2592000; v="43,42,41,39,35"
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: |
-        {
-         "kind": "compute#targetPoolAggregatedList",
-         "id": "projects/GOOGLE_PROJECT/aggregated/targetPools",
-         "items": {
-          "regions/us-central1": {
-           "targetPools": [
-            {
-             "kind": "compute#targetPool",
-             "id": "4170855026968816021",
-             "creationTimestamp": "2018-02-21T03:26:50.223-08:00",
-             "name": "test--target-pool",
-             "description": "",
-             "region": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/regions/us-central1",
-             "instances": [
-              "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/us-central1-a/instances/instance-group-1-gvej"
-             ],
-             "sessionAffinity": "NONE",
-             "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/regions/us-central1/targetPools/test--target-pool"
-            }
-           ]
-          },
-          "regions/europe-west1": {
-           "warning": {
-            "code": "NO_RESULTS_ON_PAGE",
-            "message": "There are no results for scope 'regions/europe-west1' on this page.",
-            "data": [
-             {
-              "key": "scope",
-              "value": "regions/europe-west1"
-             }
-            ]
-           }
-          },
-          "regions/us-west1": {
-           "warning": {
-            "code": "NO_RESULTS_ON_PAGE",
-            "message": "There are no results for scope 'regions/us-west1' on this page.",
-            "data": [
-             {
-              "key": "scope",
-              "value": "regions/us-west1"
-             }
-            ]
-           }
-          },
-          "regions/asia-east1": {
-           "targetPools": [
-            {
-             "kind": "compute#targetPool",
-             "id": "9047195615959852949",
-             "creationTimestamp": "2017-01-06T05:19:54.735-08:00",
-             "name": "test-first-load-balancer",
-             "description": "",
-             "region": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/regions/asia-east1",
-             "healthChecks": [
-              "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/httpHealthChecks/test-lb-health-check"
-             ],
-             "instances": [
-              "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/asia-east1-a/instances/load-balancer-1"
-             ],
-             "sessionAffinity": "NONE",
-             "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/regions/asia-east1/targetPools/test-first-load-balancer"
-            },
-            {
-             "kind": "compute#targetPool",
-             "id": "1188496733865387865",
-             "creationTimestamp": "2017-01-06T05:20:54.864-08:00",
-             "name": "test-second-load-balancer",
-             "description": "",
-             "region": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/regions/asia-east1",
-             "instances": [
-              "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/asia-east1-a/instances/load-balancer-2",
-              "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/zones/asia-east1-a/instances/load-balancer-1"
-             ],
-             "sessionAffinity": "NONE",
-             "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/regions/asia-east1/targetPools/test-second-load-balancer"
-            }
-           ]
-          },
-          "regions/us-east1": {
-           "warning": {
-            "code": "NO_RESULTS_ON_PAGE",
-            "message": "There are no results for scope 'regions/us-east1' on this page.",
-            "data": [
-             {
-              "key": "scope",
-              "value": "regions/us-east1"
-             }
-            ]
-           }
-          },
-          "regions/asia-northeast1": {
-           "warning": {
-            "code": "NO_RESULTS_ON_PAGE",
-            "message": "There are no results for scope 'regions/asia-northeast1' on this page.",
-            "data": [
-             {
-              "key": "scope",
-              "value": "regions/asia-northeast1"
-             }
-            ]
-           }
-          },
-          "regions/asia-southeast1": {
-           "warning": {
-            "code": "NO_RESULTS_ON_PAGE",
-            "message": "There are no results for scope 'regions/asia-southeast1' on this page.",
-            "data": [
-             {
-              "key": "scope",
-              "value": "regions/asia-southeast1"
-             }
-            ]
-           }
-          },
-          "regions/us-east4": {
-           "warning": {
-            "code": "NO_RESULTS_ON_PAGE",
-            "message": "There are no results for scope 'regions/us-east4' on this page.",
-            "data": [
-             {
-              "key": "scope",
-              "value": "regions/us-east4"
-             }
-            ]
-           }
-          },
-          "regions/australia-southeast1": {
-           "warning": {
-            "code": "NO_RESULTS_ON_PAGE",
-            "message": "There are no results for scope 'regions/australia-southeast1' on this page.",
-            "data": [
-             {
-              "key": "scope",
-              "value": "regions/australia-southeast1"
-             }
-            ]
-           }
-          },
-          "regions/europe-west2": {
-           "warning": {
-            "code": "NO_RESULTS_ON_PAGE",
-            "message": "There are no results for scope 'regions/europe-west2' on this page.",
-            "data": [
-             {
-              "key": "scope",
-              "value": "regions/europe-west2"
-             }
-            ]
-           }
-          },
-          "regions/europe-west3": {
-           "warning": {
-            "code": "NO_RESULTS_ON_PAGE",
-            "message": "There are no results for scope 'regions/europe-west3' on this page.",
-            "data": [
-             {
-              "key": "scope",
-              "value": "regions/europe-west3"
-             }
-            ]
-           }
-          },
-          "regions/southamerica-east1": {
-           "warning": {
-            "code": "NO_RESULTS_ON_PAGE",
-            "message": "There are no results for scope 'regions/southamerica-east1' on this page.",
-            "data": [
-             {
-              "key": "scope",
-              "value": "regions/southamerica-east1"
-             }
-            ]
-           }
-          },
-          "regions/asia-south1": {
-           "warning": {
-            "code": "NO_RESULTS_ON_PAGE",
-            "message": "There are no results for scope 'regions/asia-south1' on this page.",
-            "data": [
-             {
-              "key": "scope",
-              "value": "regions/asia-south1"
-             }
-            ]
-           }
-          },
-          "regions/northamerica-northeast1": {
-           "warning": {
-            "code": "NO_RESULTS_ON_PAGE",
-            "message": "There are no results for scope 'regions/northamerica-northeast1' on this page.",
-            "data": [
-             {
-              "key": "scope",
-              "value": "regions/northamerica-northeast1"
-             }
-            ]
-           }
-          },
-          "regions/europe-west4": {
-           "warning": {
-            "code": "NO_RESULTS_ON_PAGE",
-            "message": "There are no results for scope 'regions/europe-west4' on this page.",
-            "data": [
-             {
-              "key": "scope",
-              "value": "regions/europe-west4"
-             }
-            ]
-           }
-          }
-         },
-         "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/aggregated/targetPools"
-        }
-    http_version: 
-  recorded_at: Fri, 11 May 2018 14:33:53 GMT
 - request:
     method: get
     uri: https://compute.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/httpHealthChecks/test-lb-health-check
@@ -63867,7 +63188,7 @@ http_interactions:
          "healthyThreshold": 2,
          "selfLink": "https://www.googleapis.com/compute/v1/projects/GOOGLE_PROJECT/global/httpHealthChecks/test-lb-health-check"
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:33:53 GMT
 - request:
     method: post
@@ -63935,6 +63256,846 @@ http_interactions:
           }
          ]
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 11 May 2018 14:33:53 GMT
+- request:
+    method: post
+    uri: https://www.googleapis.com/oauth2/v4/token
+    body:
+      encoding: ASCII-8BIT
+      string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJtYW5hZ2VpcS1zZXJ2aWNlLWFjY291bnRAYW1iaWVudC1hbnRlbm5hLTMwNTYxOS5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsImF1ZCI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL29hdXRoMi92NC90b2tlbiIsImV4cCI6MTYyNzMzNTc4MywiaWF0IjoxNjI3MzM1NjYzLCJzY29wZSI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvc3Fsc2VydmljZS5hZG1pbiBodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtIn0.PDQ1zFK5j8Ya_5hM0jK6O2fUZkDipTfHgG3AVn9BamnNVPaRAuLHsgYkpEFAyldD02MA_yGfMtxfAgWm44QTBlcRKAWeet-WfmzCuZu53HB2iGfw4mhAV5JRqQ2fkNPDpYGJi7881tAFmi-pZUvB8i9FfrJCb3h4XpeoxQG6rLbvZDOXa9Qv0yEPhpv6b1cZWCmdf0H2kxETuuiCs9I06f-SWhfIoXSkX2qrdCvIaeKPU7PnVXhR5-lBUKdGNCvslo-R3vBZqCKH-748WaS7-N0tCZlksEA-mui63hrM7JF8vMh-cmgiTviKyUGI7oX1Gcq-8bB52OKLD2CelFtkag
+    headers:
+      User-Agent:
+      - Faraday v0.17.4
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Mon, 26 Jul 2021 21:42:03 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"ya29.c.KqEBCQgjJlYHqIJBWDCAydhP6uOdzA667EElwuarwtiHDqGYzHb7Anm43RzYaBV8564QOcbI4_D0ThAOEQ0ZlEwmvSIjOftcp2b5npvT6STM8rbhY7sMtqlMgp0ccsfkeurYckI1XmQYd2f8oAh11q4W73Cpj4im3qEIIJBGVqnNGuC6pDfa_05zhS7-GZUGerYQNL-JWgxcjfhfiNzLGQ6l6Tk","expires_in":3599,"token_type":"Bearer"}'
+    http_version: null
+  recorded_at: Mon, 26 Jul 2021 21:42:03 GMT
+- request:
+    method: get
+    uri: https://sqladmin.googleapis.com/sql/v1beta4/projects/GOOGLE_PROJECT/tiers
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - ManageIQ/master fog/1.15.0 google-api-ruby-client/0.50.0 Linux/5.10.0-8-amd64
+        (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Mon, 26 Jul 2021 21:42:03 GMT
+      X-Goog-Api-Client:
+      - gl-ruby/2.7.4 gdcl/0.50.0
+      Authorization:
+      - Bearer ya29.c.KqEBCQgjJlYHqIJBWDCAydhP6uOdzA667EElwuarwtiHDqGYzHb7Anm43RzYaBV8564QOcbI4_D0ThAOEQ0ZlEwmvSIjOftcp2b5npvT6STM8rbhY7sMtqlMgp0ccsfkeurYckI1XmQYd2f8oAh11q4W73Cpj4im3qEIIJBGVqnNGuC6pDfa_05zhS7-GZUGerYQNL-JWgxcjfhfiNzLGQ6l6Tk
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Content-Encoding:
+      - gzip
+      Date:
+      - Mon, 26 Jul 2021 21:42:03 GMT
+      Server:
+      - ESF
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "kind": "sql#tiersList",
+          "items": [
+            {
+              "tier": "db-f1-micro",
+              "RAM": "644245094",
+              "kind": "sql#tier",
+              "DiskQuota": "3279207530496",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-g1-small",
+              "RAM": "1825361100",
+              "kind": "sql#tier",
+              "DiskQuota": "3279207530496",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-1",
+              "RAM": "4026531840",
+              "kind": "sql#tier",
+              "DiskQuota": "32985348833280",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-2",
+              "RAM": "8053063680",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-4",
+              "RAM": "16106127360",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-8",
+              "RAM": "32212254720",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-16",
+              "RAM": "64424509440",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-32",
+              "RAM": "128849018880",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-64",
+              "RAM": "257698037760",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-standard-96",
+              "RAM": "386547056640",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-highmem-2",
+              "RAM": "13958643712",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-highmem-4",
+              "RAM": "27917287424",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-highmem-8",
+              "RAM": "55834574848",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-highmem-16",
+              "RAM": "111669149696",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-highmem-32",
+              "RAM": "223338299392",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-highmem-64",
+              "RAM": "446676598784",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            },
+            {
+              "tier": "db-n1-highmem-96",
+              "RAM": "670014898176",
+              "kind": "sql#tier",
+              "DiskQuota": "70368744177664",
+              "region": [
+                "asia-east1",
+                "asia-east2",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-northeast3",
+                "asia-south1",
+                "asia-south2",
+                "asia-southeast1",
+                "asia-southeast2",
+                "australia-southeast1",
+                "australia-southeast2",
+                "europe-central2",
+                "europe-north1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west6",
+                "northamerica-northeast1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-west1",
+                "us-west2",
+                "us-west3",
+                "us-west4"
+              ]
+            }
+          ]
+        }
+    http_version: null
+  recorded_at: Mon, 26 Jul 2021 21:42:03 GMT
+- request:
+    method: get
+    uri: https://sqladmin.googleapis.com/sql/v1beta4/projects/GOOGLE_PROJECT/instances
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - ManageIQ/master fog/1.15.0 google-api-ruby-client/0.50.0 Linux/5.10.0-8-amd64
+        (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Mon, 26 Jul 2021 21:42:03 GMT
+      X-Goog-Api-Client:
+      - gl-ruby/2.7.4 gdcl/0.50.0
+      Authorization:
+      - Bearer ya29.c.KqEBCQgjJlYHqIJBWDCAydhP6uOdzA667EElwuarwtiHDqGYzHb7Anm43RzYaBV8564QOcbI4_D0ThAOEQ0ZlEwmvSIjOftcp2b5npvT6STM8rbhY7sMtqlMgp0ccsfkeurYckI1XmQYd2f8oAh11q4W73Cpj4im3qEIIJBGVqnNGuC6pDfa_05zhS7-GZUGerYQNL-JWgxcjfhfiNzLGQ6l6Tk
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Content-Encoding:
+      - gzip
+      Date:
+      - Mon, 26 Jul 2021 21:42:04 GMT
+      Server:
+      - ESF
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "items": [
+            {
+              "kind": "sql#instance",
+              "state": "RUNNABLE",
+              "databaseVersion": "POSTGRES_13",
+              "settings": {
+                "authorizedGaeApplications": [],
+                "tier": "db-f1-micro",
+                "kind": "sql#settings",
+                "availabilityType": "ZONAL",
+                "pricingPlan": "PER_USE",
+                "replicationType": "SYNCHRONOUS",
+                "activationPolicy": "ALWAYS",
+                "ipConfiguration": {
+                  "privateNetwork": "projects/GOOGLE_PROJECT/global/networks/default",
+                  "authorizedNetworks": [],
+                  "ipv4Enabled": false
+                },
+                "locationPreference": {
+                  "zone": "us-east1-c",
+                  "kind": "sql#locationPreference"
+                },
+                "dataDiskType": "PD_HDD",
+                "maintenanceWindow": {
+                  "kind": "sql#maintenanceWindow",
+                  "hour": 0,
+                  "day": 0
+                },
+                "backupConfiguration": {
+                  "startTime": "08:00",
+                  "kind": "sql#backupConfiguration",
+                  "backupRetentionSettings": {
+                    "retentionUnit": "COUNT",
+                    "retainedBackups": 7
+                  },
+                  "enabled": false,
+                  "replicationLogArchivingEnabled": false,
+                  "pointInTimeRecoveryEnabled": false,
+                  "transactionLogRetentionDays": 7
+                },
+                "settingsVersion": "1",
+                "storageAutoResizeLimit": "0",
+                "storageAutoResize": false,
+                "dataDiskSizeGb": "10"
+              },
+              "etag": "59fa1ee8bde71cdff093dd71eb75f1eef391ee6d5e22c374acd1fb1cac449d78",
+              "ipAddresses": [
+                {
+                  "type": "PRIVATE",
+                  "ipAddress": "10.28.208.3"
+                }
+              ],
+              "serverCaCert": {
+                "kind": "sql#sslCert",
+                "certSerialNumber": "0",
+                "cert": "-----BEGIN CERTIFICATE-----\nMIIDfzCCAmegAwIBAgIBADANBgkqhkiG9w0BAQsFADB3MS0wKwYDVQQuEyQ1YTU1\nYTdmOC0wM2RmLTQ5NDEtOWMwNC1lZDY2YTZmNjQxNDIxIzAhBgNVBAMTGkdvb2ds\nZSBDbG91ZCBTUUwgU2VydmVyIENBMRQwEgYDVQQKEwtHb29nbGUsIEluYzELMAkG\nA1UEBhMCVVMwHhcNMjEwNzI2MjExMTAzWhcNMzEwNzI0MjExMjAzWjB3MS0wKwYD\nVQQuEyQ1YTU1YTdmOC0wM2RmLTQ5NDEtOWMwNC1lZDY2YTZmNjQxNDIxIzAhBgNV\nBAMTGkdvb2dsZSBDbG91ZCBTUUwgU2VydmVyIENBMRQwEgYDVQQKEwtHb29nbGUs\nIEluYzELMAkGA1UEBhMCVVMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\nAQDGzxxSIsNaKzDVEYbeKddNHYnt2JmEl5ilPy8bFOBVy8VuCJZpJwPzFO6/tS7g\njy9sgJea9SeHO0vLkRHaRH/N6mfzfjMxCNzAj6tPXtD83Q5kec9mCNviApQmsr03\nWRLCj5mHJ454dJgchN65cufh6KlrCtL260eVd4TYUksKJmfjiH3+baDBttyyvjoU\nIX4497Evs0xtiXb6dO3nydX65rx/hy62picvFZEXt0zcoZMITT5h0uG5iPKwsta4\ndUdjMz0+z2Y5X+peKdDyO/VaBfGqtlGkE3KnQlvLgdNWtEH4vXjm0uih6tHjrGn9\nRD8pOPhixR/pGIN7yVa6sPalAgMBAAGjFjAUMBIGA1UdEwEB/wQIMAYBAf8CAQAw\nDQYJKoZIhvcNAQELBQADggEBABA+bBkbbBH1zSjCu8wfXh/65PQMqxrKmtDtvy3R\nprVjjBLP9C/L56HUDWeqo2yWY6HvBaCNijKknppahtDPChwzgwWbZJxKny/VzXm6\n4lRMzPy6GiR6TGvMAn0BtwR7pBP1bYueRlBGI/x8qpgWWLIr1aZqEzqj+TjBIATI\nXPcT5WkeHKbJbzXE0ApGH2D4JWXODR0nxruOnH12Rk4NhVMMslOEpG+y6tEx3Hc+\nDH93UoDMadZPyFzSFYEhTpSuAPyYAO7SMdg2PZRr8PSaLoyYzWTpAkM4HkoZmP1Q\nBhFmPGgmWxA/xHcrYEEbLQ3Njkg0FxGChISi/Wqz6St2L90=\n-----END CERTIFICATE-----",
+                "commonName": "C=US,O=Google\\, Inc,CN=Google Cloud SQL Server CA,dnQualifier=5a55a7f8-03df-4941-9c04-ed66a6f64142",
+                "sha1Fingerprint": "4385d22e362a7712a6710d2a1473e30caf9d1750",
+                "instance": "miq-test",
+                "createTime": "2021-07-26T21:11:03.290Z",
+                "expirationTime": "2031-07-24T21:12:03.290Z"
+              },
+              "instanceType": "CLOUD_SQL_INSTANCE",
+              "project": "GOOGLE_PROJECT",
+              "serviceAccountEmailAddress": "p1004059534762-62m0n3@gcp-sa-cloud-sql.iam.gserviceaccount.com",
+              "backendType": "SECOND_GEN",
+              "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/GOOGLE_PROJECT/instances/miq-test",
+              "connectionName": "GOOGLE_PROJECT:us-east1:miq-test",
+              "name": "miq-test",
+              "region": "us-east1",
+              "gceZone": "us-east1-c"
+            }
+          ]
+        }
+    http_version: null
+  recorded_at: Mon, 26 Jul 2021 21:42:04 GMT
 recorded_with: VCR 3.0.3

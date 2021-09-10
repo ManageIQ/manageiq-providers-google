@@ -105,6 +105,8 @@ module ManageIQ::Providers::Google::ManagerMixin
           connection = ::Fog::Google::Pubsub.new(config.except(:provider))
         when 'monitoring'
           connection = ::Fog::Google::Monitoring.new(config.except(:provider))
+        when 'sql'
+          connection = ::Fog::Google::SQL.new(config.except(:provider))
         else
           raise ArgumentError, "Unknown service: #{options[:service]}"
         end
