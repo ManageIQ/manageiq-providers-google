@@ -9,6 +9,10 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
     "UNHEALTHY" => "OutOfService"
   }.freeze
 
+  def options
+    @options ||= Settings.ems_refresh[persister.manager.class.ems_type]
+  end
+
   def initialize
     super
 
@@ -22,6 +26,9 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
     # Another simple mapping from target pool's self_link url to the set of
     # lbs that point at it
     @target_pool_link_to_load_balancers = {}
+
+    # Cache of images in use by active instances
+    @active_images = Set.new
   end
 
   def parse
@@ -35,8 +42,8 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
     cloud_database_flavors
     cloud_volumes
     cloud_volume_snapshots
-    images
     instances
+    images
 
     cloud_networks
     network_ports
@@ -146,7 +153,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   end
 
   def images
-    collector.images.each do |image|
+    collector.images.reject(&method(:skip_image?)).each do |image|
       persister_miq_template = image(image)
 
       image_os(persister_miq_template, image)
@@ -157,7 +164,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
     uid = image.id.to_s
 
     persister.miq_templates.build(
-      :deprecated         => image.kind == "compute#image" ? !image.deprecated.nil? : false,
+      :deprecated         => deprecated_image?(image),
       :ems_ref            => uid,
       :location           => image.self_link,
       :name               => image.name || uid,
@@ -185,6 +192,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
       flavor = flavor_by_uid_and_zone_uid(flavor_uid, zone_uid) if flavor.nil?
 
       parent_image_uid = parse_instance_parent_image(instance)
+      @active_images << parent_image_uid if parent_image_uid
 
       persister_vm = persister.vms.build(
         :availability_zone => persister.availability_zones.lazy_find(zone_uid),
@@ -715,5 +723,17 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
     # uid being the last component.  This helper method
     # returns the last component of the url
     url.split('/')[-1]
+  end
+
+  def deprecated_image?(image)
+    image.kind == "compute#image" ? !image.deprecated.nil? : false
+  end
+
+  def skip_image?(image)
+    return false if options.get_deprecated_images
+    return false unless deprecated_image?(image)
+    return false if @active_images.include?(image.id.to_s)
+
+    true
   end
 end
