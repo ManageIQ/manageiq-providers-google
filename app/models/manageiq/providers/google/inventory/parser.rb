@@ -9,10 +9,6 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
     "UNHEALTHY" => "OutOfService"
   }.freeze
 
-  def options
-    @options ||= Settings.ems_refresh[persister.manager.class.ems_type]
-  end
-
   def initialize
     super
 
