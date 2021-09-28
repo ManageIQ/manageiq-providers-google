@@ -727,7 +727,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
 
   def skip_image?(image)
     return false if options.get_deprecated_images
-    return false unless deprecated_image?(image)
+    return false if !deprecated_image?(image)
     return false if @active_images.include?(image.id.to_s)
 
     true
