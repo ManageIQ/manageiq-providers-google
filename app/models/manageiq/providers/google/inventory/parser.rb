@@ -151,7 +151,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   end
 
   def images
-    collector.images.reject(&method(:skip_image?)).each do |image|
+    collector.images.select { |img| active_image?(img) }.each do |image|
       persister_miq_template = image(image)
 
       image_os(persister_miq_template, image)
@@ -727,11 +727,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
     image.kind == "compute#image" ? !image.deprecated.nil? : false
   end
 
-  def skip_image?(image)
-    return false if options.get_deprecated_images
-    return false if !deprecated_image?(image)
-    return false if @active_images.include?(image.id.to_s)
-
-    true
+  def active_image?(image)
+    !deprecated_image?(image) || @active_images.include?(image.id.to_s) || options.get_deprecated_images
   end
 end
