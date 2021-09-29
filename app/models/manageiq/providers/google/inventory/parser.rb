@@ -38,6 +38,8 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
     cloud_database_flavors
     cloud_volumes
     cloud_volume_snapshots
+
+    # Instances has to be called first in order to set the `@active_images`
     instances
     images
 
