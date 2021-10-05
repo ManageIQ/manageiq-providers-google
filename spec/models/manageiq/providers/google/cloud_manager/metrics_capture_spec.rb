@@ -2,7 +2,7 @@ describe ManageIQ::Providers::Google::CloudManager::MetricsCapture do
   require 'fog/google'
 
   let(:ems)                   { FactoryBot.create(:ems_google_with_project) }
-  let(:metrics_connection)    { ems.connect(:service => 'monitoring') }
+  let(:metrics_connection)    { ::Fog::Google::Monitoring.new(:google_project => ems.project) }
   let(:timeseries_collection) { double }
 
   before(:all) { Fog.mock! }
