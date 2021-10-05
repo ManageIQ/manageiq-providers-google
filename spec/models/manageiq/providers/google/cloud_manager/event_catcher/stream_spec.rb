@@ -3,7 +3,7 @@ describe ManageIQ::Providers::Google::CloudManager::EventCatcher::Stream do
 
   let(:ems)               { FactoryBot.create(:ems_google_with_project) }
   let(:subscription)      { Fog::Google::Pubsub::Subscription.new }
-  let(:pubsub_connection) { ems.connect(:service => 'pubsub') }
+  let(:pubsub_connection) { ::Fog::Google::Pubsub.new(:google_project => ems.project) }
   let(:stream)            { described_class.new(ems) }
   let(:subscription_name) { "projects/GOOGLE_PROJECT/subscriptions/manageiq-eventcatcher-#{ems.guid}" }
 
