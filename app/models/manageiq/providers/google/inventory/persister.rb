@@ -97,8 +97,7 @@ class ManageIQ::Providers::Google::Inventory::Persister < ManageIQ::Providers::I
   def add_firewall_rules
     add_network_collection(:firewall_rules) do |builder|
       builder.add_properties(
-        :manager_ref             => %i(name resource source_security_group direction host_protocol port end_port source_ip_range),
-        :manager_ref_allowed_nil => %i(source_security_group)
+        :manager_ref => %i(name source_security_group direction host_protocol port end_port source_ip_range)
       )
     end
   end

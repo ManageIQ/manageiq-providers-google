@@ -515,9 +515,8 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
           :host_protocol         => protocol,
           :name                  => name,
           :port                  => from_port,
-          :resource              => persister_security_group,
           :source_ip_range       => source_ip_range,
-          :source_security_group => nil
+          :source_security_group => persister_security_group
         )
       end
     end

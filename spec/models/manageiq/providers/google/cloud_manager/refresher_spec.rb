@@ -12,6 +12,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
   let(:key_pair)              { ManageIQ::Providers::Google::CloudManager::AuthKeyPair.find_by(:name => "gke-4866da88e59a4051ce37") }
   let(:load_balancer)         { LoadBalancer.find_by(:name => "test-first-load-balancer-forwarding-rule") }
   let(:security_group)        { SecurityGroup.find_by(:name => "lkhomenk-network") }
+  let(:firewall_rule)         { FirewallRule.find_by(:name => "some-rule") }
   let(:zone_central)          { AvailabilityZone.find_by(:ems_ref => "us-central1-a") }
   let(:zone_east)             { AvailabilityZone.find_by(:ems_ref => "us-east1-c") }
   let(:vm_powered_on)         { Vm.find_by(:name => "instance-group-1-gvej") }
@@ -51,6 +52,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       assert_specific_floating_ips
       assert_specific_load_balancer
       assert_specific_security_group
+      assert_specific_firewall_rule
       assert_specific_flavor
       assert_specific_vm_powered_on
       assert_specific_vm_powered_off
@@ -113,7 +115,6 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
   def assert_table_counts
     actual = Hash[MODELS.collect { |m| [m, m.to_s.classify.constantize.count] }]
     actual[:key_pair] = ManageIQ::Providers::Google::CloudManager::AuthKeyPair.count
-
     expect(actual).to eq expected_table_counts
   end
 
@@ -245,9 +246,10 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       :name    => "lkhomenk-network",
       :ems_ref => "lkhomenk-network"
     )
+  end
 
-    expect(security_group.firewall_rules.size).to eq(1)
-    expect(security_group.firewall_rules.first).to have_attributes(
+  def assert_specific_firewall_rule
+    expect(firewall_rule).to have_attributes(
       :name            => "some-rule",
       :host_protocol   => "ALL",
       :direction       => "inbound",
