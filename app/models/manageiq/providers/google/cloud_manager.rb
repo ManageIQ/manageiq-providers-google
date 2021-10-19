@@ -19,6 +19,7 @@ class ManageIQ::Providers::Google::CloudManager < ManageIQ::Providers::CloudMana
 
   include ManageIQ::Providers::Google::ManagerMixin
 
+  supports :catalog
   supports :cloud_volume
   supports :metrics
   supports :provisioning
