@@ -96,6 +96,11 @@ module ManageIQ::Providers::Google::ManagerMixin
         :google_client_options  => { :proxy_url => proxy_uri },
       }
 
+      if proxy_uri
+        require "faraday"
+        Faraday.default_connection_options.proxy = proxy_uri
+      end
+
       begin
         case options[:service]
           # specify Compute as the default
