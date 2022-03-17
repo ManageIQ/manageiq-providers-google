@@ -91,12 +91,12 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       :load_balancer_listener_pool       => 4,
       :load_balancer_pool_member         => 3,
       :load_balancer_pool_member_pool    => 4,
-      :miq_template                      => 113,
+      :miq_template                      => 115,
       :network                           => 0,
       :network_port                      => 15,
       :network_port_security_group       => 15,
       :network_router                    => 0,
-      :operating_system                  => 128,
+      :operating_system                  => 130,
       :orchestration_stack               => 0,
       :orchestration_stack_output        => 0,
       :orchestration_stack_parameter     => 0,
@@ -106,7 +106,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       :resource_group                    => 0,
       :security_group                    => 3,
       :vm                                => 15,
-      :vm_or_template                    => 128, # :miq_template + :vm
+      :vm_or_template                    => 130, # :miq_template + :vm
     }
   end
 
