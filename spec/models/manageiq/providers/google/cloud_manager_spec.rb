@@ -112,4 +112,24 @@ describe ManageIQ::Providers::Google::CloudManager do
       expect(ems.catalog_types).to include("google")
     end
   end
+
+  describe "#supports_events?" do
+    let(:ems) { FactoryBot.create(:ems_google, :capabilities => {"pubsub" => pubsub}) }
+
+    context "with pubsub available" do
+      let(:pubsub) { true }
+
+      it "returns true" do
+        expect(ems.supports?(:events)).to be_truthy
+      end
+    end
+
+    context "with pubsub unavailable" do
+      let(:pubsub) { false }
+
+      it "returns falsey" do
+        expect(ems.supports?(:events)).to be_falsey
+      end
+    end
+  end
 end
