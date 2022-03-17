@@ -5,6 +5,10 @@ module ManageIQ::Providers::Google::ManagerMixin
     options[:auth_type] = auth_type
     connect(options, true)
 
+    capabilities["pubsub"] = verify_pubsub_credentials(options)
+
+    save! if changed?
+
     true
   end
 
@@ -17,6 +21,15 @@ module ManageIQ::Providers::Google::ManagerMixin
 
   def gce
     @gce ||= connect(:service => "compute")
+  end
+
+  private
+
+  def verify_pubsub_credentials(options = {})
+    !!connect(options.merge(:service => "pubsub")).subscriptions.all
+  rescue Google::Apis::ClientError
+    # If the Pub/Sub service isn't enabled on this project we cannot collect events
+    false
   end
 
   module ClassMethods
