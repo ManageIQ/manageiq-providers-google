@@ -443,6 +443,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
 
     # For legacy GCE networks without subnets, we also try a network link
     cloud_subnet = subnets_by_link[network_port[:subnetwork]] || subnets_by_link[network_port[:network]]
+    return if cloud_subnet.nil?
 
     persister.cloud_subnet_network_ports.build(
       :cloud_subnet => persister.cloud_subnets.lazy_find(cloud_subnet.id.to_s),
