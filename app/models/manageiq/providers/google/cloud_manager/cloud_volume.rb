@@ -4,4 +4,17 @@ class ManageIQ::Providers::Google::CloudManager::CloudVolume < ::CloudVolume
       :fields => []
     }
   end
+
+  def params_for_attach
+    {
+      :fields => [
+        {
+          :component => 'text-field',
+          :name      => 'device_mountpoint',
+          :id        => 'device_mountpoint',
+          :label     => _('Device Mountpoint')
+        }
+      ]
+    }
+  end
 end
