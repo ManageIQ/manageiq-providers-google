@@ -69,10 +69,6 @@ class ManageIQ::Providers::Google::CloudManager < ManageIQ::Providers::CloudMana
     {"google" => N_("Google")}
   end
 
-  def supports_authentication?(authtype)
-    supported_auth_types.include?(authtype.to_s)
-  end
-
   def required_credential_fields(_type)
     [:auth_key]
   end
