@@ -499,7 +499,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
       name = firewall.name
       source_ip_range = firewall.source_ranges.nil? ? "0.0.0.0/0" : firewall.source_ranges.first
 
-      firewall.allowed.each do |fw_allowed|
+      firewall.allowed&.each do |fw_allowed|
         protocol      = fw_allowed[:ip_protocol].upcase
         allowed_ports = fw_allowed[:ports].to_a.first
 
