@@ -671,16 +671,8 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
 
       # Lookup our health state in the health status map; default to
       # "OutOfService" if we can't find a mapping.
-      status = "OutOfService"
-      unless instance_health.nil?
-        gcp_status = instance_health[0][:health_state]
-
-        if GCP_HEALTH_STATUS_MAP.include?(gcp_status)
-          status = GCP_HEALTH_STATUS_MAP[gcp_status]
-        else
-          _log.warn("Unable to find an explicit health status mapping for state: #{gcp_status} - defaulting to 'OutOfService'")
-        end
-      end
+      health_state = instance_health&.first&.dig(:health_state)
+      status       = GCP_HEALTH_STATUS_MAP[health_state] || "OutOfService"
 
       persister.load_balancer_health_check_members.build(
         :load_balancer_health_check => persister_lb_health_check,
