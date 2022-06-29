@@ -6,10 +6,12 @@ class ManageIQ::Providers::Google::CloudManager::CloudDatabase < ::CloudDatabase
     {
       :fields => [
         {
-          :component => 'text-field',
-          :id        => 'name',
-          :name      => 'name',
-          :label     => _('Cloud Database Name'),
+          :component  => 'text-field',
+          :id         => 'name',
+          :name       => 'name',
+          :label      => _('Cloud Database Name'),
+          :isRequired => true,
+          :validate   => [{:type => 'required'}],
         },
         {
           :component    => 'select',
@@ -18,6 +20,7 @@ class ManageIQ::Providers::Google::CloudManager::CloudDatabase < ::CloudDatabase
           :label        => _('Tier'),
           :includeEmpty => true,
           :isRequired   => true,
+          :validate     => [{:type => 'required'}],
           :options      => ems.cloud_database_flavors.map do |db|
             {
               :label => db[:name],
