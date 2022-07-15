@@ -28,7 +28,7 @@ describe ManageIQ::Providers::Google::CloudManager::CloudDatabase do
     context '#create_cloud_database' do
       it 'creates the cloud database' do
         expect(instances_client).to receive(:create).with(:name => "test-db", :tier => "db-f1-micro")
-        cloud_database.class.raw_create_cloud_database(ems, {:name => "test-db", :tier => "db-f1-micro"})
+        cloud_database.class.raw_create_cloud_database(ems, {"name" => "test-db", "tier" => "db-f1-micro"})
       end
     end
 

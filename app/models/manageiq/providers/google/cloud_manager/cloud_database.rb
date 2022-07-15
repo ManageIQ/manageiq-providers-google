@@ -34,10 +34,10 @@ class ManageIQ::Providers::Google::CloudManager::CloudDatabase < ::CloudDatabase
 
   def self.raw_create_cloud_database(ext_management_system, options)
     ext_management_system.with_provider_connection(:service => 'sql') do |connection|
-      connection.instances.create(:name => options[:name], :tier => options[:tier])
+      connection.instances.create(:name => options["name"], :tier => options["tier"])
     end
   rescue => err
-    _log.error("cloud database=[#{options[:name]}], error: #{err}")
+    _log.error("cloud database=[#{options["name"]}], error: #{err}")
     raise
   end
 
