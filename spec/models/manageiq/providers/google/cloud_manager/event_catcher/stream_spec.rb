@@ -93,10 +93,10 @@ describe ManageIQ::Providers::Google::CloudManager::EventCatcher::Stream do
       let(:message_attributes) do
         {
           :ack_id  => "1234ABCD",
-          :message => Google::Apis::PubsubV1::Message.new(message_data)
+          :message => Google::Apis::PubsubV1::Message.new(**message_data)
         }
       end
-      let(:messages) { [Google::Apis::PubsubV1::ReceivedMessage.new(message_attributes)] }
+      let(:messages) { [Google::Apis::PubsubV1::ReceivedMessage.new(**message_attributes)] }
 
       it { is_expected.to eq [{ :ack_id => "1234ABCD", :message => message_data }] }
     end

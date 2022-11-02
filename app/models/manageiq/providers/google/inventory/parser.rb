@@ -710,6 +710,8 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   end
 
   def parse_uid_from_url(url)
+    return if url.nil?
+
     # A lot of attributes in gce are full URLs with the
     # uid being the last component.  This helper method
     # returns the last component of the url
