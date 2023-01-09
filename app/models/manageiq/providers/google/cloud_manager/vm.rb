@@ -1,6 +1,8 @@
 class ManageIQ::Providers::Google::CloudManager::Vm < ManageIQ::Providers::CloudManager::Vm
   include_concern 'Operations'
 
+  supports :capture
+
   virtual_column :preemptible?, :type => :boolean, :uses => :advanced_settings
 
   def preemptible?
