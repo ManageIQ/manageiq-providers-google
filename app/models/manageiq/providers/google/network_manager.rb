@@ -9,7 +9,6 @@ class ManageIQ::Providers::Google::NetworkManager < ManageIQ::Providers::Network
   require_nested :LoadBalancerPoolMember
   require_nested :NetworkPort
   require_nested :NetworkRouter
-  require_nested :Refresher
   require_nested :SecurityGroup
 
   include ManageIQ::Providers::Google::ManagerMixin
@@ -30,6 +29,8 @@ class ManageIQ::Providers::Google::NetworkManager < ManageIQ::Providers::Network
            :default_endpoint,
            :endpoints,
            :google_tenant_id,
+           :refresh,
+           :refresh_ems,
            :to        => :parent_manager,
            :allow_nil => true
 
