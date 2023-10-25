@@ -34,8 +34,7 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
   end
 
   def flavors
-    flavors_by_zone = compute.list_aggregated_machine_types.items
-    flavors_by_zone.values.flat_map(&:machine_types).compact.uniq(&:id)
+    compute.machine_types.all
   end
 
   def flavor(flavor_uid, availability_zone_uid)
