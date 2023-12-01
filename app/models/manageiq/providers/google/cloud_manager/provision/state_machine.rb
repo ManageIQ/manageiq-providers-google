@@ -27,6 +27,12 @@ module ManageIQ::Providers::Google::CloudManager::Provision::StateMachine
     signal :poll_instance_disks_complete
   end
 
+  def cleanup_instance_disks
+    return if phase_context[:boot_disk].nil?
+
+    delete_disk(phase_context[:boot_disk_attrs])
+  end
+
   def poll_instance_disks_complete
     boot_disk = phase_context[:boot_disk_attrs]
 
