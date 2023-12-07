@@ -8,7 +8,5 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-gem "fog-google", "=1.22.0.1", :require => false, :source => "https://rubygems.manageiq.org"
-
 # Load Gemfile with dependencies from manageiq
 eval_gemfile(File.expand_path("spec/manageiq/Gemfile", __dir__))
