@@ -13,6 +13,13 @@ module ManageIQ::Providers::Google::CloudManager::Provision::Disk
     create_disks([disk_attrs]).first
   end
 
+  def delete_disk(disk_attrs)
+    source.with_provider_connection do |google|
+      disk = google.disks.get(disk_attrs[:name], disk_attrs[:zone_name])
+      disk&.destroy
+    end
+  end
+
   def check_disks_ready(disks_attrs)
     source.with_provider_connection do |google|
       disks_attrs.each do |disk_attrs|
