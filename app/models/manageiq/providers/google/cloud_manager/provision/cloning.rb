@@ -52,5 +52,8 @@ module ManageIQ::Providers::Google::CloudManager::Provision::Cloning
       instance = google.servers.create(clone_options)
       return instance.id
     end
+  rescue
+    cleanup_instance_disks
+    raise
   end
 end
