@@ -1,22 +1,4 @@
 class ManageIQ::Providers::Google::CloudManager < ManageIQ::Providers::CloudManager
-  require_nested :AuthKeyPair
-  require_nested :AvailabilityZone
-  require_nested :CloudDatabase
-  require_nested :CloudDatabaseFlavor
-  require_nested :CloudVolume
-  require_nested :CloudVolumeSnapshot
-  require_nested :EventCatcher
-  require_nested :EventParser
-  require_nested :Flavor
-  require_nested :Provision
-  require_nested :ProvisionWorkflow
-  require_nested :MetricsCapture
-  require_nested :MetricsCollectorWorker
-  require_nested :RefreshWorker
-  require_nested :Refresher
-  require_nested :Template
-  require_nested :Vm
-
   include ManageIQ::Providers::Google::ManagerMixin
 
   supports :catalog

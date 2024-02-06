@@ -1,5 +1,5 @@
 class ManageIQ::Providers::Google::CloudManager::Vm < ManageIQ::Providers::CloudManager::Vm
-  include_concern 'Operations'
+  include Operations
 
   supports :capture
 
