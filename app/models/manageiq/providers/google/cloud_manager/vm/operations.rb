@@ -4,9 +4,7 @@ module ManageIQ::Providers::Google::CloudManager::Vm::Operations
   include Power
 
   included do
-    supports :terminate do
-      unsupported_reason_add(:terminate, unsupported_reason(:control)) unless supports?(:control)
-    end
+    supports(:terminate) { unsupported_reason(:control) }
   end
 
   def raw_destroy
