@@ -5,7 +5,7 @@ class ManageIQ::Providers::Google::CloudManager < ManageIQ::Providers::CloudMana
   supports :cloud_volume
   supports :create
   supports :events do
-    unsupported_reason_add(:events, _("Pub/Sub service is not enabled in this project")) unless capabilities["pubsub"]
+    _("Pub/Sub service is not enabled in this project") unless capabilities["pubsub"]
   end
   supports :metrics
   supports :provisioning
