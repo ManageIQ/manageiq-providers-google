@@ -52,6 +52,7 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       assert_specific_load_balancer
       assert_specific_security_group
       assert_specific_flavor
+      assert_specific_gce_labels_captured
       assert_specific_vm_powered_on
       assert_specific_vm_powered_off
       assert_specific_vm_preemptible
@@ -567,5 +568,24 @@ describe ManageIQ::Providers::Google::CloudManager::Refresher do
       :size        => 10.gigabyte
     )
     expect(cloud_volume_snapshot.creation_time.to_s).to eql("2018-05-11 14:29:52 UTC")
+  end
+
+  def assert_specific_gce_labels_captured
+    vm = ems.vms.find_by(:ems_ref => "2083234809321676933")
+    expect(vm.labels.count).to eq(2)
+    expect(vm.labels.first).to have_attributes(
+      :section     => "labels",
+      :name        => "http-server",
+      :value       => "",
+      :resource    => vm,
+      :source      => "google",
+    )
+    expect(vm.labels.second).to have_attributes(
+      :section     => "labels",
+      :name        => "https-server",
+      :value       => "",
+      :resource    => vm,
+      :source      => "google",
+    )
   end
 end
