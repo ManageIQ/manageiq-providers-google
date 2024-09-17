@@ -1,5 +1,6 @@
 class ManageIQ::Providers::Google::Inventory::Persister < ManageIQ::Providers::Inventory::Persister
   def initialize_inventory_collections
+    initialize_tag_mapper
     initialize_cloud_inventory_collections
     initialize_network_inventory_collections
   end
@@ -16,6 +17,7 @@ class ManageIQ::Providers::Google::Inventory::Persister < ManageIQ::Providers::I
       operating_systems
       miq_templates
       vms
+      vm_and_template_labels
     ].each do |name|
       add_cloud_collection(name)
     end
