@@ -206,6 +206,23 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
       instance_hardware(persister_vm, instance, flavor)
       instance_key_pairs(persister_vm, instance)
       instance_advanced_settings(persister_vm, instance)
+      vm_and_template_labels(persister_vm, instance.labels || [])
+    end
+  end
+
+  def vm_and_template_labels(resource, tags)
+    tags.each do |tag_name, tag_value|
+      persister
+        .vm_and_template_labels
+        .find_or_build_by(
+          :resource => resource,
+          :name     => tag_name,
+        )
+        .assign_attributes(
+          :section => 'labels',
+          :source  => 'google',
+          :value   => tag_value,
+        )
     end
   end
 
