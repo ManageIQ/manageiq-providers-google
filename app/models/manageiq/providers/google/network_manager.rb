@@ -22,6 +22,10 @@ class ManageIQ::Providers::Google::NetworkManager < ManageIQ::Providers::Network
            :to        => :parent_manager,
            :allow_nil => true
 
+  class << self
+    delegate :refresh_ems, :to => ManageIQ::Providers::Google::CloudManager
+  end
+
   def self.ems_type
     @ems_type ||= "gce_network".freeze
   end
