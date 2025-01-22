@@ -307,6 +307,8 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   # @param persister_hardware [InventoryObject<Hardware>]
   # @param instance [Fog::Compute::Google::Server]
   def hardware_disks(persister_hardware, instance)
+    return if instance.disks.blank?
+
     instance.disks.each do |attached_disk|
       cloud_volume_ems_ref = @cloud_volume_url_to_id[attached_disk[:source]]
       persister_cloud_volume = persister.cloud_volumes.find(cloud_volume_ems_ref)
@@ -339,6 +341,8 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   # instance disks (connected to cloud_volume's `self_link`)
   def parse_instance_parent_image(instance)
     parent_image_uid = nil
+
+    return parent_image_uid if instance.disks.empty?
 
     instance.disks.each do |disk|
       parent_image_uid = @cloud_volume_url_to_source_image_id[disk[:source]]
