@@ -340,17 +340,12 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   # Get image's (miq_template's) ems_ref from
   # instance disks (connected to cloud_volume's `self_link`)
   def parse_instance_parent_image(instance)
-    parent_image_uid = nil
-
-    return parent_image_uid if instance.disks.empty?
-
-    instance.disks.each do |disk|
-      parent_image_uid = @cloud_volume_url_to_source_image_id[disk[:source]]
-      next if parent_image_uid.nil?
-      break
+    instance.disks&.each do |disk|
+      image_id = @cloud_volume_url_to_source_image_id[disk[:source]]
+      return image_id if image_id
     end
 
-    parent_image_uid
+    nil
   end
 
   # @param ssh_key [Hash]
