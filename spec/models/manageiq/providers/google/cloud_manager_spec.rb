@@ -90,7 +90,7 @@ describe ManageIQ::Providers::Google::CloudManager do
         }
 
         require 'fog/google'
-        expect(Fog::Compute::Google).to receive(:new) do |options|
+        expect(Fog::Google::Compute).to receive(:new) do |options|
           expect(options.fetch_path(:google_client_options, :proxy_url).to_s)
             .to eq("http://my_user:my_password@192.168.24.99:1234")
         end
