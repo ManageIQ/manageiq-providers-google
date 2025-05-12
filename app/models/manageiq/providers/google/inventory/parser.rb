@@ -237,7 +237,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   end
 
   # @param persister_vm [InventoryObject<ManageIQ::Providers::Google::CloudManager::Vm>]
-  # @param instance [Fog::Compute::Google::Server]
+  # @param instance [Fog::Google::Compute::Server]
   def instance_key_pairs(persister_vm, instance)
     # Add project common ssh-keys with keys specific to this instance
     instance_ssh_keys = project_key_pairs | parse_compute_metadata_ssh_keys(instance.metadata)
@@ -266,7 +266,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   end
 
   # @param persister_vm [InventoryObject<ManageIQ::Providers::Google::CloudManager::Vm>]
-  # @param instance [Fog::Compute::Google::Server]
+  # @param instance [Fog::Google::Compute::Server]
   def instance_advanced_settings(persister_vm, instance)
     persister.vms_and_templates_advanced_settings.build(
       :resource     => persister_vm, # manager_ref
@@ -280,7 +280,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   end
 
   # @param persister_template [InventoryObject<ManageIQ::Providers::Google::CloudManager::Template]
-  # @param image [Fog::Compute::Google::Snapshot, Fog::Compute::Google::Image]
+  # @param image [Fog::Google::Compute::Snapshot, Fog::Google::Compute::Image]
   def image_os(persister_template, image)
     persister.operating_systems.build(
       :vm_or_template => persister_template, # manager_ref
@@ -305,7 +305,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   end
 
   # @param persister_hardware [InventoryObject<Hardware>]
-  # @param instance [Fog::Compute::Google::Server]
+  # @param instance [Fog::Google::Compute::Server]
   def hardware_disks(persister_hardware, instance)
     return if instance.disks.blank?
 
@@ -412,7 +412,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   end
 
   # @param persister_cloud_network [InventoryObject<ManageIQ::Providers::Google::NetworkManager::CloudNetwork>]
-  # @param network [Fog::Compute::Google::Network]
+  # @param network [Fog::Google::Compute::Network]
   def cloud_subnets(persister_cloud_network, network)
     @subnets_by_network_link ||= collector.cloud_subnets.each_with_object({}) { |x, subnets| (subnets[x.network] ||= []) << x }
     @subnets_by_network_link[network.self_link]&.each do |cloud_subnet|
@@ -505,7 +505,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   end
 
   # @param persister_security_group [InventoryObject<ManageIQ::Providers::Google::NetworkManager::SecurityGroup>]
-  # @param firewalls [Array<Fog::Compute::Google::Firewall>]
+  # @param firewalls [Array<Fog::Google::Compute::Firewall>]
   def firewall_rules(persister_security_group, firewalls)
     firewalls.each do |firewall|
       name = firewall.name
@@ -560,7 +560,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
     end
   end
 
-  # @param forwarding_rule [Fog::Compute::Google::ForwardingRule]
+  # @param forwarding_rule [Fog::Google::Compute::ForwardingRule]
   def load_balancer_listener(forwarding_rule)
     # Only TCP/UDP/SCTP forwarding rules have ports
     has_ports = %w(TCP UDP SCTP).include?(forwarding_rule.ip_protocol)
@@ -580,7 +580,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   end
 
   # @param persister_lb_listener [InventoryObject<ManageIQ::Providers::google::NetworkManager::LoadBalancerListener]
-  # @param forwarding_rule [Fog::Compute::Google::ForwardingRule]
+  # @param forwarding_rule [Fog::Google::Compute::ForwardingRule]
   def load_balancer_listener_pool(persister_lb_listener, forwarding_rule)
     persister_lb_listener_pool = persister.load_balancer_listener_pools.build(
       :load_balancer_listener => persister_lb_listener,
@@ -606,7 +606,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   end
 
   # @param persister_lb_pool [InventoryObject<ManageIQ::Providers::Google::NetworkManager::LoadBalancerPool>]
-  # @param target_pool [Fog::Compute::Google::TargetPool]
+  # @param target_pool [Fog::Google::Compute::TargetPool]
   def load_balancer_pool_members(persister_lb_pool, target_pool)
     target_pool.instances.to_a.each do |member_link|
       persister_lb_pool_member = persister.load_balancer_pool_members.find(Digest::MD5.base64digest(member_link))
@@ -626,7 +626,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
     end
   end
 
-  # @param target_pool [Fog::Compute::Google::TargetPool]
+  # @param target_pool [Fog::Google::Compute::TargetPool]
   def load_balancer_health_check(target_pool)
     # Target pools aren't required to have health checks
     return if target_pool.health_checks.blank?
@@ -668,7 +668,7 @@ class ManageIQ::Providers::Google::Inventory::Parser < ManageIQ::Providers::Inve
   end
 
   # @param persister_lb_health_check [InventoryObject<ManageIQ::Providers::Google::NetworkManager::LoadBalancerHealthCheck>]
-  # @param target_pool [Fog::Compute::Google::TargetPool]
+  # @param target_pool [Fog::Google::Compute::TargetPool]
   def load_balancer_health_check_members(persister_lb_health_check, target_pool)
     return if target_pool.instances.blank?
     # First attempt to get the health of the instance

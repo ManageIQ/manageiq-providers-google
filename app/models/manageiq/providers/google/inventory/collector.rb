@@ -76,7 +76,7 @@ class ManageIQ::Providers::Google::Inventory::Collector < ManageIQ::Providers::I
       # For a backwards compatibility, old GCE networks were created without subnet. It's not possible now, but
       # GCE haven't migrated to new format. We will create a fake subnet for each network without subnets.
       @subnetworks += compute.networks.select { |x| x.ipv4_range.present? }.map do |x|
-        Fog::Compute::Google::Subnetwork.new(
+        Fog::Google::Compute::Subnetwork.new(
           :name               => x.name,
           :gateway_address    => x.gateway_i_pv4,
           :ip_cidr_range      => x.i_pv4_range,
