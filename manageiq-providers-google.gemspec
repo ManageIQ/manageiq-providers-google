@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "fog-google", "~> 1.23"
+  spec.add_dependency "fog-google", "~> 1.25"
   spec.add_dependency "rbnacl",     ">= 3.2", "< 5.0"
 
   spec.add_development_dependency "manageiq-style"
