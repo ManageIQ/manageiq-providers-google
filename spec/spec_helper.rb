@@ -12,8 +12,6 @@ VCR.configure do |config|
   config.ignore_hosts 'codeclimate.com' if ENV['CI']
   config.cassette_library_dir = File.join(ManageIQ::Providers::Google::Engine.root, 'spec/vcr_cassettes')
 
-  secrets = Rails.application.secrets
-  secrets.google.keys do |secret|
-    config.define_cassette_placeholder(secrets.google_defaults[secret]) { secrets.google[secret] }
-  end
+  VcrSecrets.define_all_cassette_placeholders(config, :google)
+  VcrSecrets.define_all_cassette_placeholders(config, :google_gke)
 end

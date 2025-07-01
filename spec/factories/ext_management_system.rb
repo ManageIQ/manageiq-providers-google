@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :ems_google_with_vcr_authentication, :parent => :ems_google, :traits => [:with_zone] do
     after(:create) do |ems|
-      project         = Rails.application.secrets.google[:project]
-      service_account = Rails.application.secrets.google[:service_account]
+      project         = VcrSecrets.google.project
+      service_account = VcrSecrets.google.service_account
 
       ems.authentications << FactoryBot.create(
         :authentication,
@@ -27,7 +27,7 @@ FactoryBot.define do
   end
 
   factory :ems_google_gke_with_vcr_authentication, :parent => :ems_google_gke, :traits => %i[with_zone] do
-    project { Rails.application.secrets.google_gke[:project] }
+    project { VcrSecrets.google_gke.project }
     hostname { "34.71.86.84" }
 
     after(:create) do |ems|
@@ -35,7 +35,7 @@ FactoryBot.define do
         :authentication,
         :type     => "AuthToken",
         :authtype => "bearer",
-        :auth_key => Rails.application.secrets.google_gke[:service_account],
+        :auth_key => VcrSecrets.google_gke.service_account,
         :userid   => "_"
       )
     end
