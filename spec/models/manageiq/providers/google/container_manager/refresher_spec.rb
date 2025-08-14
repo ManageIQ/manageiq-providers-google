@@ -35,6 +35,7 @@ describe ManageIQ::Providers::Google::ContainerManager::Refresher do
   def assert_specific_container_project
     project = ems.container_projects.find_by(:ems_ref => "aeffa329-adfe-44ff-b915-c5ed0ad784b9")
     expect(project).to have_attributes(
+      :type    => "ManageIQ::Providers::Google::ContainerManager::ContainerProject",
       :ems_ref => "aeffa329-adfe-44ff-b915-c5ed0ad784b9",
       :name    => "default"
     )
