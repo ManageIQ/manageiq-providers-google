@@ -1,8 +1,6 @@
 # ManageIQ::Providers::Google
 
 [![CI](https://github.com/ManageIQ/manageiq-providers-google/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/ManageIQ/manageiq-providers-google/actions/workflows/ci.yaml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/48e14bf73ba25baa13e4/maintainability)](https://codeclimate.com/github/ManageIQ/manageiq-providers-google/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/48e14bf73ba25baa13e4/test_coverage)](https://codeclimate.com/github/ManageIQ/manageiq-providers-google/test_coverage)
 
 [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/manageiq-providers-google?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
