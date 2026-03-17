@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "fog-google", "~> 1.25"
   spec.add_dependency "rbnacl",     ">= 3.2", "< 5.0"
+  spec.add_dependency "sshkey",     "~>1.9"
 
   spec.add_development_dependency "manageiq-style", "~> 1.5.0"
   spec.add_development_dependency "simplecov", ">= 0.21.2"
