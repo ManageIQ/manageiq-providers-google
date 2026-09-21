@@ -4,6 +4,8 @@
     :blacklisted_event_names: []
     :event_handling:
       :event_groups:
+  :ems_gke:
+    :blacklisted_event_names: []
 :ems_refresh:
   :gce:
     :get_deprecated_images: false
@@ -35,6 +37,7 @@
         :poll: 15.seconds
       :event_catcher_google_gke:
         :poll: 15.seconds
+        :rails_worker: false
     :queue_worker_base:
       :ems_metrics_collector_worker:
         :ems_metrics_collector_worker_google: {}
