@@ -14,4 +14,10 @@ VCR.configure do |config|
 
   VcrSecrets.define_all_cassette_placeholders(config, :google)
   VcrSecrets.define_all_cassette_placeholders(config, :google_gke)
+
+  # Never record real OAuth bearer tokens in cassettes
+  config.before_record do |interaction|
+    auth = interaction.request.headers["Authorization"]
+    auth&.map! { |value| value.sub(/\ABearer\s+\S+/, "Bearer BEARER_TOKEN") }
+  end
 end
