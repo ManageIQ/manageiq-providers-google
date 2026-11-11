@@ -50,7 +50,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-         "access_token": "ya29.c.EmC4BdUk3rY5ZSoqTl2cRs6iiC5bLmCCcWMh3VPJ9Rj6F9iFB64oPIPXel9NcloXD0_BSRCyGqHVfnhvndbJoCeapl_ZsIURiI4IQTWARmoJ2oe1f5PrVVClOKVP8jGh6dk",
+         "access_token": "BEARER_TOKEN",
          "token_type": "Bearer",
          "expires_in": 3600
         }
@@ -91129,7 +91129,7 @@ http_interactions:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: '{"access_token":"ya29.c.KqEBCQgjJlYHqIJBWDCAydhP6uOdzA667EElwuarwtiHDqGYzHb7Anm43RzYaBV8564QOcbI4_D0ThAOEQ0ZlEwmvSIjOftcp2b5npvT6STM8rbhY7sMtqlMgp0ccsfkeurYckI1XmQYd2f8oAh11q4W73Cpj4im3qEIIJBGVqnNGuC6pDfa_05zhS7-GZUGerYQNL-JWgxcjfhfiNzLGQ6l6Tk","expires_in":3599,"token_type":"Bearer"}'
+      string: '{"access_token":"BEARER_TOKEN","expires_in":3599,"token_type":"Bearer"}'
     http_version: null
   recorded_at: Mon, 26 Jul 2021 21:42:03 GMT
 - request:
@@ -91902,12 +91902,12 @@ http_interactions:
               "serverCaCert": {
                 "kind": "sql#sslCert",
                 "certSerialNumber": "0",
-                "cert": "-----BEGIN CERTIFICATE-----\nMIIDfzCCAmegAwIBAgIBADANBgkqhkiG9w0BAQsFADB3MS0wKwYDVQQuEyQ1YTU1\nYTdmOC0wM2RmLTQ5NDEtOWMwNC1lZDY2YTZmNjQxNDIxIzAhBgNVBAMTGkdvb2ds\nZSBDbG91ZCBTUUwgU2VydmVyIENBMRQwEgYDVQQKEwtHb29nbGUsIEluYzELMAkG\nA1UEBhMCVVMwHhcNMjEwNzI2MjExMTAzWhcNMzEwNzI0MjExMjAzWjB3MS0wKwYD\nVQQuEyQ1YTU1YTdmOC0wM2RmLTQ5NDEtOWMwNC1lZDY2YTZmNjQxNDIxIzAhBgNV\nBAMTGkdvb2dsZSBDbG91ZCBTUUwgU2VydmVyIENBMRQwEgYDVQQKEwtHb29nbGUs\nIEluYzELMAkGA1UEBhMCVVMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\nAQDGzxxSIsNaKzDVEYbeKddNHYnt2JmEl5ilPy8bFOBVy8VuCJZpJwPzFO6/tS7g\njy9sgJea9SeHO0vLkRHaRH/N6mfzfjMxCNzAj6tPXtD83Q5kec9mCNviApQmsr03\nWRLCj5mHJ454dJgchN65cufh6KlrCtL260eVd4TYUksKJmfjiH3+baDBttyyvjoU\nIX4497Evs0xtiXb6dO3nydX65rx/hy62picvFZEXt0zcoZMITT5h0uG5iPKwsta4\ndUdjMz0+z2Y5X+peKdDyO/VaBfGqtlGkE3KnQlvLgdNWtEH4vXjm0uih6tHjrGn9\nRD8pOPhixR/pGIN7yVa6sPalAgMBAAGjFjAUMBIGA1UdEwEB/wQIMAYBAf8CAQAw\nDQYJKoZIhvcNAQELBQADggEBABA+bBkbbBH1zSjCu8wfXh/65PQMqxrKmtDtvy3R\nprVjjBLP9C/L56HUDWeqo2yWY6HvBaCNijKknppahtDPChwzgwWbZJxKny/VzXm6\n4lRMzPy6GiR6TGvMAn0BtwR7pBP1bYueRlBGI/x8qpgWWLIr1aZqEzqj+TjBIATI\nXPcT5WkeHKbJbzXE0ApGH2D4JWXODR0nxruOnH12Rk4NhVMMslOEpG+y6tEx3Hc+\nDH93UoDMadZPyFzSFYEhTpSuAPyYAO7SMdg2PZRr8PSaLoyYzWTpAkM4HkoZmP1Q\nBhFmPGgmWxA/xHcrYEEbLQ3Njkg0FxGChISi/Wqz6St2L90=\n-----END CERTIFICATE-----",
-                "commonName": "C=US,O=Google\\, Inc,CN=Google Cloud SQL Server CA,dnQualifier=5a55a7f8-03df-4941-9c04-ed66a6f64142",
-                "sha1Fingerprint": "4385d22e362a7712a6710d2a1473e30caf9d1750",
+                "cert": "-----BEGIN CERTIFICATE-----\nMIIDaDCCAlCgAwIBAgIBADANBgkqhkiG9w0BAQsFADBNMQswCQYDVQQGEwJVUzEV\nMBMGA1UECgwMRXhhbXBsZSwgSW5jMScwJQYDVQQDDB5TZWxmIFNpZ25lZCBUZXN0\nIFNRTCBTZXJ2ZXIgQ0EwHhcNMjYxMTExMTk1MDU1WhcNMjYxMTEyMTk1MDU1WjBN\nMQswCQYDVQQGEwJVUzEVMBMGA1UECgwMRXhhbXBsZSwgSW5jMScwJQYDVQQDDB5T\nZWxmIFNpZ25lZCBUZXN0IFNRTCBTZXJ2ZXIgQ0EwggEiMA0GCSqGSIb3DQEBAQUA\nA4IBDwAwggEKAoIBAQCMIOBHUVwGPZhRUFqOKID246lVCnwC5apUlrrWf1gJNre3\nBHi5YQgZaLevmQcNXYiioARudNA05Z+GSndndLYpFEEGwahmEiWq3xelEiSRiD/i\nQnLLqVQKME6D3Lcc1nWpj3AoJfYxb8lMmxRE6/XL1oDRCRgsttgC6ch7+gKKM7dj\nZ65Tf1GgVRq5HzSkbQShwuEJ1MbnrhcojCLJ3MwYWi4awL+3M9Wv5XozzJnEvoS6\nXp5hedD/RgX8tJ8VnR3I3qdatlalTKn1JzFiAEYFvc6E1uzYZ/tooYeQRAGD3IQI\n5BkJCwSibFb0e4BxjzjLGqfOKvmu08pyGplqMGV1AgMBAAGjUzBRMB0GA1UdDgQW\nBBRDId+ZrREERYMTWyOy2A1VoiaaojAfBgNVHSMEGDAWgBRDId+ZrREERYMTWyOy\n2A1VoiaaojAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQA347ZA\nZASkPlf4yQg5lDubaMnnm4XwgmS5J6YySkZNtYqTn2g3GuiFF4AJCGqFZhNvXDpu\n6zYI6DltPD8T3+h39huDqvAnCfoY+qUe0KjO9VbT67glXvDw8uplfEpTFPPHJFK4\noJz3Wb094ioYoD4B4RMyJ5SxCBWKb+r2eVcTxFaedOa6kX05aL0o/rOsoQ1+138M\noN5uYRCZCH1sM5dcDmzC+4sQ8G6AySu2Zi8c9V68fa93Dv9EZHiI5xYlihI/t6qm\ngNPVyAQXpFfSlP+IK/YqktIQVngg96+1BZR6m+zcbBBcwRcBUxG8tGtnvyniPoC4\nr/CQ66q19eVCtB7V\n-----END CERTIFICATE-----",
+                "commonName": "C=US,O=Example\\, Inc,CN=Self Signed Test SQL Server CA",
+                "sha1Fingerprint": "d5955dea73262b2a641d8b52f3a318e6a97b13a8",
                 "instance": "miq-test",
-                "createTime": "2021-07-26T21:11:03.290Z",
-                "expirationTime": "2031-07-24T21:12:03.290Z"
+                "createTime": "2026-11-11T19:50:55.290Z",
+                "expirationTime": "2026-11-12T19:50:55.290Z"
               },
               "instanceType": "CLOUD_SQL_INSTANCE",
               "project": "GOOGLE_PROJECT",
