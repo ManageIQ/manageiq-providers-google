@@ -5,7 +5,7 @@ http_interactions:
     uri: https://www.googleapis.com/oauth2/v4/token
     body:
       encoding: ASCII-8BIT
-      string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJtYW5hZ2VpcS1zZXJ2aWNlLWFjY291bnRAYW1iaWVudC1hbnRlbm5hLTMwNTYxOS5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsImF1ZCI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL29hdXRoMi92NC90b2tlbiIsImV4cCI6MTYyODcyNDQzMCwiaWF0IjoxNjI4NzI0MzEwLCJzY29wZSI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2xvdWQtcGxhdGZvcm0gaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC91c2VyaW5mby5lbWFpbCJ9.Lr2ilsJWOaufmatr5sMIPx6R_ZpJ6HbK8nz5C24_xV_KM0aByDon6BOIWjEVfo9n1gGlkuyeuoV2koJV_6bfw_S4tmupH0lv3wVQh0Ka3eOSoyIivRCoA1_7Na-CYfLW0DAB4rpmbhQpZg7b9VPFsuRAsISVAusouBkuDbf24KaJ_zi6miTYlNdGidJX-4B4bwB_UbNpM56WblBVZwV4_eL8P6UY4ARA-whfPwFBbiuyLkgI6Lc4V8GBe_RF1cCAPXfRIv2URXknxHG5whKCi2tZelzJ2F_Xcl9zYI02FIOYa2AlsbR_83E9GCpnaTLGZYKMkMeieJYmoN7rNnnvcg
+      string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=BEARER_TOKEN
     headers:
       User-Agent:
       - Faraday v0.17.4
@@ -46,7 +46,7 @@ http_interactions:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: '{"access_token":"ya29.c.KqABDAi-yVJoTVB6NU6U_TH1c__I-pf91CuGPZy0ReCVjdEACQuwMbe0JRxiOK64rEBQUHOfstj7hF64zPmuY82JEQgMDsAhCeeJNxh3Fyza6VYu7JewStGdyHCGgCaN8zX9HIDkCs5oL6wxr1E8eZbf8p4FOSp3mKeXXcUBOwkZ4x0u8ukfcJTWEod_2SaJ6LDe8OGP_uLERKL01n5mEDwD3Q.............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................","expires_in":3599,"token_type":"Bearer"}'
+      string: '{"access_token":"BEARER_TOKEN","expires_in":3599,"token_type":"Bearer"}'
     http_version:
   recorded_at: Wed, 11 Aug 2021 23:26:11 GMT
 - request:
