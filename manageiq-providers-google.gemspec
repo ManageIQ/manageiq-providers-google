@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "fog-google", "~> 1.25"
-  spec.add_dependency "rbnacl",     ">= 3.2", "< 5.0"
+  spec.add_dependency "rbnacl",     ">= 3.2", "< 7.1.3"
   spec.add_dependency "sshkey",     "~>1.9"
 
   spec.add_development_dependency "manageiq-style"
