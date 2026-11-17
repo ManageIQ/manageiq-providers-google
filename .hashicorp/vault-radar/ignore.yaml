@@ -1,0 +1,6 @@
+- secret_values:
+  # spec/vcr_cassettes/manageiq/providers/google/cloud_manager/refresher.yml - false positives on nextPageToken / pageToken
+  - CgsIAxHVCAAAAAAAABIPCg1uMS1oaWdobWVtLTE2
+  - Cl0IhKP1p7HN9gI6UgoCGAEKAiAACgIYAgoHIKufgf62HgoCGAYKKyopZmVkb3JhLWNvcmVvcy0zMy0yMDIxMDEwNi0xMC0wLWdjcC14ODYtNjQKCiDYyeyKiMqGwiY=
+  # spec/vcr_cassettes/manageiq/providers/google/cloud_manager/refresher.yml - false positive on a Self Signed Test SQL Server CA
+  - MIIDaDCCAlCgAwIBAgIBADANBgkqhkiG9w0BAQsFADBNMQswCQYDVQQGEwJVUzEV
