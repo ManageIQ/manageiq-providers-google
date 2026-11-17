@@ -5,7 +5,7 @@ http_interactions:
     uri: https://www.googleapis.com/oauth2/v4/token
     body:
       encoding: ASCII-8BIT
-      string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiIxMzU3NzY1MTA2NjYtY29tcHV0ZUBkZXZlbG9wZXIuZ3NlcnZpY2VhY2NvdW50LmNvbSIsImF1ZCI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL29hdXRoMi92My90b2tlbiIsImV4cCI6MTUyNjA0OTIyOSwiaWF0IjoxNTI2MDQ5MTA5LCJzY29wZSI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY29tcHV0ZSBodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2RldnN0b3JhZ2UucmVhZF93cml0ZSBodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL25kZXYuY2xvdWRtYW4gaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9jbG91ZC1wbGF0Zm9ybSJ9.D2z-cvUtyN6IA5Fjxj6hQ9mqIbgIA14foFKDLPMncWSctMBTTsQ0ZlWGHums09NfbROjqRRFo-157fXWkcK_j0wv2h7dSoBMAIQcawMwbS7R_DitAeabuBieHbZBYhfo6mTpxSVzn4tXOc7YlFX0GTsbdDvOnznCbZQ4fRQPpysxPuv9T5CmNS0U6gWWGjbeEd8hiEhM2010CDmfxpcAUSMhaHZA6QeM51IoGCaisMCFf8BWmQRCfPaWg2dFA11Ix0Y7XFmCu1wpOMnbGkpHtYDkw9yLdRfYTgOVEDnjaQgilqH4MqyoFvzCYL_FblL0X76rt3rg8FvIiPnFXop3pQ
+      string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=JWT_TOKEN
     headers:
       User-Agent:
       - Faraday v0.9.2
@@ -91088,7 +91088,7 @@ http_interactions:
     uri: https://www.googleapis.com/oauth2/v4/token
     body:
       encoding: ASCII-8BIT
-      string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJtYW5hZ2VpcS1zZXJ2aWNlLWFjY291bnRAYW1iaWVudC1hbnRlbm5hLTMwNTYxOS5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsImF1ZCI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL29hdXRoMi92NC90b2tlbiIsImV4cCI6MTYyNzMzNTc4MywiaWF0IjoxNjI3MzM1NjYzLCJzY29wZSI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvc3Fsc2VydmljZS5hZG1pbiBodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtIn0.PDQ1zFK5j8Ya_5hM0jK6O2fUZkDipTfHgG3AVn9BamnNVPaRAuLHsgYkpEFAyldD02MA_yGfMtxfAgWm44QTBlcRKAWeet-WfmzCuZu53HB2iGfw4mhAV5JRqQ2fkNPDpYGJi7881tAFmi-pZUvB8i9FfrJCb3h4XpeoxQG6rLbvZDOXa9Qv0yEPhpv6b1cZWCmdf0H2kxETuuiCs9I06f-SWhfIoXSkX2qrdCvIaeKPU7PnVXhR5-lBUKdGNCvslo-R3vBZqCKH-748WaS7-N0tCZlksEA-mui63hrM7JF8vMh-cmgiTviKyUGI7oX1Gcq-8bB52OKLD2CelFtkag
+      string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=JWT_TOKEN
     headers:
       User-Agent:
       - Faraday v0.17.4
